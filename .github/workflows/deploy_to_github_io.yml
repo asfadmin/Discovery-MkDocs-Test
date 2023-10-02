@@ -22,11 +22,11 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r Discovery-MkDocs/requirements.txt
 
-#      - name: deploy to github.io
-#        if: github.ref == 'refs/heads/prod'
-#        shell: bash -l {0}
-#        run: |
-#          echo $PWD
-#          cd asf-data-search-manual
-#          ls -l
-#          python -m mkdocs gh-deploy --force
+      - name: deploy to github.io
+        if: github.ref == 'refs/heads/prod'
+        shell: bash -l {0}
+        run: |
+          echo $PWD
+          cd Discovery-MkDocs
+          ls -l
+          python -m mkdocs gh-deploy --force

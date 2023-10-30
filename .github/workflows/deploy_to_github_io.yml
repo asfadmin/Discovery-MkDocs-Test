@@ -21,7 +21,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install -r Discovery-MkDocs/requirements.txt
-          python -m phrase-translate-to-md.py Discovery-MkDocs
+          python -m phrase-translate-to-md Discovery-MkDocs
           
 
       - name: deploy to github.io

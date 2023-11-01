@@ -82,6 +82,7 @@ def load_locale(locale):
 
 def list_locales():
     configuration = load_configuration()
+    print('configuration: ' + str(configuration))
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:
         # Create an instance of the API class
@@ -97,5 +98,6 @@ def list_locales():
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)
 
+        print('api_response: ' + str(api_response))
         return api_response
 

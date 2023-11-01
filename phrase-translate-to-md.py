@@ -24,6 +24,7 @@ def replace_key_in_file(file_path):
         return
 
     try:
+        print('Loading file: ' + file_path)
         with open(file_path, 'r') as file_in:
             content = file_in.read()
 

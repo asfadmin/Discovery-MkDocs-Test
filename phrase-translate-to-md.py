@@ -71,7 +71,7 @@ def process_directories(directory_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 1:
-        print("Usage: python translate.py <directory_or_filename>")
+        print("Usage: python phrase-translate-to-md.py <directory_or_filename>")
         sys.exit(1)
 
     target_path = sys.argv[1]

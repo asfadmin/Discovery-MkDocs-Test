@@ -51,7 +51,7 @@ plugins:
 
 nav:
   - Home:
-    - index.md
+    - ../index.md
   - Vertex:
     - Vertex Manual:
       - vertex/manual.md

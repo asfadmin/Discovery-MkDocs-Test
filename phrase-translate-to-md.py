@@ -27,7 +27,7 @@ def replace_key_in_file(file_path):
         print('Loading file: ' + file_path)
         with open(file_path, 'r') as file_in:
             content = file_in.read()
-
+        print('Loading locales from PhraseApp')
         list_locales = phrase_strings.list_locales()
         for locale in list_locales:
             print('Processing locale: ' + locale.name)

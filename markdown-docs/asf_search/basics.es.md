@@ -4,14 +4,12 @@
 
 asf_search es un módulo de Python para realizar búsquedas en el catálogo ASF. Además, ofrece funcionalidad básica y soporte de descarga. Está disponible a través de PyPi y Conda.
 
-	importación asf_search como ASF
+	results = asf.granule_search(['ALPSRS279162400', 'ALPSRS279162200'])
+	print(results)
 
-	Resultados = asf.granule_search(['ALPSRS279162400', 'ALPSRS279162200'])
-	imprimir(resultados)
-
-	wkt = 'POLÍGONO((-135,7 58,2,-136,6 58,1,-135,8 56,9,-134,6 56,1,-134,9 58,0,-135,7 58,2))'
-	Resultados = asf.geo_search(platform=[asf. PLATAFORMA. SENTINEL1], intersectsWith=wkt, maxResults=10)
-	imprimir(resultados)
+	wkt = 'POLYGON((-135.7 58.2,-136.6 58.1,-135.8 56.9,-134.6 56.1,-134.9 58.0,-135.7 58.2))'
+	results = asf.geo_search(platform=[asf.PLATFORM.SENTINEL1], intersectsWith=wkt, maxResults=10)
+	print(results)
 
 Para obtener un tutorial introductorio de asf_search, consulte [Jupyter Notebooks](https://github.com/asfadmin/Discovery-asf_search/tree/master/examples).
 
@@ -22,9 +20,9 @@ asf_search se puede instalar en un entorno conda con
 
 	conda install -c conda-forge asf_search
 
-o en un entorno virtual con
+en un entorno virtual con
 
-	python -m pip instalar asf_search
+	python -m pip install asf_search
 
 ## Uso
 La búsqueda mediante programación de datos de ASF se simplifica con asf_search. Se proporcionan varias funciones de búsqueda. Cada función de búsqueda devuelve un objeto ```ASFSearchResults```:
@@ -39,7 +37,7 @@ La búsqueda mediante programación de datos de ASF se simplifica con asf_search
 
 Además, asf_search admite la descarga de datos, tanto de los resultados de búsqueda proporcionados por las funciones de búsqueda anteriores, como directamente en las URL de los productos. Por lo general, se requiere una sesión autenticada. Puede encontrar más información sobre los métodos de autenticación disponibles [aquí](https://requests.readthedocs.io/en/latest/user/authentication/). También puede autenticarse mediante un objeto ```ASFSession``` y uno de los siguientes métodos de autenticación. ASFSession es una subclase de "Session".
 
-- ```auth_with_creds('usuario', 'pasar)```
+- ```auth_with_creds('user', 'pass)```
 - ```auth_with_token('EDL token')```
 - ```auth_with_cookiejar(http.cookiejar)```
 
@@ -47,13 +45,13 @@ Si no se utilizan credenciales .netrc, esa sesión debe pasarse al método de de
 
 Ejemplo usando .netrc:
 
-	resultados = ....
+	results = ....
 	results.download(path='....')
 
 Ejemplo con autenticación manual:
 
-	Resultados = asf_search.granule_search([...])
-	sesión = asf_search. ASFSession().auth_with_creds('usuario', 'pass')
+	results = asf_search.granule_search([...])
+	session = asf_search.ASFSession().auth_with_creds('user', 'pass')
 	results.download(path='/Users/SARGuru/data', session=session)
 
 Alternativamente, asf_search admite la descarga de una lista arbitraria de URL. Se admiten todos los métodos de autenticación disponibles:
@@ -61,7 +59,7 @@ Alternativamente, asf_search admite la descarga de una lista arbitraria de URL. 
 	urls = [...]
 	asf_search.download_urls(urls=urls, path='/Users/SARGuru/data', session=ASFSession().auth_with_token('EDL token'))
 
-Tenga en cuenta también que ```ASFSearchResults.download()``` y la función genérica ```download_urls()``` aceptan un parámetro ```procesos``` que permite descargas paralelas.
+Tenga en cuenta también que ```ASFSearchResults.download()``` y la función genérica ```download_urls()``` aceptan un parámetro ```processes``` que permite descargas paralelas.
 
 Se pueden encontrar más ejemplos de todo lo anterior en este [script de ejemplo](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/hello_world.py)
 

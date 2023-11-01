@@ -2,14 +2,14 @@
 
 Cada función de búsqueda devuelve un objeto ```ASFSearchResults```:
 
-- ```busqueda_geo()``` Encuentre información del producto sobre un área de interés usando una cadena WKT
-- ```busqueda_granulo()``` Encuentre información del producto usando una lista de nombres de escenas
-- ```busqueda_producto()``` Encuentre información del producto usando una lista de IDs de productos
-- ```pila_desde_id()``` Encuentre una pila base de productos usando un ID de escena de referencia
-- Si los enfoques de búsqueda anteriores no satisfacen sus necesidades, ```buscar()``` soporta todas las palabras clave disponibles:
-    - ```buscar()``` Encuentre información del producto usando cualquier combinación de parámetros de búsqueda. Consulta la lista de palabras clave a continuación.
+- ```geo_search()``` Encuentre información del producto sobre un área de interés usando una cadena WKT
+- ```granule_search()``` Encuentre información del producto usando una lista de nombres de escenas
+- ```product_search()``` Encuentre información del producto usando una lista de IDs de productos
+- ```stack_from_id()``` Encuentre una pila base de productos usando un ID de escena de referencia
+- Si los enfoques de búsqueda anteriores no satisfacen sus necesidades, ```search()``` soporta todas las palabras clave disponibles:
+    - ```search()``` Encuentre información del producto usando cualquier combinación de parámetros de búsqueda. Consulta la lista de palabras clave a continuación.
 
-    - Ejemplos de algunos flujos de trabajo de búsqueda se pueden encontrar en este [script de muestra](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/hello_world.py). También puedes consultar los [cuadernos Jupyter](https://github.com/asfadmin/Discovery-asf_search/tree/master/examples) para flujos de trabajo de ejemplo.
+    - Ejemplos de algunos flujos de trabajo de búsqueda se pueden encontrar en este [script de muestra](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/hello_world.py). También puedes consultar los [Jupyter notebooks](https://github.com/asfadmin/Discovery-asf_search/tree/master/examples) para flujos de trabajo de ejemplo.
 
 Para un uso más avanzado, consulta las secciones [Clase ASFSearchResults](/asf_search/ASFSearchResults/) y [Clase ASFProduct](/asf_search/ASFProduct).
 
@@ -53,10 +53,10 @@ Las palabras clave se utilizan para encontrar los datos deseados. Usa tantas o t
         - rango de valores: asfFrame=(2845, 2855)
         - lista de valores: asfFrame=[2800, 2845]
     - Valores:
-        - ERS, JERS, RADARSAT: Marcos ASF de 0 a 900
-        - ALOS PALSAR: Marcos JAXA de 0 a 7200
-        - SEASAT: Marcos similares a ESA de 208 a 3458
-        - Sentinel-1: Valores internos de 0 a 1184
+       - ERS, JERS, RADARSAT: ASF frames 0 to 900
+        - ALOS PALSAR: JAXA frames 0 to 7200
+        - SEASAT: ESA-like frames 208 to 3458
+        - Sentinel-1: In-house values 0 to 1184 
 
 - <span style="color: #236192; font-size: 20px;">beamMode</span>
     - Consulta la [lista de constantes](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/BEAMMODE.py)
@@ -137,7 +137,7 @@ Las palabras clave se utilizan para encontrar los datos deseados. Usa tantas o t
     - Ejemplo:
         - lookDirection='L'
     - Valores:
-        - R, DERECHA, L, IZQUIERDA
+        - R, RIGHT, L, LEFT
 
 - <span style="color: #236192; font-size: 20px;">offNadirAngle</span>
     - Ángulos fuera del nadir para ALOS PALSAR. puede especificar un solo valor, un rango de valores o una lista de valores.
@@ -182,7 +182,7 @@ Las palabras clave se utilizan para encontrar los datos deseados. Usa tantas o t
         - JERS-1: 0-658
         - RADARSAT-1: 0-342
         - SEASAT: 1-243
-        - UAVSAR: varios
+        - UAVSAR: various
 
 ### Parámetros Geoespaciales
 
@@ -261,7 +261,7 @@ Cada uno de estos pasos se realiza solo cuando es necesario para obtener una AOI
     - stack_from_id no puede utilizarse en conjunción con otras palabras clave.
     - Ejemplo:
         - stack_from_id('S1A_IW_SLC__1SDV_20220215T225119_20220215T225146_041930_04FE2E_9252-SLC')
-    - Consulta el [cuaderno Jupyter](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/4-Baseline_Search.ipynb) para ejemplos de uso y mejores prácticas.
+    - Consulta el [Jupyter notebook](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/4-Baseline_Search.ipynb) para ejemplos de uso y mejores prácticas.
 
 ### Parámetros de Resultados
 - <span style="color: #236192; font-size: 20px;">maxResults</span>

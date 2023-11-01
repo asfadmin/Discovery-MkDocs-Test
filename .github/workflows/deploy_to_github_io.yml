@@ -32,5 +32,5 @@ jobs:
           cd Discovery-MkDocs
           ls -l
           echo "Calling for phrase to translate to md"
-          python phrase-translate-to-md.py ../Discovery-MkDocs
+          python phrase-translate-to-md.py .
           python -m mkdocs gh-deploy --force

@@ -29,15 +29,18 @@ def replace_key_in_file(file_path):
 
         list_locales = phrase_strings.list_locales()
         for locale in list_locales:
+            print('Processing locale: ' + locale.name)
             data_locale = phrase_strings.load_locale(locale.name)
             content_out = content
 
             # Find all keys wrapped in double curly braces
             # Example: {{ key }}
+            print('Searching for keys in file: ' + file_path)
             keys = re.findall(r"\{\{.*?}}", content)
 
             # Loop through keys and replace them with values from the loaded locale
             for key in keys:
+                print('Found key: ' + key)
                 # Remove curly braces from the key
                 key_without_curly_braces = key[2:-2].strip()
 
@@ -50,6 +53,7 @@ def replace_key_in_file(file_path):
             # Output a new file with the modified content
             new_file_name = f"{p.stem}.{locale.name}.md"
             new_file_path = os.path.dirname(file_path) + '/' + new_file_name
+            print('Outputting new file: ' + new_file_path)
             with open(new_file_path, 'w') as file_out:
                 file_out.write(content_out)
 

@@ -81,5 +81,5 @@ if __name__ == "__main__":
     elif os.path.isdir(target_path):
         process_directories(target_path)
     else:
-        pprint("target path:" + target_path)
+        pprint("Target path:" + target_path)
         print("Invalid input. Please provide a valid directory or filename.")

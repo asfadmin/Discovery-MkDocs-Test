@@ -101,7 +101,7 @@ def list_locales():
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)
 
-        # print('api_response: ' + str(api_response))
-        print('api_response: ' + "something")
-        return api_response
+    # print('api_response: ' + str(api_response))
+    print('api_response: ' + "something")
+    return api_response
 

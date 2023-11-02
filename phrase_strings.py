@@ -88,23 +88,18 @@ def list_locales():
         # Create an instance of the API class
         api_instance = phrase_api.LocalesApi(api_client)
         print('api_instance: ' + str(api_instance))
-        # print(api_instance.locales_list(project_id))
-        # sort_by = 'sort_by_example'  # str | Sort locales. Valid options are \"name_asc\", \"name_desc\", \"default_asc\", \"default_desc\".
-        # branch = 'my-feature-branch'  # str | specify the branch to use
-
+        api_response = None
         try:
-            # List locales
-            # api_response = api_instance.locales_list(project_id, x_phrase_app_otp=x_phrase_app_otp, page=page,
-            #                                          per_page=per_page, sort_by=sort_by, branch=branch)
-            # print('calling locales list')
-            # print(api_instance.locales_list(project_id))
             api_response = api_instance.locales_list(project_id)
             print('called locales list')
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)
+        else:
+            print('else reached')
         finally:
             print('finally reached')
             # print('api_response: ' + str(api_response))
             print('api_response: ' + "something")
-            return api_response
+
+        return api_response
 

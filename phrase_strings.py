@@ -99,13 +99,12 @@ def list_locales():
             # print('calling locales list')
             # print(api_instance.locales_list(project_id))
             api_response = api_instance.locales_list(project_id)
-            # print('called locales list')
+            print('called locales list')
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)
         finally:
             print('finally reached')
-
-    # print('api_response: ' + str(api_response))
-    print('api_response: ' + "something")
-    return api_response
+            # print('api_response: ' + str(api_response))
+            print('api_response: ' + "something")
+            return api_response
 

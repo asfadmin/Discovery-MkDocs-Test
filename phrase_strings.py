@@ -3,9 +3,12 @@
 
 from __future__ import print_function
 
+import array
+import datetime
 import os
 import json
 import phrase_api
+from dateutil.tz import tzutc
 from phrase_api.rest import ApiException
 
 project_id = '88ffd4d5abd6494131fabb1a271950b8'  # mkDocs
@@ -88,6 +91,7 @@ def list_locales():
         # Create an instance of the API class
         api_instance = phrase_api.LocalesApi(api_client)
         print('api_instance: ' + str(api_instance))
+        fake_response = [ 'en', 'es' ]
         api_response = None
         try:
             api_response = api_instance.locales_list(project_id)
@@ -101,5 +105,5 @@ def list_locales():
             # print('api_response: ' + str(api_response))
             print('api_response: ' + "something")
 
-        return api_response
+    return fake_response
 

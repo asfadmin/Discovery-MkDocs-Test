@@ -31,8 +31,9 @@ def replace_key_in_file(file_path):
         list_locales = phrase_strings.list_locales()
         print('list_locales: ' + str(list_locales))
         for locale in list_locales:
-            print('Processing locale: ' + locale.name)
-            data_locale = phrase_strings.load_locale(locale.name)
+            print('Processing locale: ' + locale)
+            data_locale = phrase_strings.load_locale(locale)
+            # data_locale = phrase_strings.load_locale(locale.name)
             content_out = content
 
             # Find all keys wrapped in double curly braces
@@ -53,7 +54,8 @@ def replace_key_in_file(file_path):
                     content_out = content.replace(key, "")
 
             # Output a new file with the modified content
-            new_file_name = f"{p.stem}.{locale.name}.md"
+            # new_file_name = f"{p.stem}.{locale.name}.md"
+            new_file_name = f"{p.stem}.{locale}.md"
             new_file_path = os.path.dirname(file_path) + '/' + new_file_name
             print('Outputting new file: ' + new_file_path)
             with open(new_file_path, 'w') as file_out:

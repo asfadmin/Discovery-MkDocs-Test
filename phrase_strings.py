@@ -98,6 +98,7 @@ def list_locales():
             #                                          per_page=per_page, sort_by=sort_by, branch=branch)
             print('calling locales list')
             api_response = api_instance.locales_list(project_id)
+            print('called locales list')
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)
 

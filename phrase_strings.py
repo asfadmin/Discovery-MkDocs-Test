@@ -88,7 +88,7 @@ def list_locales():
         # Create an instance of the API class
         api_instance = phrase_api.LocalesApi(api_client)
         print('api_instance: ' + str(api_instance))
-        print('api_instance.locales_list(project_id): ' + api_instance.locales_list(project_id))
+        print(api_instance.locales_list(project_id))
         # sort_by = 'sort_by_example'  # str | Sort locales. Valid options are \"name_asc\", \"name_desc\", \"default_asc\", \"default_desc\".
         # branch = 'my-feature-branch'  # str | specify the branch to use
 

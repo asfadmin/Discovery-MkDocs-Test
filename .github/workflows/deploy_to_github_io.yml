@@ -31,6 +31,6 @@ jobs:
           cd Discovery-MkDocs
           ls -l
           echo "Calling for phrase to translate to md"
-          python -m pip install -r requirements.txt
+          python -m pip install -r Discovery-MkDocs/requirements.txt
           python phrase-translate-to-md.py markdown-docs
           python -m mkdocs gh-deploy --force

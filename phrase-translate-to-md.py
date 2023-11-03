@@ -28,6 +28,7 @@ def replace_key_in_file(file_path):
             content = file_in.read()
 
         list_locales = phrase_strings.list_locales()
+        print('list_locales has been loaded')
         for locale in list_locales:
             data_locale = phrase_strings.load_locale(locale.name)
             content_out = content

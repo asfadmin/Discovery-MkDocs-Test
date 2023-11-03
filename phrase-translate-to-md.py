@@ -76,6 +76,8 @@ if __name__ == "__main__":
 
     target_path = sys.argv[1]
 
+    print('phase-translate-to-md.py starting')
+
     if os.path.isfile(target_path):
         replace_key_in_file(target_path)
     elif os.path.isdir(target_path):

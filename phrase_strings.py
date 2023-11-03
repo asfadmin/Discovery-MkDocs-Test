@@ -11,6 +11,7 @@ from phrase_api.rest import ApiException
 project_id = '88ffd4d5abd6494131fabb1a271950b8'  # mkDocs
 
 def load_configuration():
+    print('phrase_strings.py load_configuration starting...')
     configuration = phrase_api.Configuration()
     configuration.api_key_prefix['Authorization'] = 'token'
     configuration.host = "https://api.us.app.phrase.com/v2/"

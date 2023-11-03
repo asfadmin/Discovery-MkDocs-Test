@@ -28,7 +28,7 @@ def load_configuration():
 def load_locale(locale):
 
     configuration = load_configuration()
-
+    print('configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:
         # Create an instance of the API class

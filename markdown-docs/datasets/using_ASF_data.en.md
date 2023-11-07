@@ -7,6 +7,7 @@ Dataset   | Dates  | Usage Examples | Spatial Coverage
 --------- | ------ | -------------- | ----------------
 [Sentinel-1](/datasets/using_ASF_data/#sentinel-1) | 2014 - Present | Volcanoes, earthquakes, glaciers, land subsidence, sea ice, flooding, oceans, and more | Global
 [Sentinel-1 Bursts](/datasets/using_ASF_data/#sentinel-1-bursts) | 2014 - Present | Volcanoes, earthquakes, glaciers, land subsidence, sea ice, flooding, oceans, and more | Global
+[OPERA Sentinel-1](/datasets/using_ASF_data/#opera-sentinel-1) | 2014 - Present (varies by product) | Volcanoes, earthquakes, glaciers, land subsidence, sea ice, flooding, oceans, and more | Near-Global or North America (varies by product)
 [ALOS PALSAR](/datasets/using_ASF_data/#alos-palsar) | 2006 - 2011 | Glaciers, landslides, volcanoes, earthquakes, oil seeps, wetlands, sea ice, and more | The Americas, Antarctica, select wordwide sites
 [ALOS AVNIR-2](/datasets/using_ASF_data/#alos-avnir-2) *(Optical dataset)* | 2006 - 2011 | Spatial coverage maps for land and coastal zones; monitoring regional environments | Global
 [SIR-C](/datasets/using_ASF_data/#sir-c) | 1994 | Carbon cycle, ecosystems, biogeochemistry, climate variability and change, land use, geology, hydrology, oceanography, snow and ice, vegetation, calibration, and technological experiments | Targeted worldwide sites
@@ -78,6 +79,32 @@ Full Burst ID:
 ![Screenshot](/images/full_burst_id_diagram.png){: style="height:150px;width:150px"}
 
 Each burst file also has a corresponding XML Metadata file available. The Burst XML Metadata is a virtually generated file, and therefore does not have its own unique filename. The XML Metadata can only be found via the burst scene name, and is not searchable in a list search.
+
+### OPERA Sentinel-1
+Observational Products for End-Users from Remote Sensing Analysis [(OPERA)](https://www.jpl.nasa.gov/go/opera/about-opera?_ga=2.199717550.185027135.1698074247-1558404154.1684781882) is a project at the Jet Propulsion Laboratory [(JPL)](https://www.jpl.nasa.gov/go/opera?_ga=2.266246031.185027135.1698074247-1558404154.1684781882), created to address high-priority requests from the NASA [Satellite Needs Working Group](https://impact.earthdata.nasa.gov/project/snwg.html?_ga=2.199717550.185027135.1698074247-1558404154.1684781882) and its partners for products generated from SAR and optical sensors.
+
+The following OPERA products can be found through Vertex, asf_search, or the SearchAPI:
+ 
+- Near-global land surface Radiometric Terrain Corrected (RTC) backscatter product
+- Near-global land surface Radiometric Terrain Corrected (RTC) backscatter static layers product
+- North America Coregistered Single-Look Complex (CSLC) product
+- North America Coregistered Single-Look Complex (CSLC) static layers product
+
+“Near-global” corresponds to all landmasses excluding Antarctica. “North America” corresponds to the United States and U.S. Territories, Canada within 200 km of the U.S. border, and all mainland countries from the southern U.S. border up to and including Panama.
+
+The near-global RTC products are available from 2023 to present. The North America CSLC products will be available from 2014 to present.
+
+####RTC
+The Radiometric Terrain Corrected (RTC) Backscatter product consists of Sentinel-1 radar backscatter data normalized with respect to the topography. It is a Level-2 product that is projected onto a pre-defined UTM/Polar stereographic map projection system. The Copernicus Global 30 m (GLO-30) Digital Elevation Model (DEM) is the reference DEM used to correct for the impacts of topography and to geocode the product. The product is provided in a GeoTIFF file format.
+
+####RTC Static
+The RTC-STATIC product is a Level 2 product that contains static radar geometry layers associated with the RTC product.
+
+####CSLC
+The Coregistered Single-Look Complex (CSLC) product consists of SLC images that are precisely aligned or “coregistered” to a pre-defined UTM/Polar stereographic map projection system. The CSLC images contain both the amplitude and phase information of the complex radar return. The Level-2 CSLC product is derived from Sentinel-1 data and is provided in HDF5 format.
+
+####CSLC Static 
+The CSLC-ST product serves as an ancillary product to the CSLC products and is distributed separately from the CSLC products. It is only produced once (or a limited amount of times) for CSLC products characterized by the same burst identification string i.e., for all the Sentinel-1-A/B bursts covering the same geographical area on the ground.
 
 ### ALOS PALSAR
 ALOS PALSAR offers historical data, and has some analysis-ready RTC (Radiometric Terrain Corrected) products, processed by ASF. 

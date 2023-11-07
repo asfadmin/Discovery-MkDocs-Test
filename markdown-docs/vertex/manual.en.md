@@ -96,6 +96,9 @@ Each of these steps is performed only when necessary to get the AOI to a single 
 	- **Polarization** – Limit the search to specific polarizations. Multiple selections allowed.
 	- **Direction** – Limit the search to a specific orbit direction.
 	- **Subtype** – Limit the search to a specific mission spacecraft.
+	- **Group ID** – Limit the search to a specific group ID.
+	- **Burst ID** – Limit the search to a specific burst ID. Multiple burst IDs allowed.
+
 
 ### Path and Frame Filters
 
@@ -230,6 +233,7 @@ You may **drag and drop files** into the box provided on the **Scene** or **File
 		- The **SBAS Tool** button opens the ASF SBAS Tool, which is another method of creating InSAR stacks.
 		- The **More Like This** button creates a search based on the selected scene’s path and frame.
 		![type:video](https://www.youtube.com/embed/h7vmrcpMd60)
+		- The **Source Data** button creates a search for the source Sentinel-1 scene based on the Opera product’s Group ID. *Note*: This button is only available for Opera-S1 search results.
 		- The **Citation** button opens a new window with citation guidance for published works using data, imagery, or tools accessed through ASF.
 		- **Download this Image** downloads the browse image.
 		- The eye icon labeled **Open in Image Viewer** opens a larger browse viewer window.

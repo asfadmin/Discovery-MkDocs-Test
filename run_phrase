@@ -1,0 +1,4 @@
+#!/bin/sh
+#export PHRASE_DISCOVERY_ACCESS_TOKEN=replaceme
+source ~/.bash-profile
+python ./phrase-translate-to-md.py ./markdown-docs

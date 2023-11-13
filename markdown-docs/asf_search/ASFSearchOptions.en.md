@@ -31,6 +31,7 @@ Converting to a `dict` will only include search options which have actually been
 - intersectsWith
 - lookDirection
 - offNadirAngle
+- operaBurstID
 - platform
 - polarization
 - processingLevel

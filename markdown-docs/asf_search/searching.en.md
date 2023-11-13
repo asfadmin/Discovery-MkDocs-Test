@@ -149,6 +149,12 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
         - Most common: 21.5, 23.1, 27.1, 34.3
         - Other: 9.7, 9.9, 13.8, 14, 16.2, 17.3, 17.9, 18, 19.2, 20.5, 21.5, 23.1, 24.2, 24.6, 25.2, 25.8, 25.9, 26.2, 27.1, 28.8, 30.8, 34.3, 36.9, 38.8, 41.5, 43.4, 45.2, 46.6, 47.8, 49, 50, 50.8
 
+- <span style="color: #236192; font-size: 20px;">operaBurstID</span>
+    - Used for [Opera-S1 products](/datasets/using_ASF_data/#opera-sentinel-1). Each value identifies the specific burst for the product. You may specify a single value, or a list of values. 
+    - Example:
+        - single value: operaBurstID='T078-165486-IW2'
+        - list of values: operaBurstID=['T078_165486_IW2', 'T078_165485_IW2']
+
 - <span style="color: #236192; font-size: 20px;">polarization</span>
     - See the [list of constants](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/POLARIZATION.py)
     - A property of SAR electromagnetic waves that can be used to extract meaningful information about surface properties of the earth. You may specify a single value, or a list of values.

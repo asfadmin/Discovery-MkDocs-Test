@@ -10,7 +10,18 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 <https://api.daac.asf.alaska.edu/services/search/param>
 
 ### Dataset Parameters
+- <span style="color: #236192; font-size: 20px;">dataset</span>
+	- This is the preferred alternative keyword for 'platform' searches.
+	- Remote sensing platform that acquired the data. You may specify a single value, or a list of values.
+	- Example:
+		- dataset=SENTINEL-1
+		- dataset=OPERA-S1
+		- dataset=AIRSAR,UAVSAR
+	- Values:
+		- SENTINEL-1, OPERA-S1, SLC-BURST, ALOS PALSAR, ALOS AVNIR-2, SIR-C, ARIA S1 GUNW, SMAP, UAVSAR, RADARSAT-1, ERS, JERS-1, AIRSAR, SEASAT
+
 - <span style="color: #236192; font-size: 20px;">platform</span>
+	- See also 'dataset'. Dataset is the preferred keyword when possible.
 	- This keyword has constants provided through asf_search. More information can be found [here](/asf_search/searching/#keywords).
 	- See also 'instrument'
 	- Remote sensing platform that acquired the data. Sentinel-1 and ERS have multiple remote sensing platforms, and you may choose whether to specify a specific platform. You may specify a single value, or a list of values.
@@ -22,6 +33,7 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 		- ALOS, A3, AIRSAR, AS, ERS, ERS-1, E1, ERS-2, E2, JERS-1, J1, RADARSAT-1, R1, SEASAT, SS, S1, Sentinel, Sentinel-1, Sentinel-1A, SA, Sentinel-1B, Sentinel-1 Interferogram (BETA), SB, SIR-C, SMAP, SP, UAVSAR, UA
 
 - <span style="color: #236192; font-size: 20px;">instrument</span>
+	- See also 'dataset'. Dataset is the preferred keyword when possible.
 	- This keyword has constants provided through asf_search. More information can be found [here](/asf_search/searching/#keywords).
 	- See also 'platform'
 	- Remote sensing instrument that acquired the data. For some platforms, such as ALOS, there are multiple instruments to choose from.

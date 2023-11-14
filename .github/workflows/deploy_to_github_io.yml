@@ -31,4 +31,6 @@ jobs:
           echo $PWD
           cd Discovery-MkDocs
           ls -l
-          python -m mkdocs gh-deploy --force
+          echo "Calling for phrase to translate to md"
+          python phrase-translate-to-md.py markdown-docs
+          echo "mkdocs gh-deploy"python -m mkdocs gh-deploy --force

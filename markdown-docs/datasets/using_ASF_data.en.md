@@ -95,7 +95,7 @@ The following OPERA products can be found through Vertex, asf_search, or the Sea
 The near-global RTC products are available from 2023 to present. The North America CSLC products will be available from 2014 to present.
 
 ####RTC
-The Radiometric Terrain Corrected (RTC) Backscatter product consists of Sentinel-1 radar backscatter data normalized with respect to the topography. It is a Level-2 product that is projected onto a pre-defined UTM/Polar stereographic map projection system. The Copernicus Global 30 m (GLO-30) Digital Elevation Model (DEM) is the reference DEM used to correct for the impacts of topography and to geocode the product. The product is provided in a GeoTIFF file format.
+The Radiometric Terrain Corrected (RTC) Backscatter product consists of Sentinel-1 radar backscatter data normalized with respect to the topography. It is a Level-2 product that is projected onto a pre-defined UTM/Polar stereographic map projection system. The Copernicus Global 30 m (GLO-30) Digital Elevation Model (DEM) is the reference DEM used to correct for the impacts of topography and to geocode the product. The product is provided in a GeoTIFF file format. The RTC metadata is in HDF5 format.
 
 ####RTC Static
 The RTC-STATIC product is a Level 2 product that contains static radar geometry layers associated with the RTC product.

@@ -106,7 +106,7 @@ def list_locales():
             # api_response = api_instance.locales_list(project_id, x_phrase_app_otp=x_phrase_app_otp, page=page,
             #                                          per_page=per_page, sort_by=sort_by, branch=branch)
             print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
-            api_response = api_instance.locales_list(project_id)
+            api_response = api_instance.locales_list(str(project_id))
             print('phrase_strings.py: list_locales() api_response: ' + str(api_response))
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)

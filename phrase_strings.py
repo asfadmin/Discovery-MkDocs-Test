@@ -15,11 +15,14 @@ def load_configuration():
     configuration = phrase_api.Configuration()
     print('phrase_strings.py: configuration object created...')
     configuration.api_key_prefix['Authorization'] = 'token'
+    print('phrase_strings.py: configuration.api_key_prefix set...')
     configuration.host = "https://api.us.app.phrase.com/v2/"
+    print('phrase_strings.py: configuration.host set...')
 
     access_token = 'PHRASE_DISCOVERY_ACCESS_TOKEN'
     if access_token in os.environ:
         configuration.api_key['Authorization'] = os.environ[access_token]
+        print('phrase_strings.py: configuration.api_key set...')
     else:
         print(f'{access_token} does not exist')
         exit(1)

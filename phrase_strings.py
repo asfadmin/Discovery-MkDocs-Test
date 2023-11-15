@@ -32,6 +32,7 @@ def load_configuration():
 
 def load_locale(locale):
 
+    print('phrase_strings.py: load_locale starting...')
     configuration = load_configuration()
     print('configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client

@@ -94,8 +94,10 @@ def list_locales():
     print('phrase_strings.py: list_locales() configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:
+        print('phrase_strings.py: list_locales() with Api.Client()...')
         # Create an instance of the API class
         api_instance = phrase_api.LocalesApi(api_client)
+        print('phrase_strings.py: list_locales() instance of LocalesApi() created...')
         # sort_by = 'sort_by_example'  # str | Sort locales. Valid options are \"name_asc\", \"name_desc\", \"default_asc\", \"default_desc\".
         # branch = 'my-feature-branch'  # str | specify the branch to use
 

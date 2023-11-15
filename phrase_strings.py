@@ -91,6 +91,7 @@ def load_locale(locale):
 def list_locales():
     print('phrase_strings.py: list_locales() starting...')
     configuration = load_configuration()
+    print('phrase_strings.py: list_locales() configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:
         # Create an instance of the API class

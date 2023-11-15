@@ -27,6 +27,8 @@ def load_configuration():
         print(f'{access_token} does not exist')
         exit(1)
 
+    print('phrase_strings.py: load_configuration ending...')
+
     return configuration
 
 
@@ -87,6 +89,7 @@ def load_locale(locale):
             print("Exception when calling LocalesApi->locale_download: %s\n" % e)
 
 def list_locales():
+    print('phrase_strings.py: list_locales() starting...')
     configuration = load_configuration()
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:

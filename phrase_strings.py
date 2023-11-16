@@ -7,6 +7,8 @@ import os
 import json
 import phrase_api
 from phrase_api.rest import ApiException
+from pprint import pprint
+
 
 project_id = '88ffd4d5abd6494131fabb1a271950b8'  # mkDocs
 
@@ -22,7 +24,7 @@ def load_configuration():
     access_token = 'PHRASE_DISCOVERY_ACCESS_TOKEN'
     if access_token in os.environ:
         configuration.api_key['Authorization'] = os.environ[access_token]
-        print('phrase_strings.py: configuration.api_key set...')
+        pprint('phrase_strings.py: configuration.api_key set...' + str(configuration.api_key))
     else:
         print(f'{access_token} does not exist')
         exit(1)
@@ -105,9 +107,13 @@ def list_locales():
             # List locales
             # api_response = api_instance.locales_list(project_id, x_phrase_app_otp=x_phrase_app_otp, page=page,
             #                                          per_page=per_page, sort_by=sort_by, branch=branch)
-            print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
-            api_response = api_instance.locales_list(str(project_id))
-            print('phrase_strings.py: list_locales() api_response: ' + str(api_response))
+            # List locales
+            api_response = api_instance.locales_list(project_id, page=1, per_page=99)
+            print('pprinting api_response...')
+            pprint(api_response)
+            # print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
+            # api_response = api_instance.locales_list(project_id)
+            # print('phrase_strings.py: list_locales() api_response: ' + str(api_response))
         except ApiException as e:
             print("Exception when calling LocalesApi->locales_list: %s\n" % e)
 

@@ -7,6 +7,9 @@ on:
 
   workflow_dispatch:
 
+env:
+  PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
+
 jobs:
   build_and_deploy:
 
@@ -22,15 +25,22 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r Discovery-MkDocs/requirements.txt
 
-      - name: deploy to github.io
+      - name: Translate Docs
         if: github.ref == 'refs/heads/prod'
         shell: bash -l {0}
-        env:
-          PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
         run: |
           echo $PWD
           cd Discovery-MkDocs
           ls -l
           echo "Calling for phrase to translate to md"
           python phrase-translate-to-md.py markdown-docs
-          echo "mkdocs gh-deploy"python -m mkdocs gh-deploy --force
+
+      - name: deploy to github.io
+        if: github.ref == 'refs/heads/prod'
+        shell: bash -l {0}
+        run: |
+          echo $PWD
+          cd Discovery-MkDocs
+          ls -l
+          echo "mkdocs gh-deploy"
+          python -m mkdocs gh-deploy --force

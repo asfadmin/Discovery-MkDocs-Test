@@ -24,7 +24,6 @@ def load_configuration():
     access_token = 'PHRASE_DISCOVERY_ACCESS_TOKEN'
     if access_token in os.environ:
         configuration.api_key['Authorization'] = os.environ[access_token]
-        pprint('phrase_strings.py: configuration.api_key set...' + str(configuration.api_key))
     else:
         print(f'{access_token} does not exist')
         exit(1)

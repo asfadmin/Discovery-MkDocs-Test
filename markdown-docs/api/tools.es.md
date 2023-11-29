@@ -126,7 +126,7 @@ Consulte la documentación completa en [archivos de configuración para Wget](ht
 
 Nota: Copiar/pegar comillas a veces causa errores. Elimine y vuelva a escribir las comillas después de pegarlas.
 
-      rizo "https://api.daac.asf.alaska.edu/services/search/param?platform=R1&absoluteOrbit=25234&output=CSV" > minombre.csv
+      curl "https://api.daac.asf.alaska.edu/services/search/param?platform=R1&absoluteOrbit=25234&output=CSV" > minombre.csv
 
 También puede enviar resultados a un archivo en su PC
 
@@ -144,11 +144,11 @@ También puede enviar resultados a un archivo en su PC
 
 **Ejemplo de búsqueda - Windows**
 
-      rizo "https://api.daac.asf.alaska.edu/services/search/param?platform=r1&asfframe=300&output=CSV" > minombre.csv
+      curl "https://api.daac.asf.alaska.edu/services/search/param?platform=r1&asfframe=300&output=CSV" > minombre.csv
 
 **Ejemplo de visualización - Windows**
 
-      rizo "https://api.daac.asf.alaska.edu/services/search/param?granule_list=ALPSRP074606580,ALPSRP077086550&output=KML" >minombre.kml
+      curl "https://api.daac.asf.alaska.edu/services/search/param?granule_list=ALPSRP074606580,ALPSRP077086550&output=KML" >minombre.kml
 
 **Descargar ejemplo - Windows**
 

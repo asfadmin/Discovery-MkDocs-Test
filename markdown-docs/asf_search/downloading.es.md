@@ -59,7 +59,7 @@ Archivos específicos de un archivo zip determinado sin descargar todo el archiv
 **args**
 
 - url: URL desde la que descargar un archivo zip
-- sesión: ```ASFSession``` autenticado que RemoteZip usará para descargar desde el producto zip
+- session: ```ASFSession``` autenticado que RemoteZip usará para descargar desde el producto zip
 
 **Devuelve:**
 

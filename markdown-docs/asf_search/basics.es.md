@@ -4,6 +4,8 @@
 
 asf_search es un módulo de Python para realizar búsquedas en el catálogo ASF. Además, ofrece funcionalidad básica y soporte de descarga. Está disponible a través de PyPi y Conda.
 
+	import asf_search as asf
+
 	results = asf.granule_search(['ALPSRS279162400', 'ALPSRS279162200'])
 	print(results)
 

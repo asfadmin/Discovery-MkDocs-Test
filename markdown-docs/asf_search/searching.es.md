@@ -18,19 +18,19 @@ Para un uso más avanzado, consulta las secciones [Clase ASFSearchResults](/asf_
 Las palabras clave se utilizan para encontrar los datos deseados. Usa tantas o tan pocas palabras clave como necesites. A continuación, se enumeran las palabras clave disponibles y sus descripciones. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Actualmente, proporcionamos constantes para el modo de haz, dirección de vuelo, instrumento, plataforma, polarización y tipo de producto. Puede ver la lista completa de [constantes aquí](https://github.com/asfadmin/Discovery-asf_search/tree/master/asf_search/constants).
 
 ### Parámetros del conjunto de datos
-- <span style="color: #236192; font-size: 20px;">plataforma</span>
+- <span style="color: #236192; font-size: 20px;">platform</span>
     - Consulta la [lista de constantes](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/PLATFORM.py)
     - Plataforma de teledetección remota que adquirió los datos. Sentinel-1 y ERS tienen múltiples plataformas de teledetección remota, y puede elegir si deseas especificar una plataforma específica. puede especificar un solo valor o una lista de valores.
     - También puede obtener la lista de constantes disponibles utilizando ```help(asf_search.constants.PLATFORM)```
     - Ejemplo:
-        - plataforma=asf.PLATFORM.SENTINEL1A
+        - platform=asf.PLATFORM.SENTINEL1A
 
-- <span style="color: #236192; font-size: 20px;">instrumento</span>
+- <span style="color: #236192; font-size: 20px;">instrument</span>
     - Consulta la [lista de constantes](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/INSTRUMENT.py)
     - Instrumento de teledetección remota que adquirió los datos. Para algunas plataformas, como ALOS, hay varios instrumentos para elegir.
     - También puede obtener la lista de constantes disponibles utilizando ```help(asf_search.constants.INSTRUMENT)```
     - Ejemplo:
-        - instrumento=asf.INSTRUMENT.AVNIR_2
+        - instrument=asf.INSTRUMENT.AVNIR_2
 
 - <span style="color: #236192; font-size: 20px;">absoluteBurstID</span>
     - Utilizado para los [productos de ráfaga](/datasets/using_ASF_data/#sentinel-1-bursts) de Sentinel-1. Cada valor identifica el conjunto de una ráfaga, representando todos los productos generados durante una subfranja específica. puede especificar un solo valor o una lista de valores. 

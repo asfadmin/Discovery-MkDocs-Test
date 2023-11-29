@@ -18,7 +18,7 @@ Las palabras clave se utilizan para encontrar los datos deseados. Utilice tantas
 		- dataset=OPERA-S1
 		- dataset=AIRSAR,UAVSAR
 	- Valores:
-		- SENTINEL-1, OPERA-S1, SLC-BURST, ALOS PALSAR, ALOS AVNIR-2, SIR-C, ARIA S1 GUNW, SMAP, UAVSAR, RADARSAT-1, ERS, JERS-1, AIRSAR, SEASAT
+		- [SENTINEL-1](/datasets/using_ASF_data/#sentinel-1), [SLC-BURST](/datasets/using_ASF_data/#sentinel-1-bursts), [OPERA-S1](/datasets/using_ASF_data/#opera-sentinel-1), [ALOS PALSAR](/datasets/using_ASF_data/#alos-palsar), [ALOS AVNIR-2](/datasets/using_ASF_data/#alos-avnir-2), [SIR-C](/datasets/using_ASF_data/#sir-c), [ARIA S1 GUNW](/datasets/using_ASF_data/#aria-s1-gunw), [SMAP](/datasets/using_ASF_data/#smap-soil-moisture-active-passive), [UAVSAR](/datasets/using_ASF_data/#uavsar), [RADARSAT-1](/datasets/using_ASF_data/#radarsat-1), [ERS](/datasets/using_ASF_data/#ers), [JERS-1](/datasets/using_ASF_data/#jers), [AIRSAR](/datasets/using_ASF_data/#airsar), [SEASAT](/datasets/using_ASF_data/#seasat)
 
 - <span style="color: #236192; font-size: 20px;">platform</span>
 	- Véase también 'dataset'. Dataset es la palabra clave preferida cuando sea posible.

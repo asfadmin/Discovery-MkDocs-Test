@@ -13,31 +13,31 @@ from pprint import pprint
 project_id = '88ffd4d5abd6494131fabb1a271950b8'  # mkDocs
 
 def load_configuration():
-    print('phrase_strings.py: load_configuration starting...')
+    # print('phrase_strings.py: load_configuration starting...')
     configuration = phrase_api.Configuration()
-    print('phrase_strings.py: configuration object created...')
+    # print('phrase_strings.py: configuration object created...')
     configuration.api_key_prefix['Authorization'] = 'token'
-    print('phrase_strings.py: configuration.api_key_prefix set...')
+    # print('phrase_strings.py: configuration.api_key_prefix set...')
     configuration.host = "https://api.us.app.phrase.com/v2/"
-    print('phrase_strings.py: configuration.host set...')
+    # print('phrase_strings.py: configuration.host set...')
 
     access_token = 'PHRASE_DISCOVERY_ACCESS_TOKEN'
     if access_token in os.environ:
         configuration.api_key['Authorization'] = os.environ[access_token]
     else:
-        print(f'{access_token} does not exist')
+        # print(f'{access_token} does not exist')
         exit(1)
 
-    print('phrase_strings.py: load_configuration ending...')
+    # print('phrase_strings.py: load_configuration ending...')
 
     return configuration
 
 
 def load_locale(locale):
 
-    print('phrase_strings.py: load_locale starting...')
+    # print('phrase_strings.py: load_locale starting...')
     configuration = load_configuration()
-    print('configuration loaded: ' + str(configuration))
+    # print('configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:
         # Create an instance of the API class
@@ -90,15 +90,15 @@ def load_locale(locale):
             print("Exception when calling LocalesApi->locale_download: %s\n" % e)
 
 def list_locales():
-    print('phrase_strings.py: list_locales() starting...')
+    # print('phrase_strings.py: list_locales() starting...')
     configuration = load_configuration()
-    print('phrase_strings.py: list_locales() configuration loaded: ' + str(configuration))
+    # print('phrase_strings.py: list_locales() configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
     with phrase_api.ApiClient(configuration) as api_client:
-        print('phrase_strings.py: list_locales() with Api.Client()...')
+        # print('phrase_strings.py: list_locales() with Api.Client()...')
         # Create an instance of the API class
         api_instance = phrase_api.LocalesApi(api_client)
-        print('phrase_strings.py: list_locales() instance of LocalesApi() created. api_instance: ' + str(api_instance))
+        # print('phrase_strings.py: list_locales() instance of LocalesApi() created. api_instance: ' + str(api_instance))
         # sort_by = 'sort_by_example'  # str | Sort locales. Valid options are \"name_asc\", \"name_desc\", \"default_asc\", \"default_desc\".
         # branch = 'my-feature-branch'  # str | specify the branch to use
 
@@ -108,8 +108,8 @@ def list_locales():
             #                                          per_page=per_page, sort_by=sort_by, branch=branch)
             # List locales
             api_response = api_instance.locales_list(project_id, page=1, per_page=99)
-            print('pprinting api_response...')
-            pprint(api_response)
+            # printprint('pprinting api_response...')
+            # pprint(api_response)
             # print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
             # api_response = api_instance.locales_list(project_id)
             # print('phrase_strings.py: list_locales() api_response: ' + str(api_response))

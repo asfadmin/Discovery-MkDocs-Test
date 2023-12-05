@@ -18,6 +18,8 @@ jobs:
         with:
           path: Discovery-MkDocs
       - uses: actions/setup-python@v4
+        with:
+          path: Discovery-MkDocs
       - name: Setup Python
         run: |
           echo $PWD

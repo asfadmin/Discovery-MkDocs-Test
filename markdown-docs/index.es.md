@@ -5,10 +5,10 @@
 
 [Búsqueda de datos ASF](https://search.asf.alaska.edu/) es una herramienta de búsqueda fácil de usar para encontrar datos SAR y procesar libremente productos SAR de nivel superior, como productos InSAR y AutoRIFT con el [servicio HyP3](https://hyp3-docs.asf.alaska.edu) de ASF. Consulte nuestra guía del usuario sobre [introducción](vertex/manual.md).
 
-Para obtener una descripción general de todos los servicios de PPA, visite [asf.alaska.edu](https://asf.alaska.edu).
+Para obtener una descripción general de todos los servicios de ASF, visite [asf.alaska.edu](https://asf.alaska.edu).
 
 <div class="documentation-block">
-<h2 class="text-center documentation-header" style="margin-top: 35px; margen-fondo: 25px;" >Documentación de la herramienta de búsqueda</h2>
+<h2 class="text-center documentation-header" style="margin-top: 35px; margin-bottom: 25px;" >Documentación de la herramienta de búsqueda</h2>
 
 <div class="row">
   <div class="row-container">

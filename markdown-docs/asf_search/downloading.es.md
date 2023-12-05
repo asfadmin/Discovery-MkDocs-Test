@@ -40,7 +40,7 @@ Descarga todos los productos de las direcciones URL especificadas a la ubicació
 - session: La sesión a utilizar, en la mayoría de los casos debe ser autenticada de antemano
 - processes: Número de procesos de descarga a utilizar. El valor predeterminado es 1 (es decir, descarga secuencial)
 
-### <span style="color: #236192; tamaño de fuente: 20px;" >download_url()</span>
+### <span style="color: #236192; font-size: 20px;" >download_url()</span>
 
 Descarga un producto desde la dirección URL especificada a la ubicación especificada y al nombre de archivo (opcional).
 
@@ -59,7 +59,7 @@ Archivos específicos de un archivo zip determinado sin descargar todo el archiv
 **args**
 
 - url: URL desde la que descargar un archivo zip
-- sesión: ```ASFSession``` autenticado que RemoteZip usará para descargar desde el producto zip
+- session: ```ASFSession``` autenticado que RemoteZip usará para descargar desde el producto zip
 
 **Devuelve:**
 

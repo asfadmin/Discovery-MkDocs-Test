@@ -65,6 +65,6 @@ Si está solucionando problemas de consultas de API de búsqueda, considere la p
 <!-- - Área problemática: Certificado rechazado
 	- Motivo: Certificados de terceros desactualizados, un problema para las búsquedas https
 	- Remedio: Utilice http O deshabilite las comprobaciones de certificados.
-		- [rizo](https://curl.se/docs/manpage.html) –inseguro
+		- [curl](https://curl.se/docs/manpage.html) –inseguro
 		- [wget](https://www.gnu.org/software/wget/) –no-check-certificate
  -->

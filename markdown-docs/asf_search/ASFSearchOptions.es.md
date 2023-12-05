@@ -6,9 +6,9 @@ Esta clase describe un conjunto de parámetros de búsqueda. Si bien no es neces
 
 Los parámetros de búsqueda específicos se manejan como atributos de objeto. Al intentar agregar un atributo que no es compatible, se generará un KeyError. Si intenta eliminar un atributo, se establecerá en Ninguno. Los parámetros de búsqueda se pueden establecer a través de kwargs en la instancia del objeto, o directamente en un objeto existente utilizando los mecanismos normales.
 
-La conversión a un `dict` solo incluirá opciones de búsqueda que realmente se hayan establecido en un valor utilizable. Es decir, se ignorarán todas las opciones establecidas en '`None`.
+La conversión a un `dict` solo incluirá opciones de búsqueda que realmente se hayan establecido en un valor utilizable. Es decir, se ignorarán todas las opciones establecidas en `None`.
 
-
+***
 
 ## Atributos
 - maxResults
@@ -52,7 +52,7 @@ La conversión a un `dict` solo incluirá opciones de búsqueda que realmente se
 
 _ASFSearchOptions no proporciona ningún método destinado al uso directo, sino que depende de un puñado de dunders para el comportamiento deseado. Para mayor claridad, estos se incluyen below._
 
-### <span style="color: #236192; tamaño de fuente: 20px;" >__init__()</span>
+### <span style="color: #236192; font-size: 20px;" >__init__()</span>
 
 Establece los diversos atributos descritos anteriormente y procesa cualquier kwargs en ellos.
 
@@ -65,7 +65,7 @@ None
 
 ***
 
-### <span style="color: #236192; font-size: 20px;">__init__()</span>
+### <span style="color: #236192; font-size: 20px;">__setattr__()</span>
 
 Establece el atributo denominado por `key` en el `value` especificado después de pasarlo a través de una función de validación adecuada.
 

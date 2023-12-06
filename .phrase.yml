@@ -1,0 +1,13 @@
+phrase:
+  host: https://api.us.app.phrase.com/v2
+  project_id: 88ffd4d5abd6494131fabb1a271950b8
+  file_format: DOCX
+
+  pull:
+    targets:
+      - file: ./docx/en.docx
+        params:
+          locale_id: English
+      - file: ./docx/es.docx
+        params:
+          locale_id: Spanish

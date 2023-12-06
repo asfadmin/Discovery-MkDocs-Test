@@ -11,8 +11,6 @@ jobs:
   build_and_deploy:
     name: Build site and deploy
     runs-on: "ubuntu-latest"
-    env:
-      PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v4
         with:
@@ -21,20 +19,19 @@ jobs:
         with:
           path: Discovery-MkDocs
       - name: Setup Python
+        env:
+          PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
         run: |
           echo $PWD
           cd Discovery-MkDocs
+          python -m venv ./venv
+          source ./venv/bin/activate
           ls -l
-          pip install --upgrade pip         
-          pip install -r requirements.txt
-
-      - name: Translate Docs
-        run: |
-          echo $PWD
-          cd Discovery-MkDocs
-          ls -l
+          python -m pip install wheel
+          python -m pip install -r requirements.txt
+          python -m pip list
           echo "Calling for phrase to translate to md"
-          python phrase-translate-to-md.py markdown-docs
+          python -m phrase-translate-to-md markdown-docs
 
       - name: deploy to github.io
         if: github.ref == 'refs/heads/prod'
@@ -42,6 +39,6 @@ jobs:
         run: |
           echo $PWD
           cd Discovery-MkDocs
-          ls -l
           echo "mkdocs gh-deploy"
           python -m mkdocs gh-deploy --force
+          deactivate

@@ -22,10 +22,14 @@ def load_configuration():
     # print('phrase_strings.py: configuration.host set...')
 
     access_token = 'PHRASE_DISCOVERY_ACCESS_TOKEN'
+
     if access_token in os.environ:
         configuration.api_key['Authorization'] = os.environ[access_token]
+        # print('access token: ' + str(configuration.api_key['Authorization']))
+        # configuration.api_key['Authorization'] = 'd2dcdce2929a1f4f4b89f17b6e4a2d639aa5a94603d894341ade0c260a06e1f4'
+        # print('access token: ' + str(configuration.api_key['Authorization']))
     else:
-        # print(f'{access_token} does not exist')
+        print(f'{access_token} does not exist')
         exit(1)
 
     # print('phrase_strings.py: load_configuration ending...')
@@ -34,8 +38,7 @@ def load_configuration():
 
 
 def load_locale(locale):
-
-    # print('phrase_strings.py: load_locale starting...')
+    print('phrase_strings.py: load_locale starting...')
     configuration = load_configuration()
     # print('configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
@@ -107,10 +110,12 @@ def list_locales():
             # api_response = api_instance.locales_list(project_id, x_phrase_app_otp=x_phrase_app_otp, page=page,
             #                                          per_page=per_page, sort_by=sort_by, branch=branch)
             # List locales
-            api_response = api_instance.locales_list(project_id, page=1, per_page=99)
-            # printprint('pprinting api_response...')
-            # pprint(api_response)
-            # print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
+            print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
+            print('Phrase dies here')
+            api_response = api_instance.locales_list(str(project_id), page=1, per_page=99)
+            print('pprinting api_response...')
+            pprint(api_response)
+            print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
             # api_response = api_instance.locales_list(project_id)
             # print('phrase_strings.py: list_locales() api_response: ' + str(api_response))
         except ApiException as e:

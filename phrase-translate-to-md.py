@@ -28,7 +28,6 @@ def replace_key_in_file(file_path):
             content = file_in.read()
 
         list_locales = phrase_strings.list_locales()
-        # print('list_locales has been loaded')
         for locale in list_locales:
             data_locale = phrase_strings.load_locale(locale.name)
             content_out = content
@@ -71,13 +70,13 @@ def process_directories(directory_path):
 
 
 if __name__ == "__main__":
+    print('phase-translate-to-md.py starting')
+
     if len(sys.argv) < 1:
         print("Usage: python phrase-translate-to-md.py <directory_or_filename>")
         sys.exit(1)
 
     target_path = sys.argv[1]
-
-    print('phase-translate-to-md.py starting')
 
     if os.path.isfile(target_path):
         replace_key_in_file(target_path)

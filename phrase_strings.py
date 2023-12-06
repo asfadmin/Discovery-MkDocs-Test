@@ -38,7 +38,7 @@ def load_configuration():
 
 
 def load_locale(locale):
-    print('phrase_strings.py: load_locale starting...')
+    # print('phrase_strings.py: load_locale starting...')
     configuration = load_configuration()
     # print('configuration loaded: ' + str(configuration))
     # Enter a context with an instance of the API client
@@ -115,7 +115,7 @@ def list_locales():
             api_response = api_instance.locales_list(str(project_id), page=1, per_page=99)
             # print('pprinting api_response...')
             # pprint(api_response)
-            print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
+            # print('phrase_strings.py: list_locales() project_id: ' + str(project_id))
             # api_response = api_instance.locales_list(project_id)
             # print('phrase_strings.py: list_locales() api_response: ' + str(api_response))
         except ApiException as e:

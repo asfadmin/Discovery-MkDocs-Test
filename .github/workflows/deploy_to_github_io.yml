@@ -32,6 +32,7 @@ jobs:
           python -m pip list
           echo "Calling for phrase to translate to md"
           python -m phrase-translate-to-md markdown-docs
+          deactivate
 
       - name: deploy to github.io
         if: github.ref == 'refs/heads/prod'
@@ -41,4 +42,3 @@ jobs:
           cd Discovery-MkDocs
           echo "mkdocs gh-deploy"
           python -m mkdocs gh-deploy --force
-          deactivate

@@ -5,16 +5,16 @@ phrase:
 
   push:
     sources:
-      - file: ./docx/en.docx
+      - file: ./docx/stub_doc_en.docx
         params:
           locale_id: English
           tags: REVIEW_NEEDED  #List of tags separated by comma to be associated with the new keys contained in the upload.
 
   pull:
     targets:
-      - file: ./docx/en.docx
+      - file: ./docx/doc_en.docx
         params:
           locale_id: English
-      - file: ./docx/es.docx
+      - file: ./docx/doc_es.docx
         params:
           locale_id: Spanish

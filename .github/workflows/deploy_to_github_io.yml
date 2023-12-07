@@ -3,7 +3,8 @@ name: Deploy to Github.io
 on:
   push:
     branches:
-      - prod
+      - prod]
+      - test
 
   workflow_dispatch:
 

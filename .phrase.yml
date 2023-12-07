@@ -3,6 +3,15 @@ phrase:
   project_id: 88ffd4d5abd6494131fabb1a271950b8
   file_format: DOCX
 
+  push:
+    sources:
+      - file: ./docx/en.docx
+        params:
+          locale_id: English
+      - file: ./docx/es.docx
+        params:
+          locale_id: Spanish
+
   pull:
     targets:
       - file: ./docx/en.docx

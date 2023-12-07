@@ -8,9 +8,7 @@ phrase:
       - file: ./docx/en.docx
         params:
           locale_id: English
-      - file: ./docx/es.docx
-        params:
-          locale_id: Spanish
+          tags: REVIEW_NEEDED  #List of tags separated by comma to be associated with the new keys contained in the upload.
 
   pull:
     targets:

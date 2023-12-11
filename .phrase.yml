@@ -6,11 +6,10 @@ phrase:
     sources:
     - file: ./docx/stub_doc_en.docx
       params:
-        file_format: docx
         locale_id: en
   pull:
     targets:
     - file: ./docx/doc_es.docx
       params:
-        file_format: docx
         locale_id: es
+        include_empty_translations: false (boolean) #Indicates whether keys without translations should be included in the output as well.

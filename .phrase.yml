@@ -5,17 +5,17 @@ phrase:
 
   push:
     sources:
-    - file: ./phrase_json/stub_en.json
+    - file: ./phrase_json/en.json
       params:
         locale_id: en
 
   pull:
     targets:
-    - file: ./phrase_json/translated_es.json
+    - file: ./phrase_json/es.json
       params:
         locale_id: es
-        include_empty_translations: false (boolean) #Indicates whether keys without translations should be included in the output as well.
-    - file: ./phrase_json/translated_en.json
+        include_empty_translations: true (boolean) #Indicates whether keys without translations should be included in the output as well.
+    - file: ./phrase_json/en.json
       params:
         locale_id: en
-        include_empty_translations: false (boolean) #Indicates whether keys without translations should be included in the output as well.
+        include_empty_translations: true (boolean) #Indicates whether keys without translations should be included in the output as well.

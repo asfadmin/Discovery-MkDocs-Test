@@ -1,6 +1,7 @@
 phrase:
   host: https://api.us.app.phrase.com/v2
   project_id: 88ffd4d5abd6494131fabb1a271950b8
+  file_format: docx
   push:
     sources:
     - file: ./docx/stub_doc_en.docx

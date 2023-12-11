@@ -6,8 +6,10 @@ phrase:
     - file: ./docx/stub_doc_en.docx
       params:
         file_format: docx
+        locale_id: en
   pull:
     targets:
     - file: ./docx/doc_es.docx
       params:
         file_format: docx
+        locale_id: es

@@ -12,6 +12,7 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 ### Dataset Parameters
 - <span style="color: #236192; font-size: 20px;">dataset</span>
 	- This is the preferred alternative keyword for 'platform' searches.
+	- This keyword has constants provided through asf_search. More information can be found [here](/asf_search/searching/#keywords).
 	- Remote sensing platform that acquired the data. You may specify a single value, or a list of values.
 	- Example:
 		- dataset=SENTINEL-1

@@ -47,7 +47,7 @@ For an overview of all of ASF services visit [asf.alaska.edu](https://asf.alaska
     <div class="card">
       <div class="card-body">
         <h3 class="card-title text-center">asf_search</h3>
-        <p class="card-description">A Python module for performing searches of the ASF catalog.</p>
+        <p class="card-description">A Python package for performing searches of the ASF catalog.</p>
         <ul class="doc-links">
           <li><a href="asf_search/basics/">Basics</a></li>
           <li><a href="asf_search/searching/">Searching</a></li>

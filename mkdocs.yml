@@ -37,6 +37,9 @@ plugins:
           name: Español
           build: true
           site_name: "ASF SAR Manual de Búsqueda de Datos"
+          nav_translations:
+            Home: Inicio
+            Vertex Manual: Manual Vertex
 
   - mkdocs-video:
      css_style:

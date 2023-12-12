@@ -2,7 +2,7 @@
 
 ## Overview
 
-asf_search is a Python module for performing searches of the ASF catalog. In addition, it offers baseline functionality and download support. It is available through PyPi and Conda.
+asf_search is a Python package for performing searches of the ASF catalog. In addition, it offers baseline functionality and download support. It is available through PyPi and Conda.
 
 	import asf_search as asf
 

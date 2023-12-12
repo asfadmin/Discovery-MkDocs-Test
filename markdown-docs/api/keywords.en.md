@@ -1,6 +1,6 @@
 # Search API Keywords
 
-Consider using our new Python module, asf_search. asf_search can be used to perform searches of the ASF catalog, and it offers baseline functionality and download support. Additionally, numerous constants are provided to ease the search process. Currently, we provide constants for platform, instrument, beam mode, flight direction, polarization, and processing level. More information can be found [here](/asf_search/basics).
+Consider using our new Python package, asf_search. asf_search can be used to perform searches of the ASF catalog, and it offers baseline functionality and download support. Additionally, numerous constants are provided to ease the search process. Currently, we provide constants for platform, instrument, beam mode, flight direction, polarization, and processing level. More information can be found [here](/asf_search/basics).
 
 Keywords are used to find the desired data. Use as many or as few keywords as needed. Available keywords and descriptions are listed below for each Search API endpoint. Keywords are case sensitive.
 

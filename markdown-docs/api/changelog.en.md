@@ -3,8 +3,8 @@
 ## Dataset keyword
 The new "dataset" keyword is the preferred alternative for platform searches. It allows results from multiple platforms at once. More information can be found [here](/api/keywords/#dataset-parameters).
 
-## New Python module for performing searches
-asf_search is a Python module for performing searches of the ASF catalog. In addition, it offers baseline functionality and download support. It is available through PyPi and Conda. More information can be found [here](/asf_search/basics).
+## New Python package for performing searches
+asf_search is a Python package for performing searches of the ASF catalog. In addition, it offers baseline functionality and download support. It is available through PyPi and Conda. More information can be found [here](/asf_search/basics).
 
 ## Multiple Endpoints Available
 

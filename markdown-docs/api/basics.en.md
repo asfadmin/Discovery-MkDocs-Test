@@ -22,4 +22,4 @@ You will be prompted to accept the ASF End-User License Agreement and set a Stud
 
 See [Search API Keywords](/api/keywords) to get started on building a query, or see the [Tools page](/api/tools) for some examples.
 
-Alternatively, you may wish to use asf_search, a Python module for performing searches of the ASF catalog. It also offers baseline functionality and download support. Additionally, numerous constants are provided to ease the search process. It is available through PyPi and Conda. More information can be found [here](/asf_search/basics).
+Alternatively, you may wish to use asf_search, a Python package for performing searches of the ASF catalog. It also offers baseline functionality and download support. Additionally, numerous constants are provided to ease the search process. It is available through PyPi and Conda. More information can be found [here](/asf_search/basics).

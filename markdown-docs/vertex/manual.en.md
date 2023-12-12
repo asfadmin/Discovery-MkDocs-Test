@@ -330,7 +330,7 @@ Enhanced download queue functionality is available on Google Chrome browser. Ple
 	- **Help & Tutorials** provides both illustrated and video demonstrations on the basic steps for setting up a search and viewing the results.
 		- *Note*: You must be signed in to Vertex for these options to be available.
 	- **Export** opens a submenu.
-		- **Export Python** will provide a Python code snippet to recreate the current search using the Python search module asf_search. It also provides a link to the asf_search documentation. 
+		- **Export Python** will provide a Python code snippet to recreate the current search using the Python search package asf_search. It also provides a link to the asf_search documentation. 
 		- **Export API** will provide the API URL to recreate the current search using the SearchAPI. It also provides a link to the SearchAPI documentation. 
 - Click **Help** for additional help options.
 	- **Watch Our Tutorials** provides both illustrated and video demonstrations on how to use Vertex.

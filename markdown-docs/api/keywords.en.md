@@ -1,6 +1,6 @@
 # Search API Keywords
 
-Consider using our new Python module, asf_search. asf_search can be used to perform searches of the ASF catalog, and it offers baseline functionality and download support. Additionally, numerous constants are provided to ease the search process. Currently, we provide constants for platform, instrument, beam mode, flight direction, polarization, and processing level. More information can be found [here](/asf_search/basics).
+Consider using our new Python package, asf_search. asf_search can be used to perform searches of the ASF catalog, and it offers baseline functionality and download support. Additionally, numerous constants are provided to ease the search process. Currently, we provide constants for platform, instrument, beam mode, flight direction, polarization, and processing level. More information can be found [here](/asf_search/basics).
 
 Keywords are used to find the desired data. Use as many or as few keywords as needed. Available keywords and descriptions are listed below for each Search API endpoint. Keywords are case sensitive.
 
@@ -12,6 +12,7 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 ### Dataset Parameters
 - <span style="color: #236192; font-size: 20px;">dataset</span>
 	- This is the preferred alternative keyword for 'platform' searches.
+	- This keyword has constants provided through asf_search. More information can be found [here](/asf_search/searching/#keywords).
 	- Remote sensing platform that acquired the data. You may specify a single value, or a list of values.
 	- Example:
 		- dataset=SENTINEL-1

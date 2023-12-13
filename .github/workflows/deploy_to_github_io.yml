@@ -24,6 +24,7 @@ jobs:
           PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
         run: |
           echo $PWD
+          cd Discovery-MkDocs
           echo ls -l
           python -m venv ./venv
           source ./venv/bin/activate

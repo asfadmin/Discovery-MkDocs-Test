@@ -17,8 +17,8 @@ jobs:
         with:
           path: Discovery-MkDocs
       - uses: actions/setup-python@v4
-        with:
-          path: Discovery-MkDocs
+#        with:
+#          path: Discovery-MkDocs
       - name: Setup Python
         env:
           PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}

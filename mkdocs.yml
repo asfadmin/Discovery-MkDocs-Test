@@ -40,30 +40,32 @@ plugins:
           nav_translations:
             Home: Inicio
             Vertex Manual: Manual Vertex
-            Basic: Básicos
+            Baseline: Baseline
+            SBAS: SBAS
             Event: Evento
+            Derived Datasets: Conjuntos de Datos
+            What's New: Novedades
+            Tutorial Videos: Videos Tutoriales
+            Source Code: Código Fuente
+            Custom Processing: Procesamiento Personalizado
+            Python Search Package: Paquete de Búsqueda en Python
+            Basics: Básicos
             Searching: Búsqueda
             Downloading: Descarga
             Classes: Clases
-            ASFProduct: Productos ASF
-            ASFSearchOptions: Opciones de búsqueda ASF
-            ASFSearchResults: Resultados de búsqueda ASF
-            ASFSession: Sesiones ASF
             Exceptions: Excepciones
-            What's New: Novedades
             ASF Search API: API de Búsqueda ASF
-            Search API Basics: Fundamentos de la API de Búsqueda
-            Search API Keywords & Endpoints: Palabras Clave y Endpoints de la API de Búsqueda
+            Search API Basics:  Básicos de la API de búsqueda
+            Search API Keywords & Endpoints: Palabras Clave y Puntos Finales de la API de Búsqueda
             Tools: Herramientas
             Troubleshooting: Solución de Problemas
             Cookbook: Recetario
             Product Details: Detalles del Producto
-            Using ASF Data: Uso de Datos ASF
+            Using ASF Data: Utilizando Datos de ASF
             ALOS PALSAR Products: Productos ALOS PALSAR
             Events (SARVIEWS): Eventos (SARVIEWS)
-            ASF Web: ASF Web
-            Python Search Module: Modulo de búsqueda Python
-            Custom Processing: Procesamiento Personalizado
+
+
 
   - mkdocs-video:
      css_style:

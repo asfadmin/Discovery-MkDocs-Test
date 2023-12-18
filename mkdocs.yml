@@ -37,6 +37,35 @@ plugins:
           name: Español
           build: true
           site_name: "ASF SAR Manual de Búsqueda de Datos"
+          nav_translations:
+            Home: Inicio
+            Vertex Manual: Manual Vertex
+            Baseline: Baseline
+            SBAS: SBAS
+            Event: Evento
+            Derived Datasets: Conjuntos de Datos
+            What's New: Novedades
+            Tutorial Videos: Videos Tutoriales
+            Source Code: Código Fuente
+            Custom Processing: Procesamiento Personalizado
+            Python Search Package: Paquete de Búsqueda en Python
+            Basics: Básicos
+            Searching: Búsqueda
+            Downloading: Descarga
+            Classes: Clases
+            Exceptions: Excepciones
+            ASF Search API: API de Búsqueda ASF
+            Search API Basics:  Básicos de la API de búsqueda
+            Search API Keywords & Endpoints: Palabras Clave y Puntos Finales de la API de Búsqueda
+            Tools: Herramientas
+            Troubleshooting: Solución de Problemas
+            Cookbook: Recetario
+            Product Details: Detalles del Producto
+            Using ASF Data: Utilizando Datos de ASF
+            ALOS PALSAR Products: Productos ALOS PALSAR
+            Events (SARVIEWS): Eventos (SARVIEWS)
+
+
 
   - mkdocs-video:
      css_style:
@@ -47,7 +76,6 @@ plugins:
         height: "25vw"
         max-height: "250px"
         min-height: "175px"
-
 
 nav:
   - Home: index.md
@@ -62,7 +90,7 @@ nav:
     - Tutorial Videos: https://www.youtube.com/playlist?list=PLXluIEvp5ZzIWd0yNy-ANfdwWjCD1hInA
     - Source Code: https://github.com/asfadmin/Discovery-SearchUI
   - Custom Processing: https://hyp3-docs.asf.alaska.edu
-  - Python Search Module:
+  - Python Search Package:
     - Basics: asf_search/basics.md
     - Searching: asf_search/searching.md
     - Downloading: asf_search/downloading.md

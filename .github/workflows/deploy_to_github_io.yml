@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - prod
+      - test
 
   workflow_dispatch:
 
@@ -22,8 +23,9 @@ jobs:
         env:
           PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
         run: |
-          echo $PWD
           cd Discovery-MkDocs
+          echo $PWD
+          ls -l
           python -m venv ./venv
           source ./venv/bin/activate
           python -m pip install wheel

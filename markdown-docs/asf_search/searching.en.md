@@ -18,6 +18,14 @@ For more advanced usage, see sections [ASFSearchResults class](/asf_search/ASFSe
 Keywords are used to find the desired data. Use as many or as few keywords as needed. Available keywords and descriptions are listed below. Additionally, numerous constants are provided to ease the search process. Currently, we provide constants for beam mode, flight direction, instrument, platform, polarization, and product type. You can see the full [list of constants here](https://github.com/asfadmin/Discovery-asf_search/tree/master/asf_search/constants).
 
 ### Dataset Parameters
+- <span style="color: #236192; font-size: 20px;">dataset</span>
+    - This is the preferred alternative keyword for 'platform' searches. 
+    - See the [list of constants](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/DATASET.py)
+    - Remote sensing platform that acquired the data. You may specify a single value, or a list of values.
+    - You may also get the available list of constants by using ```help(asf_search.constants.DATASET)```
+    - Example:
+        - dataset=asf.DATASET.OPERA_S1
+
 - <span style="color: #236192; font-size: 20px;">platform</span>
     - See the [list of constants](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/PLATFORM.py)
     - Remote sensing platform that acquired the data. Sentinel-1 and ERS have multiple remote sensing platforms, and you may choose whether to specify a specific platform. You may specify a single value, or a list of values.

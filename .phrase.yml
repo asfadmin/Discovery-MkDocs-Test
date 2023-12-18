@@ -1,20 +1,19 @@
 phrase:
   host: https://api.us.app.phrase.com/v2
   project_id: 88ffd4d5abd6494131fabb1a271950b8
-  file_format: DOCX
+  file_format: i18next
 
   push:
     sources:
-      - file: ./docx/en.docx
-        params:
-          locale_id: English
-          tags: REVIEW_NEEDED  #List of tags separated by comma to be associated with the new keys contained in the upload.
+    - file: ./phrase_json/en.json
+      params:
+        locale_id: en
 
   pull:
     targets:
-      - file: ./docx/en.docx
-        params:
-          locale_id: English
-      - file: ./docx/es.docx
-        params:
-          locale_id: Spanish
+    - file: ./phrase_json/es.json
+      params:
+        locale_id: es
+    - file: ./phrase_json/en.json
+      params:
+        locale_id: en

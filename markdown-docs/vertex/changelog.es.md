@@ -17,4 +17,4 @@ Los RTC de Sentinel-1 ahora pueden procesar con un espacio de píxeles de 10 met
 ## Descargas mejoradas para Google Chrome
 
 La funcionalidad mejorada de lista de descargas está disponible en el navegador Google Chrome. Se incluyen indicadores de progreso de descarga y la opción de descargar todos los archivos en la lista. Descargar todo descargará 3 archivos simultáneamente hasta que se hayan descargado todos los archivos de la lista. Puede encontrar más información [aquí](https://docs.asf.alaska.edu/vertex/manual/#google-chrome-browser).
-# Novedades
+

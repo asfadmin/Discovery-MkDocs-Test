@@ -103,13 +103,14 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 	- Values:
 		- AIRSAR: 3FP, ATI, XTI
 		- ALOS: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 20
+		- AVNIR-2: OBS
 		- ERS-1: STD
 		- ERS-2: STD
 		- JERS-1: STD
 		- RADARSAT-1: FN1, FN2, FN3, FN4, FN5, SNA, SNB, ST1, ST2, ST3, ST4, ST5, ST6, ST7, SWA, SWB, WD1, WD2, WD3, EH3, EH4, EH6, EL1
 		- SEASAT: STD
-		- Sentinel-1A: EW, IW, S1, S2, S3, S4, S5, S6, WV
-		- Sentinel-1B: EW, IW, S1, S2, S3, S4, S5, S6, WV
+		- Sentinel-1A: EW, IW, S1, S2, S3, S4, S5, S6, SLC, WV
+		- Sentinel-1B: EW, IW, S1, S2, S3, S4, S5, S6, SLC, WV
 		- UAVSAR: POL, RPI
 
 - <span style="color: #236192; font-size: 20px;">collectionName</span>
@@ -242,8 +243,8 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 		- JERS-1: HH
 		- RADARSAT-1: HH
 		- SEASAT: HH
-		- Sentinel-1A: VV, VV+VH, Dual VV, VV+VH, Dual HV, HH, HH+HV, VV, Dual VH
-		- Sentinel-1B: VV, VV+VH, Dual VV, VV+VH, Dual HV, HH, HH+HV, VV, Dual VH
+		- Sentinel-1A: VV, VV+VH, Dual VV, VV+VH, Dual HV, Dual HH, HH, HH+HV, VV, Dual VH
+		- Sentinel-1B: VV, VV+VH, Dual VV, VV+VH, Dual HV, Dual HH, HH, HH+HV, VV, Dual VH
 		- UAVSAR: FULL, HH
 
 - <span style="color: #236192; font-size: 20px;">processingLevel</span>
@@ -257,11 +258,14 @@ Keywords are used to find the desired data. Use as many or as few keywords as ne
 		- ERS-1: L0, L1
 		- ERS-2: L0, L1
 		- JERS-1: L0, L1
+		- OPERA-S1: RTC, CSLC, RTC_STATIC, CSLS_STATIC
 		- RADARSAT-1: L0, L1
-		- SEASAT: L1,
+		- SEASAT: L1, GEOTIFF
 		- Sentinel-1A: GRD_HS, GRD_HD, GRD_MS, GRD_MD, GRD_FD, SLC, RAW, OCN, METADATA_RAW, METADATA_SLC, METADATA_GRD_HD, METADATA_GRD_MD, METADATA_GRD_MS, METADATA_GRD_HS, METADATA_OCN
 		- Sentinel-1B: GRD_HS, GRD_HD, GRD_MS, GRD_MD, GRD_FD, SLC, RAW, OCN, METADATA_RAW, METADATA_SLC, METADATA_GRD_HD, METADATA_GRD_MD, METADATA_GRD_MS, METADATA_GRD_HS, METADATA_OCN
 		- Sentinel-1 InSAR: GUNW_STD, GUNW_AMP, GUNW_CON, GUN_COH, GUNW_UNW
+		- Sentinel-1 Bursts: BURST
+		- SIR-C: SLC, METADATA_SLC
 		- SMAP: L1A_Radar_RO_QA, L1A_Radar_RO_HDF5, L1B_S0_LoRes_HDF5, L1B_S0_LoRes_QA, L1B_S0_LoRes_ISO_XML, L1A_Radar_QA, L1A_Radar_RO_ISO_XML, L1C_S0_HiRes_ISO_XML, L1C_S0_HiRes_QA, L1C_S0_HiRes_HDF5, L1A_Radar_HDF5
 		- UAVSAR: KMZ, PROJECTED, PAULI, PROJECTED_ML5X5, STOKES, AMPLITUDE, COMPLEX, DEM_TIFF, PROJECTED_ML3X3, METADATA, AMPLITUDE_GRD, INTERFEROMETRY, INTERFEROMETRY_GRD, INC, SLOPE
 
@@ -422,6 +426,7 @@ Each of these steps is performed only when necessary to get the AOI to a single 
 		- JERS-1: L0, L1; default is L0
 		- RADARSAT-1: L0, L1; default is L0
 		- Sentinel-1A & Sentinel-1B: SLC
+		- Sentinel-1 Bursts: SLC
 
 - <span style="color: #236192; font-size: 20px;">output</span>
 	- Desired format of the Search API results. If not specified, the default format is metalink. The preferred format is geoJSON.

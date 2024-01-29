@@ -113,9 +113,9 @@ Cada uno de estos pasos se realiza solo cuando es necesario para obtener el AOI 
 - Una vez que se hayan elegido todos los parámetros, haga clic en **BUSCAR**. Los resultados de la búsqueda aparecerán en el área de pie de página de la ventana Vértice y en el mapa.
 	- *Nota*: El número de archivos que se prevé que coincidan con los parámetros de búsqueda actuales se muestra debajo del botón BUSCAR. Si no hay coincidencias previstas, el botón de búsqueda aparecerá atenuado y mostrará SIN RESULTADOS.
 
-# Opciones de **Búsqueda de Lista**
+## Opciones de **Búsqueda de Lista**
 
-[tipo:video](https://www.youtube.com/embed/oetqxZkqVZM)
+![type:video](https://www.youtube.com/embed/oetqxZkqVZM)
 
 - Seleccionar **Búsqueda de Lista** abre la ventana de **Búsqueda de Lista** y permite ingresar una lista de escenas o nombres de archivos.
    - **Escena**permite buscar nombres específicos de escenas (nombres de gránulos), y los resultados incluirán cualquier archivo que sea parte de esas escenas.
@@ -330,7 +330,7 @@ La funcionalidad mejorada de la lista de descarga está disponible en el navegad
 	- **Ayuda y tutoriales** proporciona demostraciones ilustradas y en video sobre los pasos básicos para configurar una búsqueda y ver los resultados.
 		- *Nota*: Debe estar firmado en Vertex para que estas opciones estén disponibles.
 	- **Exportar** abre un submenú.
-		- **Exportar Python** proporcionará un fragmento de código de Python para recrear la búsqueda actual utilizando el módulo de búsqueda de Python asf_search. También proporciona un enlace a la documentación asf_search.
+		- **Exportar Python** proporcionará un fragmento de código de Python para recrear la búsqueda actual utilizando el paquete de búsqueda de Python asf_search. También proporciona un enlace a la documentación asf_search.
 		- **Exportar API** proporcionará la URL de la API para volver a crear la búsqueda actual usando el comando SearchAPI. También proporciona un vínculo a la documentación de SearchAPI.
 - Haga clic en **Ayuda** para ver opciones de ayuda adicionales.
 	- **Mira nuestros tutoriales** proporciona demostraciones ilustradas y en video sobre cómo usar Vertex.

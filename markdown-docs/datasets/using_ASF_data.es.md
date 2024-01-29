@@ -30,7 +30,7 @@ Dataset   | Fechas  | Ejemplos de Uso | Cobertura Espacial
 
 ## Detalles del conjunto de datos
 
-### Centinela-1
+### Sentinel-1
 Sentinel-1 ofrece cobertura global con SAR de banda C. Sentinel-1A se lanzó en 2014, y Sentinel-1B se lanzó en 2016. Cada satélite tiene un ciclo de repetición de 12 días, y algunas áreas tienen cobertura cada 6 días. Los nuevos datos de adquisición están disponibles para descargar dentro de los 3 días, aunque la mayoría de las veces están disponibles dentro de las 24 horas. Los datos son gratuitos y fáciles de descargar en varios formatos.
 
 *Nota*: A partir del 23 de diciembre de 2021, la misión Sentinel-1B ha finalizado debido a una anomalía. Esto afecta el ciclo de cobertura en algunas áreas. Se puede encontrar más información [aquí](https://sentinels.copernicus.eu/web/sentinel/-/end-of-mission-of-the-copernicus-sentinel-1b-satellite/1.5).
@@ -67,16 +67,16 @@ Un SLC Sentinel-1 contiene múltiples TIFF de medición que contienen los datos 
 Existen múltiples parámetros que permiten buscar ráfagas en subfranjas y ciclos de ráfaga. Las representaciones de una sola ráfaga y los tres ID relacionados con ráfagas disponibles se encuentran a continuación.
 
 Ráfaga única:  
-![Captura de pantalla](/images/single_burst_diagram.png) {: style="height:150px;width:150px"}
+![Captura de pantalla](/images/single_burst_diagram.png){: style="height:150px;width:150px"}
 
 ID de ráfaga absoluta:  
-![Captura de pantalla](/images/absolute_burst_id_diagram.png) {: style="height:150px;width:150px"}
+![Captura de pantalla](/images/absolute_burst_id_diagram.png){: style="height:150px;width:150px"}
 
 ID de ráfaga relativa:  
-![Captura de pantalla](/images/relative_burst_id_diagram.png) {: style="height:150px;width:150px"}
+![Captura de pantalla](/images/relative_burst_id_diagram.png){: style="height:150px;width:150px"}
 
 ID de ráfaga completa:  
-![Captura de pantalla](/images/full_burst_id_diagram.png) {: style="height:150px;width:150px"}
+![Captura de pantalla](/images/full_burst_id_diagram.png){: style="height:150px;width:150px"}
 
 Cada archivo de ráfaga también tiene disponible un archivo de metadatos XML correspondiente. Los metadatos XML de ráfaga son un archivo generado virtualmente y, por lo tanto, no tienen su propio nombre de archivo único. Los metadatos XML solo se pueden encontrar a través del nombre de la escena de ráfaga y no se pueden buscar en una búsqueda de lista.
 
@@ -148,7 +148,7 @@ SMAP fue lanzado con un sensor activo y un sensor pasivo para recopilar datos de
 UAVSAR ofrece adquisiciones aéreas de ubicaciones específicas. Debido a que las adquisiciones son específicas, generalmente no hay repeticiones sobre una misma área. Sin embargo, si UAVSAR cubre su área de interés, este conjunto de datos incluye una variedad de productos disponibles.
 
 - 2008 - presente
-- Banda L cuadruplicada
+- Banda L 
 - Aéreo, ubicaciones específicas, sincronización irregular
 - Se pueden solicitar vuelos para su área de interés
 - Productos de retrodispersión e interferometría preprocesados
@@ -322,8 +322,8 @@ Los registros de datos del sistema terrestre de humedales inundados constan de d
 - [¿Qué es SAR?](https://asf.alaska.edu/information/sar-information/what-is-sar/#sar_faq)
 - [Introducción en Video a SAR](https://www.youtube.com/watch?v=Zfn7P395O40)
 - [Resumen en Video de los Conjuntos de Datos SAR de ASF](https://www.youtube.com/watch?v=0ZzLg38cC8I)
-- [Biblioteca de Recetas de Datos](https://asf.alaska.edu/how-to/data-basics/data-recipe-tutorials-2/)
-- [Recetas de Datos para Conjuntos de Datos SAR de ASF en Aplicaciones GIS](https://asf.alaska.edu/how-to/data-basics/sar-data-and-gis/)
+- [Biblioteca de Recetas de Data](https://asf.alaska.edu/how-to/data-basics/data-recipe-tutorials-2/)
+- [Recetas de Datos para Conjuntos de Data SAR de ASF en Aplicaciones GIS](https://asf.alaska.edu/how-to/data-basics/sar-data-and-gis/)
 - [Formatos y Archivos de Conjuntos de Datos](https://asf.alaska.edu/how-to/data-basics/asf-datasets-formats-and-files/)
 - [Tipos de Productos y Niveles de Procesamiento](https://asf.alaska.edu/how-to/data-basics/types-of-synthetic-aperture-radar-sar-products/)
 - [Resumen de Conjuntos de Datos Derivados](https://docs.asf.alaska.edu/vertex/derived_datasets/)

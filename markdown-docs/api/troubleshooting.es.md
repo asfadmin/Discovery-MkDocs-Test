@@ -1,6 +1,6 @@
 # Solución de problemas de la API de búsqueda
 
-Si está solucionando problemas de consultas de API de búsqueda, considere la posibilidad de usar asf_search. asf_search es un módulo de Python para realizar búsquedas en el catálogo ASF. Puede encontrar más información [aquí](/asf_search/basics).
+Si está solucionando problemas de consultas de API de búsqueda, considere la posibilidad de usar asf_search. asf_search es un paquete de Python para realizar búsquedas en el catálogo ASF. Puede encontrar más información [aquí](/asf_search/basics).
 
 **Área de problemas: la consulta devuelve HTTP 429 con mensaje de error**
 
@@ -27,7 +27,7 @@ Si está solucionando problemas de consultas de API de búsqueda, considere la p
 - Motivo: Falta el área de estudio o EULA
 - Remedio: Inicie sesión en Earthdata y asegúrese de que su área de estudio esté configurada, y que haya aceptado todos los acuerdos de licencia de usuario final necesarios.
 
-**Área problemática: falla la solicitud de API de búsqueda con '+' **
+**Área problemática: falla la solicitud de API de búsqueda con '+'**
 
 - Motivo: Algunos valores de palabras clave pueden contener espacios.
 - Remedio: Intente reemplazar el '+' por '%2B'. Para obtener más detalles, consulte Codificación de caracteres en la [Página de herramientas](/api/tools).

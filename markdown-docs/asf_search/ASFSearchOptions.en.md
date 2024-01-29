@@ -1,4 +1,4 @@
-# ASF Search Options
+# ASFSearchOptions
 
 ## Description
 

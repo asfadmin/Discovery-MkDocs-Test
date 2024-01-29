@@ -22,4 +22,4 @@ Se le pedirá que acepte el Acuerdo de licencia de usuario final de ASF y establ
 
 Consulte [Buscar palabras clave de API](/api/keywords) para empezar a crear una consulta, o consulte la [Página de herramientas](/api/tools) para ver algunos ejemplos.
 
-Alternativamente, es posible que desee utilizar asf_search, un módulo de Python para realizar búsquedas en el catálogo de ASF. También ofrece funcionalidad básica y soporte de descarga. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Está disponible a través de PyPi y Conda. Puede encontrar más información [aquí](/asf_search/basics).
+Alternativamente, es posible que desee utilizar asf_search, un paquete de Python para realizar búsquedas en el catálogo de ASF. También ofrece funcionalidad básica y soporte de descarga. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Está disponible a través de PyPi y Conda. Puede encontrar más información [aquí](/asf_search/basics).

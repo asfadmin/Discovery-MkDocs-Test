@@ -3,8 +3,8 @@
 ## Palabra clave "dataset"
 La nueva palabra clave "dataset" es la alternativa preferida para búsquedas en la plataforma. Permite obtener resultados de múltiples plataformas a la vez. Se puede encontrar más información [aquí](/api/keywords/#dataset-parameters).
 
-## Nuevo módulo de Python para realizar búsquedas
-asf_search es un módulo de Python para realizar búsquedas en el catálogo de ASF. Además, ofrece funcionalidad básica y soporte de descarga. Está disponible a través de PyPi y Conda. Más información disponible [aquí](/asf_search/basics).
+## Nuevo paquete de Python para realizar búsquedas
+asf_search es un paquete de Python para realizar búsquedas en el catálogo de ASF. Además, ofrece funcionalidad básica y soporte de descarga. Está disponible a través de PyPi y Conda. Más información disponible [aquí](/asf_search/basics).
 
 ## Múltiples Puntos de Acceso Disponibles
 

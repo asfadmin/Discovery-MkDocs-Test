@@ -48,4 +48,3 @@ Autentica la sesión (self) utilizando un cookiejar preexistente.
 **retorna:**
 
 - retorna self para conveniencia
-

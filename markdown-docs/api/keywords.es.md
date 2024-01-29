@@ -1,6 +1,6 @@
 # Palabras Clave de la API de Búsqueda
 
-Considere usar nuestro nuevo módulo de Python, asf_search. asf_search puede ser utilizado para realizar búsquedas en el catálogo de ASF, y ofrece funcionalidad básica y soporte de descarga. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Actualmente, proporcionamos constantes para plataforma, instrumento, modo de haz, dirección de vuelo, polarización y nivel de procesamiento. Se puede encontrar más información [aquí](/asf_search/basics).
+Considere usar nuestro nuevo paquete de Python, asf_search. asf_search puede ser utilizado para realizar búsquedas en el catálogo de ASF, y ofrece funcionalidad básica y soporte de descarga. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Actualmente, proporcionamos constantes para plataforma, instrumento, modo de haz, dirección de vuelo, polarización y nivel de procesamiento. Se puede encontrar más información [aquí](/asf_search/basics).
 
 Las palabras clave se utilizan para encontrar los datos deseados. Utilice tantas o tan pocas palabras clave como necesite. A continuación se enumeran las palabras clave disponibles y sus descripciones para cada punto de acceso de la API de Búsqueda. Las palabras clave son sensibles a mayúsculas y minúsculas.
 

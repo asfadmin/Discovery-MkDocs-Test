@@ -9,7 +9,7 @@ Cada función de búsqueda devuelve un objeto ```ASFSearchResults```:
 - Si los enfoques de búsqueda anteriores no satisfacen sus necesidades, ```search()``` soporta todas las palabras clave disponibles:
     - ```search()``` Encuentre información del producto usando cualquier combinación de parámetros de búsqueda. Consulta la lista de palabras clave a continuación.
 
-    - Ejemplos de algunos flujos de trabajo de búsqueda se pueden encontrar en este [script de muestra](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/hello_world.py). También puede consultar los [Jupyter notebooks](https://github.com/asfadmin/Discovery-asf_search/tree/master/examples) para flujos de trabajo de ejemplo.
+Ejemplos de algunos flujos de trabajo de búsqueda se pueden encontrar en este [script de muestra](https://github.com/asfadmin/Discovery-asf_search/blob/master/examples/hello_world.py). También puede consultar los [Jupyter notebooks](https://github.com/asfadmin/Discovery-asf_search/tree/master/examples) para flujos de trabajo de ejemplo.
 
 Para un uso más avanzado, consulta las secciones [Clase ASFSearchResults](/asf_search/ASFSearchResults/) y [Clase ASFProduct](/asf_search/ASFProduct).
 
@@ -18,6 +18,14 @@ Para un uso más avanzado, consulta las secciones [Clase ASFSearchResults](/asf_
 Las palabras clave se utilizan para encontrar los datos deseados. Usa tantas o tan pocas palabras clave como necesites. A continuación, se enumeran las palabras clave disponibles y sus descripciones. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Actualmente, proporcionamos constantes para el modo de haz, dirección de vuelo, instrumento, plataforma, polarización y tipo de producto. Puede ver la lista completa de [constantes aquí](https://github.com/asfadmin/Discovery-asf_search/tree/master/asf_search/constants).
 
 ### Parámetros del conjunto de datos
+- <span style="color: #236192; font-size: 20px;">dataset</span>
+    - Esta es la palabra clave alternativa preferida para búsquedas de 'plataforma'.
+    - Consulta la [lista de constantes](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/DATASET.py)
+    - Plataforma de teledetección que adquirió los datos. Puedes especificar un único valor o una lista de valores.
+    - También puedes obtener la lista disponible de constantes usando ```help(asf_search.constants.DATASET)```
+    - Ejemplo:
+        - dataset=asf.DATASET.OPERA_S1
+
 - <span style="color: #236192; font-size: 20px;">platform</span>
     - Consulta la [lista de constantes](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/PLATFORM.py)
     - Plataforma de teledetección remota que adquirió los datos. Sentinel-1 y ERS tienen múltiples plataformas de teledetección remota, y puede elegir si deseas especificar una plataforma específica. puede especificar un solo valor o una lista de valores.

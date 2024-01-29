@@ -1,6 +1,6 @@
 # Excepciones
 
-**ASFError(Excepción):**
+**ASFError(Exception):**
 
 - Excepción ASF base, no destinada al uso directo
 

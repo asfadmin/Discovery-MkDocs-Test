@@ -47,7 +47,7 @@ Para obtener una descripción general de todos los servicios de ASF, visite [asf
     <div class="card">
       <div class="card-body">
         <h3 class="card-title text-center">asf_search</h3>
-        <p class="card-description">Un módulo de Python para realizar búsquedas en el catálogo ASF.</p>
+        <p class="card-description">Un paquete de Python para realizar búsquedas en el catálogo ASF.</p>
         <ul class="doc-links">
           <li><a href="asf_search/basics/">Básicos</a></li>
           <li><a href="asf_search/searching/">Búsqueda</a></li>

@@ -98,6 +98,7 @@ Each of these steps is performed only when necessary to get the AOI to a single 
 	- **Subtype** – Limit the search to a specific mission spacecraft.
 	- **Group ID** – Limit the search to a specific group ID.
 	- **Burst ID** – Limit the search to a specific burst ID. Multiple burst IDs allowed.
+	- **Standard Products or CalVal Products** – Limit the search to either CalVal or Standard products. May choose one option. This selector is only available for the Opera-S1 dataset.
 
 
 ### Path and Frame Filters

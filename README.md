@@ -6,8 +6,13 @@ To install requirements run
 
 `pip install -r requirements.txt`
 
-pip install mkdocs-static-i18n
-pip install mkdocs-material
+`pip install mkdocs-static-i18n`
+
+`pip install mkdocs-material`
+
+Or you can use the included virtual environment by running the following command:
+
+`source env_mkdocs/bin/activate`
 
 ### Developing Documentation
 MkDocs comes with a built-in dev-server that lets you preview

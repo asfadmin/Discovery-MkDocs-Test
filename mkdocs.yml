@@ -2,14 +2,14 @@ site_name: ASF SAR Data Search Manual
 site_description: Documentation for searching and processing ASF SAR data.
 site_dir: 'docs'
 docs_dir: 'markdown-docs'
-google_analytics: ['UA-991100-5', 'search.asf.alaska.edu']
+google_analytics: ['G-440184110', 'docs.asf.alaska.edu']
 extra_css:
   - 'css/styles.css'
   - 'assets/stylesheets/asf.css'
 extra:
   analytics:
     - provider: google
-    - property: UA-991100-5
+    - property: G-440184110
 
 theme:
     name: material
@@ -66,8 +66,6 @@ plugins:
             Using ASF Data: Utilizando Datos de ASF
             ALOS PALSAR Products: Productos ALOS PALSAR
             Events (SARVIEWS): Eventos (SARVIEWS)
-
-
 
   - mkdocs-video:
      css_style:

@@ -1,0 +1,2211 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for searching and processing ASF SAR data.">
+      
+      
+      
+      
+        <link rel="prev" href="../../">
+      
+      
+        <link rel="next" href="../baseline/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+      
+        <title>Guía de Inicio de Vertex - ASF SAR Manual de Búsqueda de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/styles.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/asf.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Google Analytics integration -->
+
+  
+
+<script type="application/javascript">
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+
+  /* Set up integration and send page view */
+  ga("create", "G-440184110", "docs.asf.alaska.edu")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", function() {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+
+  /* Send page view on document switch (instant loading, custom event) */
+  document.addEventListener("DOMContentSwitch", function() {
+    ga("send", "pageview", document.location.pathname)
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#guia-de-inicio-de-vertex" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../" title="ASF SAR Manual de Búsqueda de Datos" class="md-header__button md-logo" aria-label="ASF SAR Manual de Búsqueda de Datos" data-md-component="logo">
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/images/ASFLogo-Blue2.png" alt="logo" />
+
+    </a>
+
+    
+
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ASF SAR Manual de Búsqueda de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guía de Inicio de Vertex
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Seleccionar idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../vertex/manual/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="ASF SAR Manual de Búsqueda de Datos" class="md-nav__button md-logo" aria-label="ASF SAR Manual de Búsqueda de Datos" data-md-component="logo">
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/images/ASFLogo-Blue2.png" alt="logo" />
+
+    </a>
+    ASF SAR Manual de Búsqueda de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vertex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vertex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manual Vertex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Manual Vertex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Guía de Inicio de Vertex
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Guía de Inicio de Vertex
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-de-idioma" class="md-nav__link">
+    Opciones de Idioma
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-de-busqueda-geografica" class="md-nav__link">
+    Opciones de Búsqueda Geográfica
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de Búsqueda Geográfica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-de-area-de-interes" class="md-nav__link">
+    Opciones de Área de Interés
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de Área de Interés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacion-de-forma" class="md-nav__link">
+    Validación de Forma
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-de-fecha" class="md-nav__link">
+    Filtros de fecha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-adicionales" class="md-nav__link">
+    Filtros adicionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-de-ruta-y-marco" class="md-nav__link">
+    Filtros de ruta y marco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-de-busqueda-de-lista" class="md-nav__link">
+    Opciones de Búsqueda de Lista
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de Búsqueda de Lista">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-archivos-de-busqueda-de-listas" class="md-nav__link">
+    Importación de archivos de búsqueda de listas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#baseline-opciones-de-busqueda" class="md-nav__link">
+    Baseline Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbas-opciones-de-busqueda" class="md-nav__link">
+    SBAS Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evento-opciones-de-busqueda" class="md-nav__link">
+    Evento Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#productos-on-demand-opciones-de-busqueda" class="md-nav__link">
+    Productos On Demand Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conjuntos-de-datos-derivados-opciones-de-busqueda" class="md-nav__link">
+    Conjuntos de datos derivados Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-de-la-busqueda" class="md-nav__link">
+    Resultados de la búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-demand" class="md-nav__link">
+    On Demand
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-descargas" class="md-nav__link">
+    Lista de descargas
+  </a>
+  
+    <nav class="md-nav" aria-label="Lista de descargas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navegador-google-chrome" class="md-nav__link">
+    Navegador Google Chrome
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otras-opciones-del-vertex" class="md-nav__link">
+    Otras opciones del Vertex
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../baseline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baseline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sbas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SBAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evento
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../derived_datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conjuntos de Datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Novedades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.youtube.com/playlist?list=PLXluIEvp5ZzIWd0yNy-ANfdwWjCD1hInA" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Videos Tutoriales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/asfadmin/Discovery-SearchUI" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Código Fuente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hyp3-docs.asf.alaska.edu" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procesamiento Personalizado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Paquete de Búsqueda en Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Paquete de Búsqueda en Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Básicos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/searching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Búsqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/downloading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Descarga
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Clases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFProduct/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFProduct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFSearchOptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFSearchOptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFSearchResults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFSearchResults
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFSession/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFSession
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excepciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/asfadmin/Discovery-asf_search/blob/master/CHANGELOG.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Novedades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API de Búsqueda ASF
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API de Búsqueda ASF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Básicos de la API de búsqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/keywords/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Palabras Clave y Puntos Finales de la API de Búsqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Herramientas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solución de Problemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/cookbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recetario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api/changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Novedades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Detalles del Producto
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Detalles del Producto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/using_ASF_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utilizando Datos de ASF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/palsar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Productos ALOS PALSAR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/events_about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eventos (SARVIEWS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://asf.alaska.edu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASF Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-de-idioma" class="md-nav__link">
+    Opciones de Idioma
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-de-busqueda-geografica" class="md-nav__link">
+    Opciones de Búsqueda Geográfica
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de Búsqueda Geográfica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#opciones-de-area-de-interes" class="md-nav__link">
+    Opciones de Área de Interés
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de Área de Interés">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacion-de-forma" class="md-nav__link">
+    Validación de Forma
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-de-fecha" class="md-nav__link">
+    Filtros de fecha
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-adicionales" class="md-nav__link">
+    Filtros adicionales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtros-de-ruta-y-marco" class="md-nav__link">
+    Filtros de ruta y marco
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opciones-de-busqueda-de-lista" class="md-nav__link">
+    Opciones de Búsqueda de Lista
+  </a>
+  
+    <nav class="md-nav" aria-label="Opciones de Búsqueda de Lista">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importacion-de-archivos-de-busqueda-de-listas" class="md-nav__link">
+    Importación de archivos de búsqueda de listas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#baseline-opciones-de-busqueda" class="md-nav__link">
+    Baseline Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sbas-opciones-de-busqueda" class="md-nav__link">
+    SBAS Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evento-opciones-de-busqueda" class="md-nav__link">
+    Evento Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#productos-on-demand-opciones-de-busqueda" class="md-nav__link">
+    Productos On Demand Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conjuntos-de-datos-derivados-opciones-de-busqueda" class="md-nav__link">
+    Conjuntos de datos derivados Opciones de búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resultados-de-la-busqueda" class="md-nav__link">
+    Resultados de la búsqueda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#on-demand" class="md-nav__link">
+    On Demand
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-descargas" class="md-nav__link">
+    Lista de descargas
+  </a>
+  
+    <nav class="md-nav" aria-label="Lista de descargas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#navegador-google-chrome" class="md-nav__link">
+    Navegador Google Chrome
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#otras-opciones-del-vertex" class="md-nav__link">
+    Otras opciones del Vertex
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="guia-de-inicio-de-vertex">Guía de Inicio de Vertex<a class="headerlink" href="#guia-de-inicio-de-vertex" title="Permanent link">#</a></h1>
+<ul>
+<li>Si aún no tiene una <strong><a href="https://urs.earthdata.nasa.gov/users/new">cuenta Earthdata</a></strong> puede crear una gratis.</li>
+<li>Vaya a <strong><a href="https://search.asf.alaska.edu">Vertex</a></strong><ul>
+<li>Inicie sesión haciendo clic en el ícono de <strong>Iniciar sesión</strong> en la esquina superior derecha de la ventana. Utiliza su nombre de usuario y contraseña de Earthdata.
+<div class="video-container"><iframe src="https://www.youtube.com/embed/j_Db_ipKLos" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></li>
+</ul>
+</li>
+<li>El tipo de búsqueda le permite elegir entre todos los tipos de búsqueda disponibles.</li>
+</ul>
+<h2 id="opciones-de-idioma">Opciones de Idioma<a class="headerlink" href="#opciones-de-idioma" title="Permanent link">#</a></h2>
+<p>En el menú en la esquina superior derecha, junto al ícono de <strong>Iniciar sesión</strong>, hay opciones de control de idioma. Vertex actualmente ofrece inglés y español. Si su navegador está configurado en uno de los idiomas disponibles, Vertex se ajustará automáticamente a ese idioma. Puede hacer clic en el botón y seleccionar su idioma deseado en la lista desplegable. También puede establecer un idioma predeterminado en tus <strong>Preferencias</strong>.</p>
+<h2 id="opciones-de-busqueda-geografica">Opciones de Búsqueda <em>Geográfica</em><a class="headerlink" href="#opciones-de-busqueda-geografica" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/JovQ-rG9ZJE" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li>En la esquina superior izquierda del mapa, hay botones que le permiten cambiar su <strong>proyección de mapa</strong>, <strong>zoom</strong> y <strong>vista de mapa</strong>.<ul>
+<li>Por defecto, el mapa está en proyección ecuatorial. Puede hacer clic en <strong>Ver mapa</strong> y seleccionar <strong>Ver mapa ártico</strong> o <strong>Ver mapa antártico</strong> para cambiar la proyección del mapa. Haga clic en <strong>Ver mapa ecuatorial</strong> para volver a la proyección ecuatorial.</li>
+<li>Puede hacer clic en los íconos de <strong>Acercar</strong> o <strong>Alejar</strong> para ajustar el zoom.</li>
+<li>La capa de mapa por defecto es satélite. puede hacer clic en el botón <strong>Capas</strong> y seleccionar <strong>Vista de satélite</strong> o <strong>Vista de calle</strong> para cambiar la capa de mapa.<ul>
+<li>Puede hacer clic en <strong>Mapa de resumen</strong> para agregar un mapa de resumen en la esquina superior derecha del mapa. Haga clic nuevamente para desactivar el mapa de resumen.</li>
+<li>Puede hacer clic en <strong>Líneas de cuadrícula</strong> para agregar una superposición de graticule al mapa. Haga clic nuevamente para desactivar la superposición. <em>Nota</em>: Esto actualmente solo está disponible en la vista mapa ecuatorial.</li>
+</ul>
+</li>
+<li>Puede hacer clic en <strong>Opacidad</strong> y ajustar el deslizador según desee para cambiar la opacidad de las imágenes de navegación que se muestran en el mapa.</li>
+</ul>
+</li>
+<li>Navega hasta su área de interés arrastrando el mapa mientras mantienes presionado el botón izquierdo del mouse.</li>
+<li>Por defecto, la herramienta de dibujo en el mapa es un cuadro delimitador. Haga clic en el mapa una vez para especificar la esquina inicial, mueve el mouse y luego haga clic nuevamente para terminar el cuadro. Hay opciones adicionales de herramientas de dibujo disponibles en la barra de herramientas en la parte superior de la pantalla, que incluyen opciones de <em>punto</em>, <em>línea</em> y <em>polígono</em>.<ul>
+<li><strong>Punto</strong> le permite definir un área de interés haciendo clic en el mapa para colocar un punto.</li>
+<li><strong>Línea</strong> le permite definir un área de interés sobre una serie de segmentos de línea haciendo clic en el mapa varias veces. Haz doble clic para detener la adición de segmentos.</li>
+<li><strong>Polígono</strong> le permite definir un área de interés sobre un polígono arbitrario. Recibirás un mensaje de error en la parte inferior de la ventana si hubo algún problema con el polígono (autointersección, orden inverso del polígono, etc.).</li>
+<li><strong>Cuadro</strong> le permite definir un área de interés sobre un cuadro delimitador alineado con latitud/longitud haciendo clic una vez para establecer una esquina y nuevamente para establecer la esquina opuesta.</li>
+<li>Una vez que se haya dibujado una forma, selecciona el ícono de <strong>Editar área de interés actual</strong> en la barra de herramientas para mover, agregar y eliminar puntos. Selecciona el ícono de <strong>Dibujar nueva área de interés</strong> para crear una nueva AOI.</li>
+<li>Hacer clic en <strong>Cargar archivo geoespacial</strong> abre la ventana de diálogo de Área de interés. Puede ingresar una cadena WKT, cargar un archivo geoespacial o ingresar una ubicación.</li>
+</ul>
+</li>
+<li><strong>Conjunto de datos</strong> le permite elegir el conjunto de datos de interés.<ul>
+<li>Si necesita más información sobre un conjunto de datos en particular, haga clic en el ícono de interrogación correspondiente en el selector de Conjunto de datos.</li>
+</ul>
+</li>
+<li><strong>Filtros...</strong> le permite refinar aún más su búsqueda</li>
+</ul>
+<h3 id="opciones-de-area-de-interes">Opciones de Área de Interés<a class="headerlink" href="#opciones-de-area-de-interes" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Área de Interés</strong> le brinda la opción de ingresar un conjunto de coordenadas geográficas, importar un área de interés como un archivo geoespacial o buscar una ubicación. Haga clic en la flecha hacia abajo junto a <strong>Área de Interés</strong> en el menú superior.<ul>
+<li>Un área de interés se puede definir mediante un conjunto de coordenadas ingresadas en la ventana <strong>Área de Interés WKT</strong>.<ul>
+<li>Las coordenadas deben ingresarse en grados decimales en formato <em>texto bien conocido</em> (WKT). Las coordenadas ingresadas como una cadena de longitud/latitud separadas por comas (por ejemplo, -97.38,36.46,-53.44,36.46...) se convertirán automáticamente a formato WKT por Vertex.</li>
+</ul>
+</li>
+<li>Para cargar un archivo geoespacial, haga clic en <strong>Seleccionar archivos</strong> y navegue hasta una carpeta en su computadora o arrastra y suelta archivos en el cuadro. Se admiten archivos <em>GeoJSON</em>, <em>shapefiles</em> y <em>KML</em> siempre que estén en un sistema de coordenadas basado en latitud/longitud, como WGS84.<ul>
+<li>Al importar un archivo <em>GeoJSON</em>, se incluirán todas las geometrías en el archivo. Si se encuentran múltiples geometrías, se utilizará una envolvente convexa para representarlas en la búsqueda.</li>
+<li>Los <em>shapefiles</em> pueden ser un solo archivo <em>.shp</em>, múltiples componentes de archivo shapefile (<em>.shp, .shx, .dbf</em>), o un archivo <em>zip</em> que contenga uno o más componentes de archivo shapefile. En todos los casos, se debe incluir como mínimo el componente <em>.shp</em>.</li>
+</ul>
+</li>
+<li>Para ingresar una ubicación, haga clic en el campo <strong>Buscar una ubicación</strong> y comienza a escribir el nombre de la ubicación. Selecciona la ubicación deseada en la lista desplegable.<ul>
+<li>Una vez que hayas seleccionado una ubicación, se convertirá en coordenadas en formato WKT.</li>
+</ul>
+</li>
+<li>Puede guardar las coordenadas de una búsqueda para poder recrear exactamente un área de interés en búsquedas posteriores.<ul>
+<li>Una vez que se haya configurado el <strong>Área de Interés</strong>, aparecerá un ícono de <em>Copiar al portapapeles</em>. Haga clic en el ícono y pegue las coordenadas en una nueva búsqueda o en un archivo de texto para usarlas más tarde.</li>
+<li>Nota: Consulta la sección <strong>Otras Opciones de Vertex</strong> para conocer formas adicionales de guardar búsquedas.</li>
+</ul>
+</li>
+<li>En cualquier momento, puede borrar su área de búsqueda haciendo clic en el botón <strong>Borrar</strong>.</li>
+</ul>
+</li>
+</ul>
+<h4 id="validacion-de-forma">Validación de Forma<a class="headerlink" href="#validacion-de-forma" title="Permanent link">#</a></h4>
+<p>Si el AOI especificado es su propio Rectángulo Mínimo Delimitador (MBR) en una proyección mercator, los resultados de la búsqueda devueltos se intersectarán con el AOI en una proyección mercator, independientemente del ancho. Esto sigue siendo válido incluso si la línea de cambio de fecha internacional se cruza dentro del AOI.</p>
+<p>Para que un AOI se considere su propio MBR, debe cumplir con los siguientes criterios:</p>
+<ul>
+<li>Cada vértice comparte una latitud o longitud con sus vecinos</li>
+<li>Los puntos Este/Oeste comparten longitud</li>
+<li>Los puntos Norte/Sur comparten latitud</li>
+</ul>
+<p>AOIs que no cumplan con estos criterios tendrán sus puntos conectados a lo largo de <a href="https://es.wikipedia.org/wiki/C%C3%ADrculo_m%C3%A1ximo">círculos máximos</a>.</p>
+<p>Además, todos los AOIs se validan y se simplifican según sea necesario. El proceso para ello es:</p>
+<ol>
+<li>Validar el AOI de entrada. Si no es válido, se mostrará un error.</li>
+<li>Fusionar formas superpuestas.</li>
+<li>Envoltura convexa.</li>
+<li>Cualquier valor de índice fuera de rango se maneja mediante la restricción y el ajuste a la gama de valores válidos.</li>
+<li>Simplificar puntos según el umbral de proximidad. El objetivo es tener menos de 400 puntos.</li>
+</ol>
+<p>Cada uno de estos pasos se realiza solo cuando es necesario para obtener el AOI con un solo contorno con menos de 400 puntos. Cualquier paso innecesario se omite.</p>
+<p><strong>Ejemplos de validación y simplificación:</strong></p>
+<ul>
+<li>Se proporciona un polígono que se interseca a sí mismo:<ul>
+<li>Se muestra un error.</li>
+</ul>
+</li>
+<li>Se proporciona un esquema único, compuesto por 1000 puntos:<ul>
+<li>Se utiliza una versión simplificada del mismo esquema, compuesta por menos de 400 puntos.</li>
+</ul>
+</li>
+<li>Se proporcionan múltiples geometrías, superponiéndose todas ellas al menos en parte:<ul>
+<li>Se devuelve un único contorno, que representa el contorno de todas las formas combinadas.</li>
+</ul>
+</li>
+<li>Se proporcionan múltiples geometrías, al menos algunas de ellas no se superponen en absoluto:<ul>
+<li>Se devuelve un contorno único, que representa el casco convexo de todas las formas juntas.</li>
+</ul>
+</li>
+</ul>
+<h3 id="filtros-de-fecha">Filtros de fecha<a class="headerlink" href="#filtros-de-fecha" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Filtros de fechas</strong> Las fechas de búsqueda son opcionales, por lo que están vacías de forma predeterminada. Si está buscando fechas específicas, puede definir más el rango de fechas en los campos <strong>Fecha de inicio</strong> y <strong>Fecha de final</strong>. El selector de fechas limitará automáticamente su selección a un rango válido para el conjunto de datos seleccionado.<ul>
+<li><em>Nota</em>: esta información también se puede encontrar haciendo clic en el icono del signo de interrogación de un conjunto de datos.</li>
+<li><strong>Búsqueda estacional</strong> permite restringir la búsqueda a ciertos períodos anuales dentro de un rango general de fechas. Haga clic en el botón de búsqueda de temporada y aparecerán opciones adicionales que le permitirán ingresar un rango de fechas general (<em>Fecha de inicio/Fecha de final</em>) y el rango estacional (<em>Día de inicio de temporada/Día de finalización de temporada</em>).</li>
+</ul>
+</li>
+</ul>
+<h3 id="filtros-adicionales">Filtros adicionales<a class="headerlink" href="#filtros-adicionales" title="Permanent link">#</a></h3>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/Vd9eDL9KVK4" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li><strong>Filtros Adicionales</strong> permiten aplicar parámetros adicionales para afinar su búsqueda y reducir el número de resultados. No todos los filtros estarán disponibles para todos los conjuntos de datos.<ul>
+<li><strong>Tipo de Archivo</strong> – Limita la búsqueda a tipos específicos de archivos. Se permiten múltiples selecciones.</li>
+<li><strong>Modo de Haz</strong> – Limita la búsqueda a modos de haz específicos. Se permiten múltiples selecciones. </li>
+<li><strong>Polarización</strong> – Limita la búsqueda a polarizaciones específicas. Se permiten múltiples selecciones.</li>
+<li><strong>Dirección</strong> – Limita la búsqueda a una dirección de órbita específica.</li>
+<li><strong>Subtipo</strong> – Limita la búsqueda a una nave espacial de misión específica.</li>
+<li><strong>ID de Grupo</strong> – Limita la búsqueda a un ID de grupo específico.</li>
+<li><strong>ID de Ráfaga</strong> – Limita la búsqueda a un ID de ráfaga específico. Se permiten múltiples IDs de ráfaga.</li>
+</ul>
+</li>
+</ul>
+<h3 id="filtros-de-ruta-y-marco">Filtros de ruta y marco<a class="headerlink" href="#filtros-de-ruta-y-marco" title="Permanent link">#</a></h3>
+<ul>
+<li><strong>Los filtros de ruta y fotograma</strong> están disponibles para determinados conjuntos de datos. Puede introducir un solo trazado o fotograma, o un intervalo. Debido a la inconsistencia del encuadre de Sentinel-1, recomendamos buscar un fotograma de interés por ±1-2 fotogramas.</li>
+<li>El número máximo de resultados se muestra debajo del botón <strong>BUSCAR</strong>. Haga clic en la <strong>flecha hacia abajo</strong> para elegir los resultados máximos que prefiera.<ul>
+<li>Puede hacer clic en <strong>URL de API...</strong> para generar la URL de la API que coincida con sus parámetros de búsqueda actuales. Esto abrirá una nueva ventana.<ul>
+<li><strong>Cantidad</strong> le permite establecer los resultados máximos.</li>
+<li><strong>Formato</strong> le permite elegir el formato de salida que prefieras.</li>
+<li>El icono <strong>Copiar</strong> junto a la URL copiará la URL. Se puede pegar en la barra de búsqueda de un navegador para realizar la API buscar, o pegar en un documento y guardar.</li>
+<li><strong>API Docs</strong> te enviará a la <a href="https://asf.alaska.edu/api/">API Documentación</a>.</li>
+<li><strong>Descargar resultados</strong> descargará los resultados en el formato de salida especificado.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Una vez que se hayan elegido todos los parámetros, haga clic en <strong>BUSCAR</strong>. Los resultados de la búsqueda aparecerán en el área de pie de página de la ventana Vértice y en el mapa.<ul>
+<li><em>Nota</em>: El número de archivos que se prevé que coincidan con los parámetros de búsqueda actuales se muestra debajo del botón BUSCAR. Si no hay coincidencias previstas, el botón de búsqueda aparecerá atenuado y mostrará SIN RESULTADOS.</li>
+</ul>
+</li>
+</ul>
+<h2 id="opciones-de-busqueda-de-lista">Opciones de <strong>Búsqueda de Lista</strong><a class="headerlink" href="#opciones-de-busqueda-de-lista" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/oetqxZkqVZM" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li>Seleccionar <strong>Búsqueda de Lista</strong> abre la ventana de <strong>Búsqueda de Lista</strong> y permite ingresar una lista de escenas o nombres de archivos.</li>
+<li><strong>Escena</strong>permite buscar nombres específicos de escenas (nombres de gránulos), y los resultados incluirán cualquier archivo que sea parte de esas escenas.</li>
+<li><strong>Archivo</strong> permite buscar nombres específicos de archivos (nombres de productos), y los resultados solo incluirán exactamente esos archivos.</li>
+<li><strong>Editar Lista</strong> abre la ventana de <strong>Búsqueda de Lista</strong> para que pueda hacer cambios en su lista.</li>
+<li>Una vez que todos los parámetros han sido elegidos, haga clic en <strong>BUSCAR</strong>. Los resultados de la búsqueda aparecerán en el área del pie de página de la ventana de su navegador, y en el mapa.</li>
+<li><strong>Nota</strong>: El número de archivos que se predice coincidirán con los parámetros de búsqueda actuales se muestra debajo del botón BUSCAR. Si no hay coincidencias predichas, el botón de búsqueda se mostrará en gris y mostrará SIN RESULTADOS.
+metros de búsqueda actuales se muestra debajo del botón BUSCAR. Si no hay coincidencias previstas, el botón de búsqueda aparecerá atenuado y mostrará SIN RESULTADOS.</li>
+</ul>
+<h3 id="importacion-de-archivos-de-busqueda-de-listas">Importación de archivos de búsqueda de listas<a class="headerlink" href="#importacion-de-archivos-de-busqueda-de-listas" title="Permanent link">#</a></h3>
+<p>Puede <strong>arrastrar y soltar archivos</strong> en el cuadro provisto en las pestañas <strong>Escena</strong> o <strong>Archivo</strong>. Cada pestaña enumera los tipos de archivos aceptados en la parte inferior. Vertex analizará los nombres de escena o archivo de su archivo cargado.</p>
+<ul>
+<li>
+<p><em>Nota</em>: Cada tipo de archivo requiere un formato específico. Los archivos exportados desde Vertex tendrán el formato correcto.</p>
+</li>
+<li>
+<p><strong>CSV</strong> requiere una columna etiquetada como "Nombre del gránulo" para una búsqueda en la lista de escenas. Requiere una columna adicional "Nivel de procesamiento" para una búsqueda en la lista de archivos.</p>
+</li>
+<li><strong>GeoJSON</strong> requiere un campo etiquetado como "granuleName" para la búsqueda en la lista de escenas. Requiere un campo etiquetado como "fileID" para la búsqueda en la lista de archivos.</li>
+<li><strong>Metalink</strong> requiere una estructura formateada como</li>
+</ul>
+<pre><code>&lt;metalink&gt;
+    &lt;files&gt;
+        &lt;file name=&quot;[Scene-Name.zip]&quot;&gt;&lt;/file&gt;
+        &lt;file name =&quot;...
+        ...&lt;/file&gt;
+    &lt;/files&gt;
+&lt;/metalink&gt;
+</code></pre>
+<ul>
+<li><strong>KML</strong> requiere una estructura formateada como</li>
+</ul>
+<pre><code>&lt;kml&gt;
+    &lt;Document&gt;
+        &lt;Placemark&gt;
+            &lt;name&gt;[Scene Name]&lt;/name&gt;
+        &lt;/Placemark&gt;
+    &lt;/Document&gt;
+&lt;/kml&gt;
+</code></pre>
+<h2 id="baseline-opciones-de-busqueda"><em>Baseline</em> Opciones de búsqueda<a class="headerlink" href="#baseline-opciones-de-busqueda" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/Xp5bgvi2pEM" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li>Al seleccionar <strong>Búsqueda de línea base</strong> se proporciona un espacio para introducir el nombre de una escena de referencia y, a continuación, se buscarán todas las escenas secundarias que coincidan con el área de cobertura de la referencia.<ul>
+<li><em>Nota</em>: Si no hay escenas coincidentes, el botón RESULTADOS aparecerá atenuado y mostrará SIN RESULTADOS.</li>
+</ul>
+</li>
+<li>Una vez que se haya ingresado una escena de referencia, haga clic en <strong>BUSCAR</strong>. Los resultados de la búsqueda aparecerán debajo del mapa. Al hacer clic en el icono <em>Acercar a los resultados</em> en la parte superior de la columna de resultados de la izquierda, se mostrará la ubicación de la pila de escenas en el mapa.</li>
+<li>El gráfico muestra la relación temporal y perpendicular (espacial) de las escenas secundarias con la referencia.</li>
+<li>Al hacer clic en <strong>Criterios de línea de base...</strong> encima del gráfico, se abrirá la ventana de <em>Búsqueda de línea de base</em>. Con los controles deslizantes, las extensiones temporal y perpendicular se pueden ajustar para limitar el número de escenas secundarias que se muestran en los resultados.</li>
+<li>Para obtener más información sobre <strong>Línea de base</strong>, consulte la <a href="/vertex/baseline">Documentación de línea de base</a>.</li>
+</ul>
+<h2 id="sbas-opciones-de-busqueda"><em>SBAS</em> Opciones de búsqueda<a class="headerlink" href="#sbas-opciones-de-busqueda" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/bQPdtuobdcg" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li>Al seleccionar <strong>Búsqueda SBAS</strong> se proporciona un espacio para introducir el nombre de una escena de referencia y se buscarán todas las escenas secundarias que coincidan con el área de cobertura de la referencia. Es un método alternativo utilizado para el procesamiento de SAR interferométrico (InSAR), similar a la línea de base.<ul>
+<li><em>Nota</em>: Si no hay escenas coincidentes, el botón RESULTADOS aparecerá atenuado y mostrará SIN RESULTADOS.</li>
+</ul>
+</li>
+<li>Una vez que se haya ingresado una escena de referencia, haga clic en <strong>BUSCAR</strong>. Los resultados de la búsqueda aparecerán debajo del mapa. Al hacer clic en el icono <em>Acercar a los resultados</em> en la parte superior de la columna de resultados de la izquierda, se mostrará la ubicación de la pila de escenas en el mapa.</li>
+<li>El gráfico muestra la relación temporal y perpendicular (espacial) de las escenas secundarias con la referencia.<ul>
+<li>Los botones <strong>Acercar</strong> y <strong>Alejar</strong> están disponibles encima del gráfico.</li>
+<li>El botón <strong>Zoom to Fit</strong> garantiza que todos los pares sean visibles en el gráfico.</li>
+<li>Los botones <strong>Emparejamiento personalizado</strong> le permiten agregar o eliminar un par personalizado.</li>
+<li>El botón <strong>Criterios SBAS...</strong> le permite especificar criterios adicionales para refinar los resultados, como las fechas de inicio y finalización, la configuración de fechas estacionales y la configuración del umbral de superposición latitudinal.</li>
+</ul>
+</li>
+<li>Para obtener más información sobre <strong>SBAS</strong>, consulte la <a href="/vertex/sbas">documentación de SBAS</a>.</li>
+</ul>
+<h2 id="evento-opciones-de-busqueda"><em>Evento</em> Opciones de búsqueda<a class="headerlink" href="#evento-opciones-de-busqueda" title="Permanent link">#</a></h2>
+<ul>
+<li>Seleccionar <strong>Evento</strong> le permite ver y buscar los productos creados para el monitoreo de peligros.</li>
+<li><strong>Búsqueda de eventos</strong> le permite introducir un nombre de evento. Puede introducir el nombre completo o una cadena parcial.</li>
+<li><strong>Tipos de eventos</strong> le permite filtrar los tipos de eventos que deseas ver. Actualmente, hay eventos sísmicos y volcánicos.</li>
+<li><strong>Fecha de inicio</strong> y <strong>Fecha de finalización</strong> le permiten especificar un intervalo de fechas para los eventos.</li>
+<li>Se pueden encontrar opciones adicionales en <strong>Filtros</strong>.<ul>
+<li>Puede activar el interruptor <strong>Solo eventos activos</strong> para mostrar solo los eventos activos. El valor predeterminado es mostrar todos los eventos, incluidos los eventos inactivos.</li>
+<li>Puede ajustar el control deslizante <strong>Magnitud</strong> para filtrar los terremotos por el rango de magnitud deseado. <em>Nota:</em> Este filtro solo se aplica a eventos sísmicos. Si su búsqueda incluye volcanes, estos seguirán apareciendo en los resultados de búsqueda.</li>
+</ul>
+</li>
+<li>Para obtener más información sobre la búsqueda de <strong>Eventos</strong>, consulte la <a href="/vertex/events">Documentación de búsqueda de eventos</a>.</li>
+</ul>
+<h2 id="productos-on-demand-opciones-de-busqueda"><em>Productos On Demand</em> Opciones de búsqueda<a class="headerlink" href="#productos-on-demand-opciones-de-busqueda" title="Permanent link">#</a></h2>
+<ul>
+<li>La selección de <strong>Productos On Demand</strong> le permite ver los trabajos On Demand enviados. <em>Nota</em>: Debe iniciar sesión para acceder a esto. Si no ha iniciado sesión, esta opción de búsqueda aparecerá atenuada y no podrá seleccionarla.</li>
+<li><strong>Nombre del proyecto</strong> le permite limitar su búsqueda a un nombre de proyecto específico. A medida que comiences a escribir, las opciones de autocompletar estarán disponibles con los nombres de proyecto que hayas utilizado anteriormente.</li>
+<li><strong>Filtros de fecha</strong> Las fechas de búsqueda son opcionales, por lo que de forma predeterminada están vacías.  Si está buscando fechas específicas, puede definir el rango de fechas con más detalle en los campos <strong>Fecha de inicio</strong> y <strong>Fecha de finalización</strong>. <em>Nota</em>: Estas fechas filtran por la fecha de la escena, no por la fecha en que se procesó.</li>
+<li><strong>Escena de producto/origen</strong> le permite introducir el nombre del producto o el nombre de la escena de origen para limitar su búsqueda. Este campo también aceptará una cadena parcial de la escena del producto o de la escena de origen en lugar del nombre completo.</li>
+<li><strong>Estado del trabajo</strong> le permite limitar su búsqueda a estados específicos. Se permiten varias selecciones.</li>
+<li><em>Nota</em>: Los trabajos caducan 14 días después de enviarlos. Los productos caducados siguen apareciendo en los resultados de búsqueda, sin embargo, ya no puede descargarlos ni añadirlos a su carrito. Puede identificar fácilmente tus productos caducados por la etiqueta <strong>Caducado</strong> junto al nombre del producto.</li>
+<li>Para obtener más información sobre <strong>Productos On Demand</strong>, consulte la <a href="https://hyp3-docs.asf.alaska.edu/">documentación</a>.</li>
+</ul>
+<h2 id="conjuntos-de-datos-derivados-opciones-de-busqueda"><em>Conjuntos de datos derivados</em> Opciones de búsqueda<a class="headerlink" href="#conjuntos-de-datos-derivados-opciones-de-busqueda" title="Permanent link">#</a></h2>
+<ul>
+<li>La selección de <strong>Conjuntos de datos derivados</strong> le permite ver y descargar productos del catálogo de conjuntos de datos de ASF.</li>
+<li>Cada conjunto de datos enumerado incluye una breve descripción.</li>
+<li>Haga clic en <strong>Más información</strong> para ver más información sobre el conjunto de datos.</li>
+<li>Haga clic en <strong>Descargar</strong> para ver y descargar los productos disponibles para el conjunto de datos elegido. <em>Nota</em>: El enlace de descarga se abrirá en una nueva ventana del navegador.</li>
+<li>Para obtener más información sobre <strong>Conjuntos de datos derivados</strong>, consulte la <a href="/vertex/derived_datasets/">Documentación de conjuntos de datos derivados</a>.</li>
+</ul>
+<h2 id="resultados-de-la-busqueda">Resultados de la búsqueda<a class="headerlink" href="#resultados-de-la-busqueda" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/wp8Xt_Y4T84" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li>En Vertex, se considera que una <strong>escena</strong> es un paquete que contiene todos los <strong>archivos</strong>, o productos, que están relacionados con una ubicación y hora específicas.<ul>
+<li><em>Por ejemplo</em>, la columna de la izquierda del panel Resultados muestra las escenas devueltas de una búsqueda. La columna de la derecha muestra el contenido del archivo de cada escena.</li>
+</ul>
+</li>
+<li>El número máximo de archivos que devolverá una búsqueda se muestra en el botón BUSCAR.<ul>
+<li>Este número se puede ajustar haciendo clic en la flecha hacia abajo.</li>
+<li>También se muestra el número total de archivos que coinciden con los parámetros de búsqueda.</li>
+</ul>
+</li>
+<li>La barra de encabezado de Resultados.<ul>
+<li>El botón <strong>Zoom</strong> se acercará a la ubicación de todas las escenas en el mapa.</li>
+<li>El botón <strong>Lista</strong> añadirá todas las escenas a la lista de descarga.</li>
+<li>El botón <strong>On Demand</strong> te permitirá elegir qué escenas elegibles agregar a la lista On Demand para su posterior procesamiento.</li>
+<li>El botón <strong>Crudo</strong> mostrará u ocultará los archivos RAW. <em>Nota</em>: Este botón solo se aplica a las escenas de Sentinel-1.</li>
+<li>El botón <strong>Exportar</strong> te permitirá exportar datos o metadatos de todas las escenas de los resultados.</li>
+<li>El botón <strong>Caducado</strong> mostrará u ocultará los archivos On Demand caducados. <em>Nota</em>: Este botón solo está disponible en el tipo de búsqueda <strong>Productos On Demand</strong>.</li>
+<li><em>Nota</em>: No todos los botones están disponibles en todos los tipos de búsqueda.</li>
+</ul>
+</li>
+<li>La columna <strong>Escenas</strong> (izquierda).<ul>
+<li>Haga clic en el icono del carrito junto al nombre de una escena para agregar todos los archivos de la escena a la lista de descarga. El carrito cambia de apariencia cuando se hace esto.</li>
+<li>Haga clic en el icono de zoom junto al nombre de una escena para acercarse a la ubicación de la escena en el mapa.</li>
+</ul>
+</li>
+<li>Para ver más información sobre una escena, haga clic en la escena en la columna de la izquierda y se completarán las columnas <strong>Detalle de escena</strong> y <strong>Archivos</strong>.<ul>
+<li>La columna <strong>Detalle de la escena</strong> (centro) proporciona una descripción más detallada de la escena, incluyendo <em>Fecha/Hora de inicio</em>, <em>Modo de haz</em>, <em>Trayectoria</em>, <em>Fotograma</em>, <em>Dirección de vuelo</em>, <em>Polarización</em>, <em>Órbita absoluta</em> y una imagen de exploración (si está disponible). No todas las escenas tendrán toda la información adicional.<ul>
+<li>El botón <strong>Herramienta de línea base</strong> abre la herramienta Línea base ASF, que se utiliza para crear Pilas InSAR.</li>
+<li>El botón <strong>Herramienta SBAS</strong> abre la herramienta ASF SBAS, que es otro método para crear Pilas InSAR.</li>
+<li>El botón <strong>Más como esto</strong> crea una búsqueda basada en la ruta y el fotograma de la escena seleccionada.
+<div class="video-container"><iframe src="https://www.youtube.com/embed/h7vmrcpMd60" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></li>
+<li>El botón <strong>Citar</strong> abre una nueva ventana con una guía de citas para trabajos publicados que utilizan datos, imágenes o herramientas a las que se accede a través de ASF.</li>
+<li><strong>Descargar esta imagen</strong> descarga la imagen de navegación.</li>
+<li>El icono del ojo con la etiqueta <strong>Abrir en el visor de imágenes</strong> abre una ventana de visualización de exploración más grande.<ul>
+<li>En el visor de exploración, <strong>zoom</strong> con los botones <strong>+</strong> o <strong>-</strong>. También puede hacer zoom y desplazarse con el ratón.</li>
+<li>Haga clic o desplácese por las miniaturas de la parte inferior para ver otras imágenes de exploración de las escenas devueltas por la búsqueda.</li>
+<li>De forma predeterminada, la casilla <strong>Mostrar solo escenas con una imagen de exploración</strong> está marcada. Puede desmarcar esta opción para ver todas las escenas devueltas por su búsqueda. Las escenas sin una imagen de exploración mostrarán una lista en miniatura <em>No hay exploración disponible</em>.</li>
+<li>Los metadatos de la escena se muestran en el lado derecho de la ventana del visor de exploración.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>La columna <strong>Archivos</strong> (derecha) muestra una lista de archivos disponibles para la escena seleccionada actualmente. Puede descargar archivos inmediatamente o agregarlos a su lista de descarga haciendo clic en el icono correspondiente.<ul>
+<li>Al hacer clic en la flecha derecha frente al nombre de un archivo (producto), se expandirá el archivo para mostrar los archivos auxiliares incluidos. Estos archivos pueden descargarse individualmente o añadirse a la lista de descarga.<ul>
+<li>Debe estar firmado en Vertex para que esta función funcione.</li>
+<li>Esta función no está disponible para todos los conjuntos de datos.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="on-demand">On Demand<a class="headerlink" href="#on-demand" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/AxhYMBzycuY" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<ul>
+<li>Al hacer clic en el icono de <strong>tres casillas</strong> en el encabezado, etiquetado como <strong>On Demand</strong>, se mostrará una lista desplegable de opciones.</li>
+<li><strong>On Demand Queue</strong> abrirá la lista On Demand.<ul>
+<li>Los diferentes Los tipos de trabajos de la lista están separados por pestañas en la parte superior de la lista. Los tipos de trabajo disponibles actualmente son <strong>RTC GAMMA</strong>, <strong>InSAR GAMMA</strong> y <strong>autoRIFT</strong>. Puede hacer clic en una pestaña para seleccionarla. La pestaña seleccionada está resaltada.</li>
+<li>Para <strong>RTC GAMMA</strong> y <strong>En los trabajos de GAMMA</strong> de SAR, hay opciones de procesamiento adicionales disponibles.  Las opciones que seleccione se aplicarán a todos los archivos de ese tipo de trabajo en la lista.<ul>
+<li>Puede pasar el cursor sobre cada opción para mostrar una información sobre herramientas con detalles sobre la opción.</li>
+</ul>
+</li>
+<li>Elija la clasificación deseada con los cuadros desplegables <strong>Criterios de clasificación</strong> y <strong>Orden de clasificación</strong>.<ul>
+<li>En <strong>Criterios de ordenación</strong>, puede optar por ordenar los archivos por <em>Fecha de inicio</em> del archivo o por <em>Fecha de adición</em> a la lista.</li>
+<li>En <strong>Orden de clasificación</strong>, puede optar por ordenar los archivos por <em>Más reciente</em> o más reciente, o por <em>Más antiguo</em>.</li>
+</ul>
+</li>
+<li>La lista de archivos que ha agregado a su lista se muestra debajo de las opciones. La X le permite eliminar cualquier archivo que desee de la lista.</li>
+<li><strong>Borrar</strong> mostrará una lista de algunas opciones para borrar archivos de la lista. Puede optar por borrar una pestaña individual o puede elegir <strong>Borrar todos los tipos de procesamiento</strong> para borrar todos los archivos de la lista. Si elige borrar todos los archivos, se mostrará la opción <em>Restaurar</em> para permitirle deshacer esta acción.</li>
+<li>El número de trabajos restantes se muestra en la parte inferior de la lista. Hay 1.000 trabajos asignados a cada usuario al mes. Si tiene demasiados trabajos en la lista, se mostrará un mensaje que indica el número de trabajos adicionales en la parte superior de la lista. El botón <strong>Enviar</strong> aparecerá atenuado.</li>
+<li>Cuando esté satisfecho con sus selecciones, haga clic en <strong>Enviar trabajos</strong> en la parte inferior. Esto mostrará la ventana Envío de revisión.<ul>
+<li>El campo <strong>Nombre del proyecto</strong> le permite crear un nombre para los archivos que desea enviar para su procesamiento. El límite de caracteres es de 20. Este campo es opcional.</li>
+<li>Puede seleccionar o anular la selección de las casillas de verificación para enviar solo los tipos de trabajo que desee.</li>
+<li>Seleccione <strong>Cancelar</strong> para volver a la lista sin enviar ningún archivo para su procesamiento.</li>
+<li>Haga clic en <strong>Enviar</strong> para enviar sus trabajos. <em>Nota:</em> El botón Enviar mostrará el número de trabajos que está enviando.</li>
+<li>Si hay algún error, como la falta de cobertura DEM, se mostrará un mensaje de error.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Productos enviados</strong> cambiará al tipo de búsqueda Productos On Demand y mostrará los productos enviados.</li>
+<li><strong>On Demand (HyP3) Docs</strong> te enviará a la <a href="https://hyp3-docs.asf.alaska.edu/">Documentación On Demand</a></li>
+<li><em>Nota</em>: Debe iniciar sesión para ver tus productos enviados y enviar trabajos desde la On Demand.</li>
+</ul>
+<h2 id="lista-de-descargas">Lista de descargas<a class="headerlink" href="#lista-de-descargas" title="Permanent link">#</a></h2>
+<p><div class="video-container"><iframe src="https://www.youtube.com/embed/cRjqbLNv4Aw" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div></p>
+<p>La funcionalidad mejorada de la lista de descarga ya está disponible en el navegador Google Chrome. Consulte <a href="/vertex/manual/#google-chrome-browser">a continuación</a> para obtener más información.</p>
+<ul>
+<li>Al hacer clic en el <strong>icono del carrito</strong> en el encabezado, etiquetado como <strong>Descargas</strong>, se mostrará el contenido de su lista de descarga actual.<ul>
+<li>Dentro de la lista de descarga, se muestra la lista de archivos que ha seleccionado para descargar con información básica sobre cada archivo, como el tipo y el tamaño del archivo.<ul>
+<li>Los ID de archivo (nombres) se pueden copiar con el icono <strong>copiar</strong>.</li>
+<li>Los archivos se pueden descargar individualmente con el icono de <strong>nube</strong>. También puede hacer clic con el botón derecho para guardar o copiar la URL de descarga.</li>
+<li>Los elementos se pueden eliminar de la lista con la <strong>X</strong>.</li>
+</ul>
+</li>
+<li><strong>Borrar</strong> borrará todos los archivos de la lista. Se mostrará la opción <em>Restaurar</em> para permitirle deshacer esta acción.</li>
+<li><strong>Copiar ID de archivo</strong> copiará los nombres de archivo de todos los archivos de la lista para usarlos en otro lugar. Por ejemplo, esta lista podría pegarse en la ventana <em>Búsqueda de lista</em>.</li>
+<li><strong>Copiar URLs</strong> copiará las URLs de descarga de todos los archivos de la lista.</li>
+<li><strong>Descarga de datos</strong> se utiliza para descargar varios productos, ya sea con el <em>Script de descarga de Python (.py)</em> o <em>Metalink (metalink)</em> opción de archivo.</li>
+<li><strong>Descarga de metadatos</strong> se utiliza para exportar el contenido de la lista de descarga a un archivo <em>CSV</em>, <em>KML</em> o <em>GeoJSON</em>. Los archivos <em>KML</em> y <em>GeoJSON</em> proporcionados por esta característica son compatibles con la función <em>Importación de búsqueda geográfica</em>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="navegador-google-chrome">Navegador Google Chrome<a class="headerlink" href="#navegador-google-chrome" title="Permanent link">#</a></h3>
+<p>La funcionalidad mejorada de la lista de descarga está disponible en el navegador Google Chrome. Tenga en cuenta que esta funcionalidad mejorada no es compatible con el modo incógnito.</p>
+<ul>
+<li>Haga clic en el <strong>icono del carrito</strong> en el encabezado, con la etiqueta <strong>Descargas</strong> para abrir la lista de descargas.<ul>
+<li>Al lado de cada archivo, puede hacer clic en el icono de la <strong>nube</strong> para comenzar la descarga.<ul>
+<li>A medida que comienza la descarga, un indicador de progreso enumera el porcentaje descargado. Una vez que el La descarga se ha completado, el icono aparece como una <strong>marca de verificación</strong> para indicar que el archivo se ha descargado.</li>
+<li>Mientras se descarga el archivo, puede hacer clic en el indicador de progreso para detener la descarga.</li>
+</ul>
+</li>
+<li>En <strong>Descarga de datos</strong>, puede seleccionar <strong>Descargar todo</strong>. Esto descargará 3 archivos a la vez hasta que se hayan descargado todos los productos de su carrito. Se mostrarán los mismos indicadores de progreso y marcas de verificación para informarle sobre el estado de cada descarga en su lista.<ul>
+<li>Al hacer clic en <strong>Descargar todo</strong>, aparecerá un cuadro de diálogo:<ol>
+<li>Navegue a la carpeta donde desea guardar los archivos y haga clic en <em>Seleccionar</em>.</li>
+<li>Haga clic en <em>Ver archivos</em> para permitir que la descarga continúe.</li>
+<li>Haga clic en <em>Guardar cambios</em> para guardar las preferencias de la carpeta de descarga. Esto persistirá mientras la ventana del navegador de vértices permanezca abierta.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>Si <strong>borra</strong> los productos de la lista, se restablecerán los indicadores de progreso y finalización de la descarga. Puede volver a añadir los productos a su lista si lo desea.</li>
+<li><em>Nota</em>: Debe iniciar sesión para descargar archivos. Si no ha iniciado sesión, cuando haga clic para iniciar una descarga, se le redirigirá primero a la página de inicio de sesión.</li>
+</ul>
+</li>
+</ul>
+<h2 id="otras-opciones-del-vertex">Otras opciones del Vertex<a class="headerlink" href="#otras-opciones-del-vertex" title="Permanent link">#</a></h2>
+<ul>
+<li>En la esquina superior izquierda del mapa, hay botones que te permiten cambiar su <strong>proyección de mapa</strong>, <strong>zoom</strong> y <strong>Vermapa</strong>. <em>Nota:</em> Los controles de mapa disponibles varían según el tipo de búsqueda.
+<div class="video-container"><iframe src="https://www.youtube.com/embed/qrUnsbZTVnA" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div><ul>
+<li>De forma predeterminada, el mapa está en proyección ecuatorial. Puede hacer clic en <strong>Ver mapa</strong> y seleccionar <strong>Ver mapa del Ártico</strong> o <strong>Ver mapa de la Antártida</strong> para cambiar la proyección del mapa. Haga clic en <strong>Ver mapa ecuatorial</strong> para volver a la proyección ecuatorial.</li>
+<li>Puede hacer clic en los iconos <strong>Acercar</strong> o <strong>Alejar</strong> para ajustar su zoom.</li>
+<li>La capa de mapa predeterminada es satélite. Puede hacer clic en el botón <strong>Capas</strong> y seleccionar <strong>Vista de satélite</strong> o <strong>Vista de calle</strong> para cambiar la capa del mapa.<ul>
+<li>Puede hacer clic en <strong>Mapa general</strong> para agregar un mapa general en la esquina superior derecha del mapa. Vuelva a hacer clic en él para desactivar el mapa de vista general.</li>
+<li>Puede hacer clic en <strong>Líneas de cuadrícula</strong> para agregar una superposición de retícula al mapa. Vuelva a hacer clic en él para desactivar la superposición. <em>Nota</em>: Actualmente, esto solo está disponible en la vista de mapa ecuatorial.</li>
+</ul>
+</li>
+<li>Puede hacer clic en <strong>Opacidad</strong> y ajustar el control deslizante como desee para cambiar la opacidad de las imágenes de navegación que se muestran en el mapa.</li>
+</ul>
+</li>
+<li>Haga clic en la <strong>flecha hacia abajo</strong> en la <strong>Búsqueda</strong><ul>
+<li><strong>Borrar búsqueda</strong> borrará todos los parámetros de búsqueda que se hayan establecido, excepto el tipo de búsqueda y el conjunto de datos.</li>
+<li><strong>Búsquedas guardadas</strong> abre un submenú.
+<div class="video-container"><iframe src="https://www.youtube.com/embed/io4OQumWrJA" style="position: relative; width: 50%; max-width: 400px; min-width: 300px; height: 25vw; max-height: 250px; min-height: 175px" frameborder="0" allowfullscreen></iframe></div><ul>
+<li><strong>Guardar búsqueda</strong> le permite nombrar y guardar su búsqueda actual.</li>
+<li><strong>Ver búsquedas...</strong> abre una lista de búsquedas que ha nombrado y guardado. Haga clic en el icono de la lupa para cargar la configuración de búsqueda.</li>
+<li><strong>Historial de búsquedas...</strong> abre una lista de sus 10 últimas búsquedas que no fueron nombradas ni guardadas. Haga clic en el icono de la lupa para cargar la configuración de búsqueda.</li>
+</ul>
+</li>
+<li><strong>Filtros guardados</strong> abre un submenú.<ul>
+<li><strong>Guardar filtros</strong> le permite guardar su conjunto de filtros actual.</li>
+<li><strong>Ver filtros...</strong> le permite ver sus conjuntos de filtros guardados. Haga clic en Aplicar filtros para aplicarlos a su búsqueda actual.</li>
+</ul>
+</li>
+<li><strong>Compartir búsqueda</strong> abre un submenú.<ul>
+<li><strong>Copiar enlace de búsqueda</strong> copiará todos los parámetros de búsqueda que se hayan establecido en la búsqueda actual como una URL. A continuación, la URL se puede pegar en la barra de búsqueda del navegador para volver a crear la búsqueda exactamente, o pegado en un documento y guardado para volver a crear la búsqueda más tarde.</li>
+<li><strong>Compartir con correo electrónico</strong> abrirá un nuevo correo electrónico con la URL de la búsqueda para enviarlo a otras personas.</li>
+</ul>
+</li>
+<li><strong>Ayuda y tutoriales</strong> proporciona demostraciones ilustradas y en video sobre los pasos básicos para configurar una búsqueda y ver los resultados.<ul>
+<li><em>Nota</em>: Debe estar firmado en Vertex para que estas opciones estén disponibles.</li>
+</ul>
+</li>
+<li><strong>Exportar</strong> abre un submenú.<ul>
+<li><strong>Exportar Python</strong> proporcionará un fragmento de código de Python para recrear la búsqueda actual utilizando el paquete de búsqueda de Python asf_search. También proporciona un enlace a la documentación asf_search.</li>
+<li><strong>Exportar API</strong> proporcionará la URL de la API para volver a crear la búsqueda actual usando el comando SearchAPI. También proporciona un vínculo a la documentación de SearchAPI.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Haga clic en <strong>Ayuda</strong> para ver opciones de ayuda adicionales.<ul>
+<li><strong>Mira nuestros tutoriales</strong> proporciona demostraciones ilustradas y en video sobre cómo usar Vertex.</li>
+<li><strong>Lea nuestra Guía del usuario</strong> abre la documentación de Vertex en una nueva pestaña.</li>
+<li><strong>Lea nuestro On Demand Guide</strong> abre la documentación de On Demand en una nueva pestaña.</li>
+<li><strong>Buscar datos SAR mediante la API de ASF</strong> abre el archivo SearchAPI en una nueva pestaña.</li>
+<li><strong>Más información sobre la PPA y el SAR</strong> abre el sitio web de la PPA en una nueva pestaña.</li>
+<li><strong>Estadísticas y repositorio de GitHub</strong> proporciona enlaces a nuestro repositorio de GitHub Vertex.</li>
+</ul>
+</li>
+<li>Haga clic en el icono <strong>Iniciar sesión</strong> una vez que haya iniciado sesión para mostrar las opciones de usuario.<ul>
+<li><strong>Búsquedas guardadas</strong> abre una lista de búsquedas que ha nombrado y guardado. Haga clic en el icono de la lupa para cargar la configuración de búsqueda.</li>
+<li><strong>Historial de búsquedas</strong> abre una lista de sus 10 últimas búsquedas que no fueron nombradas ni guardadas. Haga clic en el icono de la lupa para cargar la configuración de búsqueda.</li>
+<li><strong>Filtros guardados</strong> abre una lista de filtros que ha guardado. Haga clic en <em>Aplicar filtros</em> para aplicar el conjunto de filtros seleccionado a su búsqueda.</li>
+<li><strong>Preferencias</strong> abre una ventana que le permite establecer las preferencias de búsqueda para el idioma, el tema, el dataset, los resultados máximos, la capa de mapa y los ajustes preestablecidos de filtro predeterminados. Estas preferencias se guardarán y se aplicarán a futuras búsquedas.</li>
+</ul>
+</li>
+<li><em>Nota</em>: <strong>Búsquedas guardadas</strong>, <strong>Filtros guardados</strong> e <strong>Historial de búsqueda</strong> están disponibles tanto en el menú Iniciar sesión como en el menú de flecha hacia abajo del botón Buscar.</li>
+<li>Haga clic en el campo <strong>Buscar en todos los ASF</strong> en la barra de encabezado gris para realizar una búsqueda. Las entradas en este campo buscarán en todos los sitios web de ASF.<ul>
+<li>También puede hacer clic en el icono de <strong>micrófono</strong> si prefieres utilizar la búsqueda por voz.</li>
+<li>A medida que escribas o hables, los resultados de su búsqueda se mostrarán en una lista debajo del campo. Al hacer clic en un resultado de la lista, se abrirá una nueva pestaña del navegador.</li>
+<li>Puede hacer clic en el icono de <strong>lupa</strong> para expandir los resultados de la búsqueda. Esto se abrirá en la misma ventana del navegador. Para cerrar y volver a Vértice, haga clic en la <strong>X</strong> cerca de la parte superior derecha de la pantalla.</li>
+</ul>
+</li>
+</ul>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    <div class="md-footer-nav">
+      <nav
+        class="md-footer-nav__inner md-grid"
+        aria-label="footer.title"
+      >
+
+        <!-- Link to previous page -->
+        
+          <a href="../../" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Inicio
+              </div>
+            </div>
+          </a>
+        
+
+        <!-- Link to next page -->
+        
+          <a href="../baseline/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Baseline
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+
+      <!-- ASF Footer information-->
+      <div class="md-grid">
+        <div class="md-footer-container md-grid">
+          <div class="md-footer-container-item">
+            <img src="/assets/images/asf-logo-blue-nav.png"
+                 alt="ASF Logo"
+                 class="md-footer-logo">
+          </div>
+          <div class="md-footer-container-item md-about-us">
+            <h1>About Us</h1>
+            <p>
+              The Alaska Satellite Facility downlinks, processes, archives, and
+              distributes remote-sensing data to scientific users around the world.
+              ASF’s mission is to make remote-sensing data accessible.
+            </p>
+            <p>
+              <a href="https://asf.alaska.edu/about-asf/" target="_blank">
+                Read More
+              </a>
+            </p>
+          </div>
+          <div class="md-footer-container-item md-contact-info">
+            <h1>Contact Info</h1>
+            <p>
+              Alaska Satellite Facility<br>
+              2156 Koyukuk Drive<br>
+              Fairbanks, AK 99775<br>
+              (907) 474-5041<br>
+              uso@asf.alaska.edu<br>
+            </p>
+            <p>
+              <a href="javascript:feedback.showForm();">Send Us A Message</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        <div class="md-footer-copyright__highlight">
+          
+            &copy; <span id="copyright-year"></span>
+            <script type="text/javascript">
+                current_year = new Date().getFullYear();
+                document.getElementById("copyright-year").innerHTML=current_year;
+            </script>
+            ASF – <a href="#__consent">Change cookie settings</a>
+
+          
+          <!-- ASF non-discrimination disclaimer-->
+          &nbsp;&nbsp;
+          <a href="https://www.alaska.edu/nondiscrimination"
+             target="_blank"
+             class="md-footer-copyright-link">
+            UA is an AA/EO employer and educational institution and prohibits
+            illegal discrimination against any individual
+          </a>
+        </div>
+      </div>
+
+      <!-- Social links -->
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links in footer -->
+<div class="md-footer-social">
+    
+    
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+
+
+
+
+
+  
+
+<h4>Cookie Consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" checked>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="asf_vertex" checked>
+          <span class="task-list-indicator"></span>
+          ASF Vertex
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+        <script src="../../../javascripts/consent.js"></script>
+      
+    
+  </body>
+</html>

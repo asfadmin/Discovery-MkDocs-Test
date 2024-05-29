@@ -10,6 +10,20 @@ extra:
   analytics:
     - provider: google
     - property: G-440184110
+  consent:
+    cookies:
+      analytics: Google Analytics
+    title: Cookie Consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    actions:
+      - accept
+
+extra_javascript:
+  - javascripts/consent.js
 
 theme:
     name: material
@@ -19,7 +33,9 @@ theme:
     analytics:
       gtag: G-440184110
 
-copyright: Copyright @ Alaska Satellite Facility
+copyright: >
+  ASF –
+  <a href="#__consent">Change cookie settings</a>
 
 markdown_extensions:
   - toc:

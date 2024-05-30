@@ -12,7 +12,7 @@ extra:
     - property: G-440184110
   consent:
     cookies:
-      analytics: Google Analytics
+      analytics: Analytics
     title: Cookie Consent
     description: >- 
       We use cookies to recognize your repeated visits and preferences, as well

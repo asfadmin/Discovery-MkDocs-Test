@@ -22,9 +22,6 @@ extra:
     actions:
       - accept
 
-extra_javascript:
-  - javascripts/consent.js
-
 theme:
     name: material
     custom_dir: asf_theme

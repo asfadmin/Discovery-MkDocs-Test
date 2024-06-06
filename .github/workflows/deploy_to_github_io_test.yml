@@ -10,6 +10,7 @@ on:
 
 jobs:
   build_and_deploy:
+    environment: 'github-pages'
     name: Build site and deploy
     runs-on: "ubuntu-latest"
     steps:
@@ -36,7 +37,7 @@ jobs:
           deactivate
 
       - name: deploy to github.io
-        if: github.ref == 'refs/heads/prod'
+        if: github.ref == 'refs/heads/test'
         shell: bash -l {0}
         run: |
           echo $PWD

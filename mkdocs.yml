@@ -112,6 +112,7 @@ nav:
       - ASFSearchOptions: asf_search/ASFSearchOptions.md
       - ASFSearchResults: asf_search/ASFSearchResults.md
       - ASFSession: asf_search/ASFSession.md
+    - Best Practices: asf_search/BestPractices.md
     - Exceptions: asf_search/exceptions.md
     - What's New: https://github.com/asfadmin/Discovery-asf_search/blob/master/CHANGELOG.md
   - ASF Search API:

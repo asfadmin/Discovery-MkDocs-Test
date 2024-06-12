@@ -48,7 +48,34 @@ Other metadata is available through the properties attribute:
 - kml
 
 ### General performance
-Placeholder
+When searching for multiple products it's faster to search all products at once in a single search, rather than running a separate query for each product, which involves multiple https requests.
+
+``` python
+import asf_search as asf
+
+granules = ['S1B_IW_GRDH_1SDV_20161124T032008_20161124T032033_003095_005430_9906', 'S1-GUNW-D-R-087-tops-20190301_20190223-161540-20645N_18637N-PP-7a85-v2_0_1', 'ALPSRP111041130']
+
+# THIS IS SLOW AND MAKES MORE NETWORK REQUESTS THAN NECESSARY
+batched_results = ASFSearchResults([])
+for granule in granules:
+    unbatched_response = asf.granule_search(granules_list=granule)
+    batched_results.extend(batched_results)
+
+# THIS WILL ALWAYS BE FASTER
+fast_results = asf.granule_search(granules_list=granules)
+```
+
+If you need to perform intermediate operations on large results (such as writing metadata to a file or calling some external process on results), use the `search_generator()` method to operate on results as they're returned page-by-page (default page size is 250).
+
+``` python
+import asf_search as asf
+
+opts = asf.ASFSearchOptions(platform=asf.DATASET.SENTINEL1, maxResults=1000)
+
+for page in asf.search_generator(opts=opts):
+    foo(page)
+```
+
 
 ### Differences between search types
 Placeholder
@@ -190,9 +217,58 @@ There are 2 additional fields in the `ASFProduct` objects: `temporalBaseline` an
 The reference scene is included in the stack and will always have a temporal and perpendicular baseline of 0.
 
 ### etc?
-Placeholder
 
-Anything else?
+## Platform vs Dataset
+asf-search provides 2 major keywords with subtle differences
+    - `platform`
+    - `dataset`
+
+`platform` maps to the `platform[]` cmr keyword, values like `Sentinel-1A`, `UAVSAR`, `ALOS`. A limitation of searching by 
+platform is that for platforms like `Sentinel-1A` there are a lot of Sentinel 1 derived product types (`OPERA-S1`, `SLC-BURST`). Given for every `SLC` product theres 27 additional `OPERA-S1` and `SLC-BURST` products this can lead to homogynous results depending on your search filters.
+
+The `dataset` keyword serves as a solution for this. Each "dataset" is a collection of concept-ids generally associated with commonly used datasets.
+
+``` python
+# At the time of writing will likely contain mostly `OPERA-S1` and/or `SLC-BURST` products
+platform_results = asf.search(dataset=asf.PLATFORM.SENTINEL1, maxResults=250) 
+
+# Will contain everything but `OPERA-S1` and/or `SLC-BURST` products
+dataset_results = asf.search(dataset=asf.DATASET.SENTINEL1, maxResults=250)
+
+# Will contain OPERA-S1 Products
+opera_results = asf.search(dataset=asf.DATASET.OPERA_S1, maxResults=250)
+
+# Will contain SLC-BURST products
+slc_burst_results = asf.search(dataset=asf.DATASET.SLC_BURST, maxResults=250)
+```
+
+## CMR UAT Host
+asf-search defaults to querying against the production cmr api, `cmr.earthdata.nasa.gov`.
+In order to use another cmr host, set the `host` keyword with `ASFSearchOptions`.
+
+``` python
+uat_opts = asf.ASFSearchOptions(host='cmr.uat.earthdata.nasa.gov', maxResults=250)
+uat_results = asf.search(opts=uat_opts)
+```
+
+## Campaign lists
+asf-search provides a built in method for searching for campaigns
+
+`asf.campaigns(platform=asf.PLATFORM.SENTINEL1A)`
+
+## CMR Keyword Aliasing
+asf-search aliases the following keywords behind the scenes with corresponding collection concept ids for improved search performance:
+- `platform`
+- `processingLevel`
+
+The Alias lists are updated as needed with each release, but if you're not finding expected results then the alias list may be out of date. In order to skip the aliasing step set the `collectionAlias` keyword to false with `ASFSearchOptions`
+
+``` python
+opts = asf.ASFSearchOptions(collectionAlias=False, maxResults=250)
+unaliased_results = asf.search(opts=opts)
+```
+
+**Please note, this will result in slower average search times.** If there are any results missing from new datasets please report it as an [issue in github](https://github.com/asfadmin/Discovery-asf_search/issues) with the concept id of the missing collection and the name.
 
 ## Download
 

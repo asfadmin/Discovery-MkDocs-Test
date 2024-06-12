@@ -419,6 +419,10 @@ To be more specific, we can use the `download_urls()` or `download_url()` method
     
     asf.download_url(url, session=session, path ='./', filename=fileName)
 
+### S3 URIs
+Some product types (Sentinel-1, BURST, OPERA, and NISAR) have s3 direct access uris. When available, they are accessible under
+`ASFProduct.properties['s3Urls']`.
+
 ### CMR Keywords Search Parameter
 You can also search for granules using `readable_granule_name` via pattern matching.
 

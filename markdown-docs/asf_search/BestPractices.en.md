@@ -48,12 +48,37 @@ Other metadata is available through the properties attribute:
 - kml
 
 ### General performance
-Placeholder
+When searching for multiple products it's faster to search all products at once in a single search, rather than running a separate query for each product, which involves multiple https requests.
+
+``` python
+import asf_search as asf
+
+granules = ['S1B_IW_GRDH_1SDV_20161124T032008_20161124T032033_003095_005430_9906', 'S1-GUNW-D-R-087-tops-20190301_20190223-161540-20645N_18637N-PP-7a85-v2_0_1', 'ALPSRP111041130']
+
+# THIS IS SLOW AND MAKES MORE NETWORK REQUESTS THAN NECESSARY
+batched_results = ASFSearchResults([])
+for granule in granules:
+    unbatched_response = asf.granule_search(granules_list=granule)
+    batched_results.extend(batched_results)
+
+# THIS WILL ALWAYS BE FASTER
+fast_results = asf.granule_search(granules_list=granules)
+```
+
+If you need to perform intermediate operations on large results (such as writing metadata to a file or calling some external process on results), use the `search_generator()` method to operate on results as they're returned page-by-page (default page size is 250).
+
+``` python
+import asf_search as asf
+
+opts = asf.ASFSearchOptions(platform=asf.DATASET.SENTINEL1, maxResults=1000)
+
+for page in asf.search_generator(opts=opts):
+    foo(page)
+```
+
 
 ### Differences between search types
-Placeholder
-
-This is already in the docs [here](/asf_search/searching/). Do we want to repeat it? 
+To see details on different search types, see the docs page on searching [here](/asf_search/searching/).
 
 ### Common Filters 
 Search options can be specified using kwargs, which also allows them to be handled using a dictionary:
@@ -111,10 +136,13 @@ The Opera dataset has both standard products and CalVal (calibration/validation)
 Please note that the CalVal products are treated as their own dataset in asf_search.
 Both can be found in the [constants list](https://github.com/asfadmin/Discovery-asf_search/blob/master/asf_search/constants/DATASET.py).
 
-### Others?
-Placeholder
+### SLC-Burst
+The SLC Burst dataset has both tiff and xml data associated with a single entry in cmr. To access the xml data,
+see the section on [downloading additional files](/asf_search/searching/#Downloading-additional-files).
 
-Do other datasets have specific-to-them search constraints, options, etc?
+`fullBurstID`, `relativeBurstID`, and `absoluteBurstID` are SLC Burst specific filters. For
+getting a temporal stack of products over a single burst frame use the `fullBurstID`, which is shared between
+all bursts over a single frame.
 
 ### Further Reading
 For more information on the constants and keywords available, see [this page](/asf_search/searching/#keywords).
@@ -162,10 +190,14 @@ It is generally preferred to "collapse" many small queries into fewer large quer
 
 Instead, combine your small queries into a single large query where possible, as shown above, and then post-process the results locally. `granule_search()` and `product_search()` can support very large lists, and will break them up internally when needed.
 
-## Secondardy Searches
-Placeholder
+### frame vs asfframe
+When using the `frame` keyword with certain platforms/datasets asf-search will implicitly swap to using the `asfframe` keyword instead at search time. The platforms/datasets this affects are:
+- 'SENTINEL-1A/B'
+- 'ALOS'
 
-What secondary searches are there, other than baseline stacking?
+In the query to CMR this means searching by the `FRAME_NUMBER` instead of `CENTER_ESA_FRAME` additional attribute.
+A way to avoid this on searches and use `CENTER_ESA_FRAME` with the above platforms/datasets is to use the `cmr_keywords` keyword, like so:
+`asf.search(platform=asf.PLATFORM.SENTINEL1, cmr_keywords=[('attribute[]', 'int,CENTER_ESA_FRAME,1001')], maxResults=250)`
 
 ### Stacking
 Once you have identified a result set or a product id, you may wish to build a baseline stack based on those results.
@@ -189,10 +221,59 @@ There are 2 additional fields in the `ASFProduct` objects: `temporalBaseline` an
 `perpendicularBaseline` describes the perpendicular offset in meters from the reference scene used the build the stack.
 The reference scene is included in the stack and will always have a temporal and perpendicular baseline of 0.
 
-### etc?
-Placeholder
+## etc?
 
-Anything else?
+### Platform vs Dataset
+asf-search provides 2 major keywords with subtle differences
+    - `platform`
+    - `dataset`
+
+`platform` maps to the `platform[]` cmr keyword, values like `Sentinel-1A`, `UAVSAR`, `ALOS`. A limitation of searching by 
+platform is that for platforms like `Sentinel-1A` there are a lot of Sentinel 1 derived product types (`OPERA-S1`, `SLC-BURST`). Given for every `SLC` product theres 27 additional `OPERA-S1` and `SLC-BURST` products this can lead to homogynous results depending on your search filters.
+
+The `dataset` keyword serves as a solution for this. Each "dataset" is a collection of concept-ids generally associated with commonly used datasets.
+
+``` python
+# At the time of writing will likely contain mostly `OPERA-S1` and/or `SLC-BURST` products
+platform_results = asf.search(dataset=asf.PLATFORM.SENTINEL1, maxResults=250) 
+
+# Will contain everything but `OPERA-S1` and/or `SLC-BURST` products
+dataset_results = asf.search(dataset=asf.DATASET.SENTINEL1, maxResults=250)
+
+# Will contain OPERA-S1 Products
+opera_results = asf.search(dataset=asf.DATASET.OPERA_S1, maxResults=250)
+
+# Will contain SLC-BURST products
+slc_burst_results = asf.search(dataset=asf.DATASET.SLC_BURST, maxResults=250)
+```
+
+### CMR UAT Host
+asf-search defaults to querying against the production cmr api, `cmr.earthdata.nasa.gov`.
+In order to use another cmr host, set the `host` keyword with `ASFSearchOptions`.
+
+``` python
+uat_opts = asf.ASFSearchOptions(host='cmr.uat.earthdata.nasa.gov', maxResults=250)
+uat_results = asf.search(opts=uat_opts)
+```
+
+### Campaign lists
+asf-search provides a built in method for searching for campaigns via platform.
+
+`asf.campaigns(platform=asf.PLATFORM.SENTINEL1A)`
+
+### CMR Keyword Aliasing
+asf-search aliases the following keywords behind the scenes with corresponding collection concept ids for improved search performance:
+- `platform`
+- `processingLevel`
+
+The Alias lists are updated as needed with each release, but if you're not finding expected results then the alias list may be out of date. In order to skip the aliasing step set the `collectionAlias` keyword to false with `ASFSearchOptions`
+
+``` python
+opts = asf.ASFSearchOptions(collectionAlias=False, maxResults=250)
+unaliased_results = asf.search(opts=opts)
+```
+
+**Please note, this will result in slower average search times.** If there are any results missing from new datasets please report it as an [issue in github](https://github.com/asfadmin/Discovery-asf_search/issues) with the concept id and name of the collection missing from the dataset.
 
 ## Download
 
@@ -209,8 +290,28 @@ If credentials for the hostname are found, the request is sent with HTTP Basic A
 ## Advanced Search Techniques
 Below you will find recommendations for advanced search techniques, such as ranges, subclassing, authentication, and the preferred method for large searches.
 
-### Cool range stuff
-Placeholder
+### Sentinel-1 & GroupID
+Sentinel-1 products as well as most Sentinel-1 derived datasets (OPERA-S1, SLC-Burst) have a group id associated with them.
+This means that getting the original source scene, or any product associated with that scene is as simple as using the `groupID`
+keyword in a search.
+
+``` python
+import asf_search as asf
+
+burst_name = 'S1_279916_IW1_20230418T162849_VV_A7E1-BURST'
+burst_granule = asf.search(granule_list=['S1_279916_IW1_20230418T162849_VV_A7E1-BURST'])[0]
+
+groupID = burst_granule.properties['groupID']
+
+# gets the parent SLC of the burst product
+parent_slc = asf.search(groupID=groupID, processingLevel=asf.PRODUCT_TYPE.SLC)[0]
+
+# gets all other SLC Bursts associated with the same parent SLC
+bursts_in_same_scene = asf.search(groupID=groupID, processingLevel=asf.PRODUCT_TYPE.BURST)
+
+# gets ALL Sentinel-1 products and derived products available for the parent scene
+all_products_for_scene = asf.search(groupID=groupID)
+```
 
 ### Subclassing
 `ASFProduct` is the base class for all search result objects.
@@ -342,6 +443,11 @@ To be more specific, we can use the `download_urls()` or `download_url()` method
     fileName = url.split('/')[-1]
     
     asf.download_url(url, session=session, path ='./', filename=fileName)
+
+### S3 URIs
+Some product types (Sentinel-1, BURST, OPERA, NISAR) have s3 direct access uris available. They are accessible under the `s3Urls` properties key, like so:
+
+`ASFProduct.properties['s3Urls']`.
 
 ### CMR Keywords Search Parameter
 You can also search for granules using `readable_granule_name` via pattern matching.

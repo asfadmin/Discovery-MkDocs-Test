@@ -1,0 +1,2413 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation for searching and processing ASF SAR data.">
+      
+      
+      
+      
+        <link rel="prev" href="../basics/">
+      
+      
+        <link rel="next" href="../tools/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-9.3.1">
+    
+    
+      
+        <title>Palabras Clave y Puntos Finales de la API de Búsqueda - ASF SAR Manual de Búsqueda de Datos</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/styles.css">
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/asf.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Google Analytics integration -->
+
+  
+
+<script type="application/javascript">
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+
+  /* Set up integration and send page view */
+  ga("create", "G-440184110", "docs.asf.alaska.edu")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", function() {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+
+  /* Send page view on document switch (instant loading, custom event) */
+  document.addEventListener("DOMContentSwitch", function() {
+    ga("send", "pageview", document.location.pathname)
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#palabras-clave-de-la-api-de-busqueda" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href="../../" title="ASF SAR Manual de Búsqueda de Datos" class="md-header__button md-logo" aria-label="ASF SAR Manual de Búsqueda de Datos" data-md-component="logo">
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/images/ASFLogo-Blue2.png" alt="logo" />
+
+    </a>
+
+    
+
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ASF SAR Manual de Búsqueda de Datos
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Palabras Clave y Puntos Finales de la API de Búsqueda
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Seleccionar idioma">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../api/keywords/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="es" class="md-select__link">
+              Español
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../" title="ASF SAR Manual de Búsqueda de Datos" class="md-nav__button md-logo" aria-label="ASF SAR Manual de Búsqueda de Datos" data-md-component="logo">
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Logo -->
+
+  <img src="../../../assets/images/ASFLogo-Blue2.png" alt="logo" />
+
+    </a>
+    ASF SAR Manual de Búsqueda de Datos
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Vertex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Vertex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Manual Vertex
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Manual Vertex
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vertex/manual/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guía de Inicio de Vertex
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vertex/baseline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Baseline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vertex/sbas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SBAS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vertex/events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Evento
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vertex/derived_datasets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conjuntos de Datos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../vertex/changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Novedades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.youtube.com/playlist?list=PLXluIEvp5ZzIWd0yNy-ANfdwWjCD1hInA" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Videos Tutoriales
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/asfadmin/Discovery-SearchUI" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Código Fuente
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://hyp3-docs.asf.alaska.edu" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Procesamiento Personalizado
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Paquete de Búsqueda en Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Paquete de Búsqueda en Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Básicos
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/searching/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Búsqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/downloading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Descarga
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clases
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Clases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFProduct/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFProduct
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFSearchOptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFSearchOptions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFSearchResults/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFSearchResults
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/ASFSession/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASFSession
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/BestPractices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Best Practices
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../asf_search/exceptions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Excepciones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/asfadmin/Discovery-asf_search/blob/master/CHANGELOG.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Novedades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    API de Búsqueda ASF
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API de Búsqueda ASF
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Básicos de la API de búsqueda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Palabras Clave y Puntos Finales de la API de Búsqueda
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Palabras Clave y Puntos Finales de la API de Búsqueda
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#punto-de-acceso-de-busqueda" class="md-nav__link">
+    Punto de Acceso de Búsqueda
+  </a>
+  
+    <nav class="md-nav" aria-label="Punto de Acceso de Búsqueda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametros-del-conjunto-de-datos" class="md-nav__link">
+    Parámetros del Conjunto de Datos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-geoespaciales" class="md-nav__link">
+    Parámetros Geoespaciales
+  </a>
+  
+    <nav class="md-nav" aria-label="Parámetros Geoespaciales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacion-de-formas" class="md-nav__link">
+    Validación de Formas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-temporales" class="md-nav__link">
+    Parámetros Temporales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-de-resultados" class="md-nav__link">
+    Parámetros de Resultados
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-baseline" class="md-nav__link">
+    Punto Final de Baseline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-validacion-wkt" class="md-nav__link">
+    Punto Final de Validación WKT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-archivos-geoespaciales-a-wkt" class="md-nav__link">
+    Punto Final de Archivos GeoEspaciales a WKT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-del-analizador-de-fechas" class="md-nav__link">
+    Punto Final del Analizador de Fechas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-lista-de-misiones" class="md-nav__link">
+    Punto Final de Lista de Misiones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-salud" class="md-nav__link">
+    Punto Final de Salud
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Herramientas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Solución de Problemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cookbook/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Recetario
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Novedades
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Detalles del Producto
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Detalles del Producto
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/using_ASF_data/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Utilizando Datos de ASF
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/palsar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Productos ALOS PALSAR
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../datasets/events_about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Eventos (SARVIEWS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://asf.alaska.edu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ASF Web
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#punto-de-acceso-de-busqueda" class="md-nav__link">
+    Punto de Acceso de Búsqueda
+  </a>
+  
+    <nav class="md-nav" aria-label="Punto de Acceso de Búsqueda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parametros-del-conjunto-de-datos" class="md-nav__link">
+    Parámetros del Conjunto de Datos
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-geoespaciales" class="md-nav__link">
+    Parámetros Geoespaciales
+  </a>
+  
+    <nav class="md-nav" aria-label="Parámetros Geoespaciales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacion-de-formas" class="md-nav__link">
+    Validación de Formas
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-temporales" class="md-nav__link">
+    Parámetros Temporales
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parametros-de-resultados" class="md-nav__link">
+    Parámetros de Resultados
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-baseline" class="md-nav__link">
+    Punto Final de Baseline
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-validacion-wkt" class="md-nav__link">
+    Punto Final de Validación WKT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-archivos-geoespaciales-a-wkt" class="md-nav__link">
+    Punto Final de Archivos GeoEspaciales a WKT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-del-analizador-de-fechas" class="md-nav__link">
+    Punto Final del Analizador de Fechas
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-lista-de-misiones" class="md-nav__link">
+    Punto Final de Lista de Misiones
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#punto-final-de-salud" class="md-nav__link">
+    Punto Final de Salud
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="palabras-clave-de-la-api-de-busqueda">Palabras Clave de la API de Búsqueda<a class="headerlink" href="#palabras-clave-de-la-api-de-busqueda" title="Permanent link">#</a></h1>
+<p>Considere usar nuestro nuevo paquete de Python, asf_search. asf_search puede ser utilizado para realizar búsquedas en el catálogo de ASF, y ofrece funcionalidad básica y soporte de descarga. Además, se proporcionan numerosas constantes para facilitar el proceso de búsqueda. Actualmente, proporcionamos constantes para plataforma, instrumento, modo de haz, dirección de vuelo, polarización y nivel de procesamiento. Se puede encontrar más información <a href="/asf_search/basics">aquí</a>.</p>
+<p>Las palabras clave se utilizan para encontrar los datos deseados. Utilice tantas o tan pocas palabras clave como necesite. A continuación se enumeran las palabras clave disponibles y sus descripciones para cada punto de acceso de la API de Búsqueda. Las palabras clave son sensibles a mayúsculas y minúsculas.</p>
+<p><em>Nota:</em> Cualquier error se devolverá en formato JSON.</p>
+<h2 id="punto-de-acceso-de-busqueda">Punto de Acceso de Búsqueda<a class="headerlink" href="#punto-de-acceso-de-busqueda" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/services/search/param">https://api.daac.asf.alaska.edu/services/search/param</a></p>
+<h3 id="parametros-del-conjunto-de-datos">Parámetros del Conjunto de Datos<a class="headerlink" href="#parametros-del-conjunto-de-datos" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><span style="color: #236192; font-size: 20px;">dataset</span></p>
+<ul>
+<li>Esta es la palabra clave alternativa preferida para búsquedas de 'plataforma'.</li>
+<li>Plataforma de teledetección que adquirió los datos. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>dataset=SENTINEL-1</li>
+<li>dataset=OPERA-S1</li>
+<li>dataset=AIRSAR,UAVSAR</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li><a href="/datasets/using_ASF_data/#sentinel-1">SENTINEL-1</a>, <a href="/datasets/using_ASF_data/#sentinel-1-bursts">SLC-BURST</a>, <a href="/datasets/using_ASF_data/#opera-sentinel-1">OPERA-S1</a>, <a href="/datasets/using_ASF_data/#alos-palsar">ALOS PALSAR</a>, <a href="/datasets/using_ASF_data/#alos-avnir-2">ALOS AVNIR-2</a>, <a href="/datasets/using_ASF_data/#sir-c">SIR-C</a>, <a href="/datasets/using_ASF_data/#aria-s1-gunw">ARIA S1 GUNW</a>, <a href="/datasets/using_ASF_data/#smap-soil-moisture-active-passive">SMAP</a>, <a href="/datasets/using_ASF_data/#uavsar">UAVSAR</a>, <a href="/datasets/using_ASF_data/#radarsat-1">RADARSAT-1</a>, <a href="/datasets/using_ASF_data/#ers">ERS</a>, <a href="/datasets/using_ASF_data/#jers">JERS-1</a>, <a href="/datasets/using_ASF_data/#airsar">AIRSAR</a>, <a href="/datasets/using_ASF_data/#seasat">SEASAT</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">platform</span></p>
+<ul>
+<li>Véase también 'dataset'. Dataset es la palabra clave preferida cuando sea posible.</li>
+<li>Esta palabra clave tiene constantes proporcionadas a través de asf_search. Se puede encontrar más información <a href="/asf_search/searching/#keywords">aquí</a>.</li>
+<li>Véase también 'instrument'</li>
+<li>Plataforma de teledetección que adquirió los datos. Sentinel-1 y ERS tienen múltiples plataformas de teledetección, y puede elegir si especificar una plataforma específica. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>platform=ALOS</li>
+<li>platform=SA,SB</li>
+<li>platform=S1</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>ALOS, A3, AIRSAR, AS, ERS, ERS-1, E1, ERS-2, E2, JERS-1, J1, RADARSAT-1, R1, SEASAT, SS, S1, Sentinel, Sentinel-1, Sentinel-1A, SA, Sentinel-1B, Sentinel-1 Interferogram (BETA), SB, SIR-C, SMAP, SP, UAVSAR, UA</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">instrument</span></p>
+<ul>
+<li>Véase también 'dataset'. 'Dataset' es la palabra clave preferida cuando sea posible.</li>
+<li>Esta palabra clave tiene constantes proporcionadas a través de asf_search. Se puede encontrar más información <a href="/asf_search/searching/#keywords">aquí</a>.</li>
+<li>Véase también 'platform'</li>
+<li>Instrumento de teledetección que adquirió los datos. Para algunas plataformas, como ALOS, hay múltiples instrumentos para elegir.</li>
+<li>Ejemplo:<ul>
+<li>ALOS: instrument=PALSAR</li>
+<li>ALOS: instrument=AVNIR-2</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>C-SAR, PALSAR, AVNIR-2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">absoluteOrbit</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Para ALOS, ERS-1, ERS-2, JERS-1, RADARSAT-1, Sentinel-1A y Sentinel-1B, este valor corresponde al conteo de órbitas dentro del ciclo de órbita. Para UAVSAR, es el <a href="https://uavsar.jpl.nasa.gov/cgi-bin/data.pl?_ga=2.34282209.1335434931.1620087198-1930115146.1605056035">ID de Vuelo</a>. Puede especificar un solo valor, un rango de valores o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>RADARS absoluteOrbit=25436</li>
+<li>PALSAR: absoluteOrbit=25436-25445,25450</li>
+<li>UAVSAR: absoluteOrbit=12006</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">asfframe</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Véase también 'frame'</li>
+<li>Esto es principalmente una referencia de marco de ASF / <a href="https://global.jaxa.jp/">JAXA</a>. Sin embargo, algunas plataformas utilizan otras convenciones. Puede especificar un solo valor, un rango de valores o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>asfframe=300 o asfframe=2845-2855 o asfframe=2800,2845-2855</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>ERS, JERS, RADARSAT: marcos ASF de 0 a 900</li>
+<li>ALOS PALSAR: marcos JAXA de 0 a 7200</li>
+<li>SEASAT: marcos tipo ESA de 0208 a 3458 (debe usar un cero delante para marcos 208-999)</li>
+<li>Sentinel-1: Valores internos de 0 a 1184</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">maxBaselinePerp</span></p>
+<ul>
+<li>Para el análisis SAR interferométrico (InSAR), la Baseline Perpendicular es la distancia espacial entre las primeras y segundas observaciones medidas perpendicularmente a la dirección de observación del satélite y proporciona una indicación de la sensibilidad a la altura topográfica.</li>
+<li>Funciona para ERS-1, ERS-2, JERS, RADARSAT-1, ALOS PALSAR. (No para Sentinel-1)</li>
+<li>Ejemplo:<ul>
+<li>maxBaselinePerp=1500 o maxBaselinePerp=50.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">minBaselinePerp</span></p>
+<ul>
+<li>Para el análisis SAR interferométrico (InSAR), la Baseline Perpendicular es la distancia espacial entre las primeras y segundas observaciones medidas perpendicularmente a la dirección de observación del satélite y proporciona una indicación de la sensibilidad a la altura topográfica.</li>
+<li>Funciona para ERS-1, ERS-2, JERS, RADARSAT-1, ALOS PALSAR. (No para Sentinel-1)</li>
+<li>Ejemplo:<ul>
+<li>minBaselinePerp=100 o minBaselinePerp=50.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">beamMode</span></p>
+<ul>
+<li>Esta palabra clave tiene constantes proporcionadas a través de asf_search. Se puede encontrar más información <a href="/asf_search/searching/#keywords">aquí</a>.</li>
+<li>El modo de haz utilizado para adquirir los datos. Véase también beamSwath. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>beamMode=FBS o beamMode=EW,IW o beamMode=ScanSAR+Wide</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>AIRSAR: 3FP, ATI, XTI</li>
+<li>ALOS: FBD, FBS, PLR, WB1, WB2, DSN</li>
+<li>ERS-1: Estándar, STD</li>
+<li>ERS-2: Estándar, STD</li>
+<li>JERS-1: Estándar, STD</li>
+<li>RADARSAT-1: Estándar, STD, Fine, High, Low, Wide, Narrow, ScanSAR+Wide, ScanSAR+Narrow</li>
+<li>SEASAT: Estándar, STD</li>
+<li>SMAP: Estándar, STD</li>
+<li>Sentinel-1A: EW, IW, S1, S2, S3, S4, S5, S6, WV</li>
+<li>Sentinel-1B: EW, IW, S1, S2, S3, S4, S5, S6, WV</li>
+<li>UAVSAR: POL, RPI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">beamSwath</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>BeamSwath abarca un ángulo de observación y un modo de haz. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>beamSwath=0</li>
+<li>beamSwath=FN1, FN2, FN3, FN4, FN5</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>AIRSAR: 3FP, ATI, XTI</li>
+<li>ALOS: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18, 19, 20</li>
+<li>ERS-1: STD</li>
+<li>ERS-2: STD</li>
+<li>JERS-1: STD</li>
+<li>RADARSAT-1: FN1, FN2, FN3, FN4, FN5, SNA, SNB, ST1, ST2, ST3, ST4, ST5, ST6, ST7, SWA, SWB, WD1, WD2, WD3, EH3, EH4, EH6, EL1</li>
+<li>SEASAT: STD</li>
+<li>Sentinel-1A: EW, IW, S1, S2, S3, S4, S5, S6, WV</li>
+<li>Sentinel-1B: EW, IW, S1, S2, S3, S4, S5, S6, WV</li>
+<li>UAVSAR: POL, RPI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">collectionName</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Solo para colecciones de datos de UAVSAR y AIRSAR. Busque por el nombre de la misión/campaña. Puede especificar un solo valor. Para una lista de colecciones disponibles, consulte el Punto de Acceso de Lista de Misiones a continuación.</li>
+<li>Ejemplo:<ul>
+<li>UAVSAR: collectionName=ABoVE</li>
+<li>AIRSAR: collectionName=collectionName=Akiyoshi,+Japan</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">maxDoppler</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Doppler proporciona una indicación de cuánto se desvía la dirección de observación de la adquisición ideal en dirección de vuelo perpendicular.</li>
+<li>Ejemplo:<ul>
+<li>maxDoppler=1500 o maxDoppler=1500.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">minDoppler</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Doppler proporciona una indicación de cuánto se desvía la dirección de observación de la adquisición ideal en dirección de vuelo perpendicular.</li>
+<li>Ejemplo:<ul>
+<li>minDoppler=100 o minDoppler=1500.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">maxFaradayRotation</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>La rotación del plano de polarización de la señal de radar afecta la imagen. Las señales HH y HV se mezclan. Rotaciones unidireccionales que superen los 5° probablemente reducirán significativamente la precisión en la recuperación de parámetros geofísicos, como la biomasa forestal.</li>
+<li>Ejemplo:<ul>
+<li>maxFaradayRotation=3.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">minFaradayRotation</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>La rotación del plano de polarización de la señal de radar afecta la imagen. Las señales HH y HV se mezclan. Rotaciones unidireccionales que superen los 5° probablemente reducirán significativamente la precisión en la recuperación de parámetros geofísicos, como la biomasa forestal.</li>
+<li>Ejemplo:<ul>
+<li>minFaradayRotation=2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">flightDirection</span></p>
+<ul>
+<li>Esta palabra clave tiene constantes proporcionadas a través de asf_search. Se puede encontrar más información <a href="/asf_search/searching/#keywords">aquí</a>.</li>
+<li>Dirección de la órbita del satélite durante la adquisición de datos. Puede especificar un solo valor.</li>
+<li>Ejemplo:<ul>
+<li>flightDirection=DESCENDING</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>A, ASC, ASCENDING, D, DESC, DESCENDING</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">flightLine</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Especifique una línea de vuelo para UAVSAR o AIRSAR. Puede especificar un solo valor.</li>
+<li>Ejemplo:<ul>
+<li>UAVSAR: flightLine=05901</li>
+<li>AIRSAR: flightLine=gilmorecreek045-1.93044</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">frame</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Véase también 'asfframe'</li>
+<li>Los marcos de referencia de la ESA se ofrecen para proporcionar a los usuarios una convención de enmarcado universal. Cada marco de la ESA tiene asignado un marco correspondiente de ASF. Puede especificar un solo valor, un rango de valores o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>frame=300</li>
+<li>frame=300-400</li>
+<li>frame=300,303,305</li>
+<li>frame=300,303,305-315</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>Cualquier número del 0 al 7200.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">fullBurstID</span></p>
+<ul>
+<li>Utilizado para <a href="/datasets/using_ASF_data/#sentinel-1-bursts">productos de ráfaga</a> de Sentinel-1. Cada valor representa todos los productos de ráfaga sobre una única sub-banda, correspondiendo a un apilado casi perfecto alineado con el marco. Este valor es útil para el apilado de líneas base. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>valor único: fullBurstID=017_034465_IW2</li>
+<li>lista de valores: fullBurstID=017_034465_IW2,079_167884_IW1</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">granule_list</span></p>
+<ul>
+<li>Lista separada por comas de escenas específicas (gránulos). Las listas grandes necesitarán utilizar una <a href="https://es.wikipedia.org/wiki/POST_(HTTP)">solicitud POST</a>.</li>
+<li>granule_list no puede ser utilizada en conjunción con otras palabras clave, sin embargo, puede ser utilizada con la palabra clave de salida.</li>
+<li>Ejemplo:<ul>
+<li>granule_list=ALPSRP111041130,
+S1B_IW_GRDH_1SDV_20161124T032008_20161124T032033_003095_005430_9906</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">groupid</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Lista separada por comas de identificadores de grupo específicos. Para algunos conjuntos de datos, el identificador de grupo es el mismo que el nombre de la escena. Para otros, como Sentinel-1, el identificador de grupo es único para un grupo de escenas. El valor del identificador de grupo se incluye en las salidas GeoJSON, JSON y CSV.</li>
+<li>Ejemplo:<ul>
+<li>groupid=S1A_IWDV_0112_0118_037147_150</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">lookDirection</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Dirección izquierda o derecha de la adquisición de datos. Puede especificar un solo valor.</li>
+<li>Ejemplo:<ul>
+<li>lookDirection=L</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>R, DERECHA, L, IZQUIERDA</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">maxInsarStackSize</span></p>
+<ul>
+<li>Un conjunto InSAR está compuesto por todos los granos SAR que cubren la misma región geográfica, son de la misma plataforma y fueron adquiridos con el mismo modo de haz, ángulo de visión y ancho de banda. Para obtener conjuntos InSAR que contengan un cierto número de granos SAR, especifique un mínimo, máximo o ambos.</li>
+<li>Funciona para ERS-1, ERS-2, JERS, RADARSAT-1, ALOS PALSAR. (No para Sentinel-1)</li>
+<li>Ejemplo:<ul>
+<li>maxInsarStackSize=175</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">minInsarStackSize</span></p>
+<ul>
+<li>Un conjunto InSAR está compuesto por todos los granos SAR que cubren la misma región geográfica, son de la misma plataforma y fueron adquiridos con el mismo modo de haz, ángulo de visión y ancho de banda. Para obtener conjuntos InSAR que contengan un cierto número de granos SAR, especifique un mínimo, máximo o ambos.</li>
+<li>Funciona para ERS-1, ERS-2, JERS, RADARSAT-1, ALOS PALSAR. (No para Sentinel-1)</li>
+<li>Ejemplo:<ul>
+<li>minInsarStackSize=20</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">offNadirAngle</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Ángulos fuera de nadir para ALOS PALSAR. Puede especificar un solo valor, un rango de valores o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>offNadirAngle=21.5</li>
+<li>offNadirAngle=9.7-14</li>
+<li>offNadirAngle=21.5,23.1,20.5-24.2</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>Más comunes: 21.5, 23.1, 27.1, 34.3</li>
+<li>Otros: 9.7, 9.9, 13.8, 14, 16.2, 17.3, 17.9, 18, 19.2, 20.5, 21.5, 23.1, 24.2, 24.6, 25.2, 25.8, 25.9, 26.2, 27.1, 28.8, 30.8, 34.3, 36.9, 38.8, 41.5, 43.4, 45.2, 46.6, 47.8, 49, 50, 50.8</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">operaBurstID</span></p>
+<ul>
+<li>Utilizado para <a href="/datasets/using_ASF_data/#opera-sentinel-1">productos Opera-S1</a>. Cada valor identifica la ráfaga específica para el producto. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>valor único: operaBurstID=T078-165486-IW2</li>
+<li>lista de valores: operaBurstID=T078_165486_IW2, T078_165485_IW2</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">polarization</span></p>
+<ul>
+<li>Esta palabra clave tiene constantes proporcionadas a través de asf_search. Se puede encontrar más información <a href="/asf_search/searching/#keywords">aquí</a>.</li>
+<li>Una propiedad de las ondas electromagnéticas SAR que se puede utilizar para extraer información significativa sobre las propiedades de la superficie de la Tierra. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>polarization=VV</li>
+<li>polarization=VV,HH</li>
+<li>polarization=VV+VH</li>
+<li>polarization=Dual+VV</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>AIRSAR: FULL</li>
+<li>ALOS: CUADRATURA, HH+5SCAN, HH, HH+4SCAN, VV, HH+3SCAN, FULL, HH+HV, VV+VH</li>
+<li>ERS-1: VV</li>
+<li>ERS-2: VV</li>
+<li>JERS-1: HH</li>
+<li>RADARSAT-1: HH</li>
+<li>SEASAT: HH</li>
+<li>Sentinel-1A: VV, VV+VH, Dual VV, VV+VH, Dual HV, Dual HH, HH, HH+HV, VV, Dual VH</li>
+<li>Sentinel-1B: VV, VV+VH, Dual VV, VV+VH, Dual HV, Dual HH, HH, HH+HV, VV, Dual VH</li>
+<li>UAVSAR: FULL, HH</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">processingLevel</span></p>
+<ul>
+<li>Esta palabra clave tiene constantes proporcionadas a través de asf_search. Se puede encontrar más información <a href="/asf_search/searching/#keywords">aquí</a>.</li>
+<li>Nivel al que se han procesado los datos, también tipo de producto. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>processingLevel=L0,L1</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>AIRSAR: 3FP, LTIF, PTIF, CTIF, PSTOKES, DEM, CSTOKES, JPG, LSTOKES</li>
+<li>ALOS: L1.0, L1.1, L1.5, L2.2, RTC_LOW_RES, RTC_HI_RES, KMZ</li>
+<li>ERS-1: L0, L1</li>
+<li>ERS-2: L0, L1</li>
+<li>JERS-1: L0, L1</li>
+<li>OPERA-S1: RTC, CSLC, RTC_STATIC, CSLS_STATIC</li>
+<li>RADARSAT-1: L0, L1</li>
+<li>SEASAT: L1, GEOTIFF</li>
+<li>Sentinel-1A: GRD_HS, GRD_HD, GRD_MS, GRD_MD, GRD_FD, SLC, RAW, OCN, METADATA_RAW, METADATA_SLC, METADATA_GRD_HD, METADATA_GRD_MD, METADATA_GRD_MS, METADATA_GRD_HS, METADATA_OCN</li>
+<li>Sentinel-1B: GRD_HS, GRD_HD, GRD_MS, GRD_MD, GRD_FD, SLC, RAW, OCN, METADATA_RAW, METADATA_SLC, METADATA_GRD_HD, METADATA_GRD_MD, METADATA_GRD_MS, METADATA_GRD_HS, METADATA_OCN</li>
+<li>Sentinel-1 InSAR: GUNW_STD, GUNW_AMP, GUNW_CON, GUN_COH, GUNW_UNW</li>
+<li>Sentinel-1 Bursts: BURST</li>
+<li>SIR-C: SLC, METADATA_SLC</li>
+<li>SMAP: L1A_Radar_RO_QA, L1A_Radar_RO_HDF5, L1B_S0_LoRes_HDF5, L1B_S0_LoRes_QA, L1B_S0_LoRes_ISO_XML, L1A_Radar_QA, L1A_Radar_RO_ISO_XML, L1C_S0_HiRes_ISO_XML, L1C_S0_HiRes_QA, L1C_S0_HiRes_HDF5, L1A_Radar_HDF5</li>
+<li>UAVSAR: KMZ, PROYECTADO, PAULI, PROYECTADO_ML5X5, STOKES, AMPLITUD, COMPLEJO, DEM_TIFF, PROYECTADO_ML3X3, METADATOS, AMPLITUD_GRD, INTERFEROMETRÍA, INTERFEROMETRÍA_GRD, INC, PENDIENTE</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">product_list</span></p>
+<ul>
+<li>Lista separada por comas de archivos específicos (productos). Las listas grandes necesitarán utilizar una <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">solicitud POST</a>. Puede encontrar los valores de product_list para cualquier archivo en las salidas GeoJSON (fileID) o JSON (product_file_id). También está disponible desde CMR, en el campo granuleUR. Se garantiza que es un identificador único en CMR. También puede encontrar el valor de product_list en Vertex. Consulta la <a href="/api/cookbook">página del Cookbook</a> para este consejo y más.</li>
+<li>product_list no puede ser utilizada en conjunto con otras palabras clave, sin embargo, puede ser utilizada con la palabra clave output.</li>
+<li>Ejemplo:<ul>
+<li>product_list=ALAV2A276512920,
+S1A_IW_SLC__1SDV_20210614T154839_20210614T154905_038338_048643_D7E4-SLC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">relativeOrbit</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Camino o trayectoria del satélite durante la adquisición de datos. Para UAVSAR es el <a href="https://uavsar.jpl.nasa.gov/cgi-bin/data.pl?_ga=2.201268782.1252483948.1620685771-1930115146.1605056035">ID de Línea</a>. Puede especificar un solo valor, un rango de valores o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>relativeOrbit=500,550-580</li>
+<li>UAVSAR: relativeOrbit=05905</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>ALOS: 1-671</li>
+<li>ERS-1: 0-2410</li>
+<li>ERS-2: 0-500</li>
+<li>JERS-1: 0-658</li>
+<li>RADARSAT-1: 0-342</li>
+<li>SEASAT: 1-243</li>
+<li>UAVSAR: varios</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="parametros-geoespaciales">Parámetros Geoespaciales<a class="headerlink" href="#parametros-geoespaciales" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><span style="color: #236192; font-size: 20px;">bbox</span></p>
+<ul>
+<li><em>Aviso de Descontinuación:</em> Esta palabra clave será descontinuada. Por favor, utiliza 'intersectsWith' en su lugar.</li>
+<li>Las cajas delimitadoras definen un área utilizando dos puntos de longitud/latitud. Los parámetros de la caja delimitadora son 4 números separados por comas: longitud inferior izquierda, latitud, y longitud superior derecha, latitud. Esta es una excelente opción para áreas de búsqueda muy amplias.</li>
+<li>Ejemplo:<ul>
+<li>bbox=-150.2,65.0,-150.1,65.5</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">intersectsWith</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Búsqueda por polígono, un segmento de línea ("linestring") o un punto definido en texto bien conocido en 2D (WKT). Cada polígono debe estar explícitamente cerrado, es decir, el primer vértice y el último vértice de cada polígono listado deben ser idénticos. Los pares de coordenadas para cada vértice están en grados decimales: la longitud es seguida por la latitud.</li>
+<li>Notas:<ul>
+<li>No soporta polígono múltiple, línea múltiple o punto múltiple.</li>
+<li>Los agujeros en los polígonos son ignorados</li>
+<li>Esta palabra clave también acepta una <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">solicitud POST</a></li>
+</ul>
+</li>
+<li>Ejemplo (<em>Nota: Los espacios y paréntesis a continuación deben ser codificados en URL primero</em>):<ul>
+<li>intersectsWith=polygon((-119.543 37.925, -118.443 37.7421, -118.682 36.8525, -119.77 37.0352, -119.543 37.925))</li>
+<li>intersectsWith=linestring(-119.543 37.925, -118.443 37.7421)</li>
+<li>intersectsWith=point(-119.543, 37.925)</li>
+</ul>
+</li>
+<li>Codificado correctamente en URL:<ul>
+<li>intersectsWith=point%28-119.543+37.925%29</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">polygon</span></p>
+<ul>
+<li><em>Aviso de Descontinuación:</em> Esta palabra clave será descontinuada. Por favor, utiliza 'intersectsWith' en su lugar.</li>
+<li>Polígono delimitador en formato digital de longitud/latitud; ingresa las coordenadas en dirección antihoraria, repitiendo el primer punto al final para cerrar el polígono: en el formato ABCDA.</li>
+<li>Ejemplo:<ul>
+<li>polygon=-155.08,65.82,-153.5,61.91,-149.50,63.07,-149.94,64.55,-153.28,64.47,-155.08,65.82</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="validacion-de-formas">Validación de Formas<a class="headerlink" href="#validacion-de-formas" title="Permanent link">#</a></h4>
+<p>Si el Área de Interés (AOI) especificada es su propio Rectángulo Delimitador Mínimo (MBR) en una proyección de Mercator, los resultados de búsqueda devueltos intersectarán con el AOI en una proyección de Mercator, independientemente de su anchura. Esto sigue siendo así incluso si se cruza la línea internacional de cambio de fecha dentro del AOI.</p>
+<p>Para que un AOI se considere su propio MBR, debe cumplir con los siguientes criterios:</p>
+<ul>
+<li>Cada vértice comparte una latitud o longitud con sus vecinos.</li>
+<li>Los puntos Este/Oeste comparten longitud.</li>
+<li>Los puntos Norte/Sur comparten latitud.</li>
+</ul>
+<p>Los AOIs que no cumplan con estos criterios tendrán sus puntos conectados a lo largo de <a href="https://es.wikipedia.org/wiki/C%C3%ADrculo_m%C3%A1ximo">círculos máximos</a>.</p>
+<p>Además, todos los AOIs son validados y luego simplificados según sea necesario. El proceso para esto es:</p>
+<ol>
+<li>Validar el AOI de entrada. Si no es válido, se muestra un error.</li>
+<li>Fusionar formas superpuestas.</li>
+<li>Casco convexo.</li>
+<li>Cualquier valor de índice fuera de rango se maneja ajustándolo y envolviéndolo al rango válido de valores.</li>
+<li>Simplificar puntos basados en el umbral de proximidad. El objetivo es tener menos de 400 puntos.</li>
+</ol>
+<p>Cada uno de estos pasos se realiza solo cuando es necesario para obtener el AOI en un único contorno con menos de 400 puntos. Cualquier paso innecesario se omite.</p>
+<p><strong>Ejemplos de validación y simplificación:</strong></p>
+<ul>
+<li>Se proporciona un polígono que se auto-intersecta: <ul>
+<li>Se muestra un error.</li>
+</ul>
+</li>
+<li>Se proporciona un único contorno, consistente en 1000 puntos:<ul>
+<li>Se utiliza una versión simplificada del mismo contorno, consistente en menos de 400 puntos.</li>
+</ul>
+</li>
+<li>Se proporcionan múltiples geometrías, todas ellas superpuestas al menos en parte:<ul>
+<li>Se devuelve un único contorno, representando el contorno de todas las formas combinadas.</li>
+</ul>
+</li>
+<li>Se proporcionan múltiples geometrías, algunas de ellas completamente no superpuestas:<ul>
+<li>Se devuelve un único contorno, representando el casco convexo de todas las formas juntas.</li>
+</ul>
+</li>
+</ul>
+<h3 id="parametros-temporales">Parámetros Temporales<a class="headerlink" href="#parametros-temporales" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><span style="color: #236192; font-size: 20px;">processingDate</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Limita los resultados a registros que han sido procesados en ASF desde una fecha y/o hora dada.</li>
+<li>Ejemplo:<ul>
+<li>processingDate=2017-01-01T00:00:00UTC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">start</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Fecha de adquisición de datos. Se puede usar en combinación con 'end'. Puede introducir fechas en lenguaje natural, o una fecha y/o sello de tiempo. Todos los horarios están en UTC. Para más información sobre los formatos de fecha aceptados, consulta el punto final del Analizador de Fechas a continuación.</li>
+<li>Ejemplo:<ul>
+<li>start=May+30,+2018</li>
+<li>start=ayer</li>
+<li>start=2010-10-30T11:59:59Z</li>
+<li>start=hace+1+semana&amp;end=ahora</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">end</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Fecha de adquisición de datos. Se puede usar en combinación con 'start'. Puede introducir fechas en lenguaje natural, o una fecha y/o sello de tiempo. Todos los horarios están en UTC. Para más información sobre los formatos de fecha aceptados, consulta el punto final del Analizador de Fechas a continuación.</li>
+<li>Ejemplo:<ul>
+<li>end=May+30,+2018</li>
+<li>end=hoy</li>
+<li>end=2021-04-30T11:59:59Z</li>
+<li>start=hace+1+semana&amp;end=ahora</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">season</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Día de inicio y fin del año para el rango estacional deseado. Esta palabra clave puede usarse en conjunto con start/end para especificar un rango estacional dentro de un rango de fechas general. Los valores se basan en el calendario juliano. Debe especificar tanto una fecha de inicio como de fin de la temporada.</li>
+<li>Ejemplo:<ul>
+<li>season=1,31</li>
+<li>season=45,67</li>
+<li>season=360,10</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>1 a 365</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="parametros-de-resultados">Parámetros de Resultados<a class="headerlink" href="#parametros-de-resultados" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p><span style="color: #236192; font-size: 20px;">output</span></p>
+<ul>
+<li>Formato deseado de los resultados de la API de Búsqueda. Si no se especifica, el formato predeterminado es metalink. El formato preferido es geoJSON.</li>
+<li>Ejemplo:<ul>
+<li>output=geojson</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>geojson, csv, json, kml, metalink, count, download</li>
+</ul>
+</li>
+<li>Descripción:<ul>
+<li>GeoJSON es el formato de salida preferido. Si un campo requerido no está incluido, por favor contacta a ASF usando la información a continuación o contacta al equipo directamente en <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#97;&#102;&#45;&#97;&#115;&#102;&#45;&#100;&#105;&#115;&#99;&#111;&#118;&#101;&#114;&#121;&#64;&#97;&#108;&#97;&#115;&#107;&#97;&#46;&#101;&#100;&#117;">&#117;&#97;&#102;&#45;&#97;&#115;&#102;&#45;&#100;&#105;&#115;&#99;&#111;&#118;&#101;&#114;&#121;&#64;&#97;&#108;&#97;&#115;&#107;&#97;&#46;&#101;&#100;&#117;</a></li>
+<li>KML se puede abrir en Google Earth, ArcGIS Earth, o un programa similar</li>
+<li>Count devuelve el número de resultados obtenidos por su consulta. No incluye información adicional. Usar la salida count puede ser útil para determinar si su consulta ha devuelto el número correcto de resultados. Hay un límite de tiempo para ejecutar consultas de la API de Búsqueda. Consulta la <a href="/api/troubleshooting">página de Solución de Problemas</a> para más detalles.</li>
+<li>Metalink proporciona información de descarga para las escenas devueltas por su consulta. No incluye metadatos.</li>
+<li>Download devuelve un script de descarga masiva que incluye los archivos devueltos por la búsqueda. Consulta la <a href="https://asf.alaska.edu/how-to/data-tools/asf-bulk-data-download-options/">documentación de Descarga Masiva</a> para una guía completa sobre cómo usar el script de descarga masiva.</li>
+<li>JSON incluye metadatos de la escena y URLs de productos. Si GeoJSON no satisface tus necesidades, JSON es el formato preferido para uso programático.</li>
+<li>CSV también incluye metadatos de la escena y URLs de productos. CSV devuelve menos campos que JSON.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">maxResults</span></p>
+<ul>
+<li>Esta palabra clave también está disponible a través de <a href="/asf_search/searching/#searching">asf_search</a>.</li>
+<li>Número máximo de registros de datos a devolver de su consulta.</li>
+<li>Ejemplo:<ul>
+<li>maxResults=10</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="punto-final-de-baseline">Punto Final de Baseline<a class="headerlink" href="#punto-final-de-baseline" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/services/search/baseline">https://api.daac.asf.alaska.edu/services/search/baseline</a></p>
+<ul>
+<li>
+<p><span style="color: #236192; font-size: 20px;">reference</span></p>
+<ul>
+<li>Esta es la única palabra clave obligatoria. Introduce el nombre de la escena de referencia para la cual deseas ver los resultados de la Baseline.</li>
+<li>Ejemplo:<ul>
+<li>reference=S1B_IW_SLC__1SDV_20210704T135937_20210704T140004_027645_034CB0_4B2C</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">processingLevel</span></p>
+<ul>
+<li>Nivel al que los datos han sido procesados. Los datos de Baseline solo están disponibles para ciertos niveles de procesamiento.</li>
+<li>Ejemplo:<ul>
+<li>processingLevel=L1.5</li>
+</ul>
+</li>
+<li>Valores de ProcessingLevel que Contienen Datos de Baseline:<ul>
+<li>ALOS: L1.1, L1.5; por defecto es L1.1</li>
+<li>ERS-1 &amp; ERS-2: L0, L1; por defecto es L0</li>
+<li>JERS-1: L0, L1; por defecto es L0</li>
+<li>RADARSAT-1: L0, L1; por defecto es L0</li>
+<li>Sentinel-1A &amp; Sentinel-1B: SLC</li>
+<li>Sentinel-1 Bursts: SLC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">output</span></p>
+<ul>
+<li>Formato deseado de los resultados de la API de Búsqueda. Si no se especifica, el formato predeterminado es metalink. El formato preferido es geoJSON.</li>
+<li>Ejemplo:<ul>
+<li>output=geojson</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>geojson, csv, json, kml, metalink, count, download</li>
+</ul>
+</li>
+<li>Descripción:<ul>
+<li>GeoJSON es el formato de salida preferido. Si un campo requerido no está incluido, por favor contacta a ASF usando la información a continuación o contacta al equipo directamente en <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#117;&#97;&#102;&#45;&#97;&#115;&#102;&#45;&#100;&#105;&#115;&#99;&#111;&#118;&#101;&#114;&#121;&#64;&#97;&#108;&#97;&#115;&#107;&#97;&#46;&#101;&#100;&#117;">&#117;&#97;&#102;&#45;&#97;&#115;&#102;&#45;&#100;&#105;&#115;&#99;&#111;&#118;&#101;&#114;&#121;&#64;&#97;&#108;&#97;&#115;&#107;&#97;&#46;&#101;&#100;&#117;</a></li>
+<li>KML se puede abrir en Google Earth, ArcGIS Earth, o un programa similar</li>
+<li>Count devuelve el número de resultados obtenidos por su consulta. No incluye información adicional. Usar la salida count puede ser útil para determinar si su consulta ha devuelto el número correcto de resultados. Hay un límite de tiempo para ejecutar consultas de la API de Búsqueda. Consulta la <a href="/api/troubleshooting">página de Solución de Problemas</a> para más detalles.</li>
+<li>Metalink proporciona información de descarga para las escenas devueltas por su consulta. No incluye metadatos.</li>
+<li>Download devuelve un script de descarga masiva que incluye los archivos devueltos por la búsqueda. Consulta la <a href="https://asf.alaska.edu/how-to/data-tools/data-tools/#bulk_download">documentación de Descarga Masiva</a> para una guía completa sobre cómo usar el script de descarga masiva.</li>
+<li>JSON incluye metadatos de la escena y URLs de productos. Si GeoJSON no satisface tus necesidades, JSON es el formato preferido para uso programático.</li>
+<li>CSV también incluye metadatos de la escena y URLs de productos. CSV devuelve menos campos que JSON.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><span style="color: #236192; font-size: 20px;">maxResults</span></p>
+<ul>
+<li>Número máximo de registros de datos a devolver de su consulta.</li>
+<li>Ejemplo:<ul>
+<li>maxResults=10</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="punto-final-de-validacion-wkt">Punto Final de Validación WKT<a class="headerlink" href="#punto-final-de-validacion-wkt" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/services/utils/wkt">https://api.daac.asf.alaska.edu/services/utils/wkt</a></p>
+<p>Este punto final validará y reparará una entrada WKT. La salida WKT reparada es cómo la API de Búsqueda interpretará la entrada WKT proporcionada. Si un WKT no puede ser reparado, devolverá un error indicando la razón. Todas las validaciones y errores se devuelven en formato JSON.</p>
+<ul>
+<li><span style="color: #236192; font-size: 20px;">wkt</span><ul>
+<li>Esta es la única palabra clave aceptada para este punto final.</li>
+<li>Ejemplo:<ul>
+<li>wkt=GEOMETRYCOLLECTION(POLYGON((46 -19,30 26,-3 41,22 39,49 16,46 -19)), POLYGON((27 24,12 4,18 31,27 24)))</li>
+<li>En este ejemplo, la devolución JSON enumerará los errores que fueron reparados, y el WKT final envuelto y sin envolver.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="punto-final-de-archivos-geoespaciales-a-wkt">Punto Final de Archivos GeoEspaciales a WKT<a class="headerlink" href="#punto-final-de-archivos-geoespaciales-a-wkt" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/services/utils/files_to_wkt">https://api.daac.asf.alaska.edu/services/utils/files_to_wkt</a></p>
+<p>Este punto final aceptará una <a href="https://en.wikipedia.org/wiki/POST_(HTTP)">solicitud POST</a> con archivos adjuntos. Devolverá el WKT analizado del archivo, así como el WKT envuelto y sin envolver reparado. Todas las salidas se devuelven en formato JSON. El formato de archivo preferido es geojson, pero la API de Búsqueda también admitirá otros formatos, como shapefile o kml.</p>
+<p>Consulta la <a href="/api/tools">página de Herramientas</a> para más detalles sobre las solicitudes POST.</p>
+<ul>
+<li>Ejemplo:<ul>
+<li>curl -X POST -F 'files=@/path/to/file' 'https://api.aac.asf.alaska.edu/services/utils/files_to_wkt'</li>
+</ul>
+</li>
+</ul>
+<h2 id="punto-final-del-analizador-de-fechas">Punto Final del Analizador de Fechas<a class="headerlink" href="#punto-final-del-analizador-de-fechas" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/services/utils/date">https://api.daac.asf.alaska.edu/services/utils/date</a></p>
+<p>Este punto final se puede usar para verificar cómo se analizan las fechas por la API de Búsqueda. Todas las fechas analizadas se devuelven en formato JSON.</p>
+<ul>
+<li><span style="color: #236192; font-size: 20px;">date</span><ul>
+<li>Esta es la única palabra clave aceptada para este punto final. Puede usar lenguaje natural, como "ayer", fechas con o sin sello de tiempo, o días de la semana.</li>
+</ul>
+</li>
+</ul>
+<h2 id="punto-final-de-lista-de-misiones">Punto Final de Lista de Misiones<a class="headerlink" href="#punto-final-de-lista-de-misiones" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/services/utils/mission_list">https://api.daac.asf.alaska.edu/services/utils/mission_list</a></p>
+<p>Este punto final enumera todas las misiones (también conocidas como campañas o colecciones) para todos los conjuntos de datos. Cualquiera de las misiones devueltas en la lista puede usarse como valor para la palabra clave collectionName en el punto final de Búsqueda. La lista de misiones se devuelve en formato JSON.</p>
+<ul>
+<li><span style="color: #236192; font-size: 20px;">platform</span><ul>
+<li>Esta palabra clave es opcional. Si se usa, restringirá la lista de misiones a las plataformas especificadas.</li>
+<li>Plataforma de teledetección que adquirió los datos. Sentinel-1 y ERS tienen múltiples plataformas de teledetección, y puede elegir si especificar una plataforma específica. Puede especificar un solo valor o una lista de valores.</li>
+<li>Ejemplo:<ul>
+<li>platform=ALOS</li>
+<li>platform=SA,SB</li>
+<li>platform=S1</li>
+</ul>
+</li>
+<li>Valores:<ul>
+<li>ALOS, A3, AIRSAR, AS, ERS, ERS-1, E1, ERS-2, E2, JERS-1, J1, RADARSAT-1, R1, SEASAT, SS, S1, Sentinel, Sentinel-1, Sentinel-1A, SA, Sentinel-1B, Sentinel-1 Interferogram (BETA), SB, SMAP, SP, UAVSAR, UA</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="punto-final-de-salud">Punto Final de Salud<a class="headerlink" href="#punto-final-de-salud" title="Permanent link">#</a></h2>
+<p><a href="https://api.daac.asf.alaska.edu/health">https://api.daac.asf.alaska.edu/health</a></p>
+<p>Este punto final se utiliza para verificar el estado de salud de la API de Búsqueda. Se devuelve en formato JSON. No hay palabras clave asociadas con el punto final de verificación de salud.</p>
+<p>Además de la salud de la API de Búsqueda, también devuelve las configuraciones de la API de Búsqueda y el estado de salud de CMR.</p>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+
+
+<!-- Application footer -->
+<footer class="md-footer">
+
+  <!-- Link to previous and/or next page -->
+  
+    <div class="md-footer-nav">
+      <nav
+        class="md-footer-nav__inner md-grid"
+        aria-label="footer.title"
+      >
+
+        <!-- Link to previous page -->
+        
+          <a href="../basics/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Anterior
+                </span>
+                Básicos de la API de búsqueda
+              </div>
+            </div>
+          </a>
+        
+
+        <!-- Link to next page -->
+        
+          <a href="../tools/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Siguiente
+                </span>
+                Herramientas
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+
+      <!-- ASF Footer information-->
+      <div class="md-grid">
+        <div class="md-footer-container md-grid">
+          <div class="md-footer-container-item">
+            <img src="/assets/images/asf-logo-blue-nav.png"
+                 alt="ASF Logo"
+                 class="md-footer-logo">
+          </div>
+          <div class="md-footer-container-item md-about-us">
+            <h1>About Us</h1>
+            <p>
+              The Alaska Satellite Facility downlinks, processes, archives, and
+              distributes remote-sensing data to scientific users around the world.
+              ASF’s mission is to make remote-sensing data accessible.
+            </p>
+            <p>
+              <a href="https://asf.alaska.edu/about-asf/" target="_blank">
+                Read More
+              </a>
+            </p>
+          </div>
+          <div class="md-footer-container-item md-contact-info">
+            <h1>Contact Info</h1>
+            <p>
+              Alaska Satellite Facility<br>
+              2156 Koyukuk Drive<br>
+              Fairbanks, AK 99775<br>
+              (907) 474-5041<br>
+              uso@asf.alaska.edu<br>
+            </p>
+            <p>
+              <a href="javascript:feedback.showForm();">Send Us A Message</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <!-- Further information -->
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+
+      <!-- Copyright and theme information -->
+      <div class="md-footer-copyright">
+        <div class="md-footer-copyright__highlight">
+          
+            &copy; <span id="copyright-year"></span>
+            <script type="text/javascript">
+                current_year = new Date().getFullYear();
+                document.getElementById("copyright-year").innerHTML=current_year;
+            </script>
+            ASF – <a href="#__consent">Change cookie settings</a>
+
+          
+          <!-- ASF non-discrimination disclaimer-->
+          &nbsp;&nbsp;
+          <a href="https://www.alaska.edu/nondiscrimination"
+             target="_blank"
+             class="md-footer-copyright-link">
+            UA is an AA/EO employer and educational institution and prohibits
+            illegal discrimination against any individual
+          </a>
+        </div>
+      </div>
+
+      <!-- Social links -->
+      <!--
+  Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
+
+  Permission is hereby granted, free of charge, to any person obtaining a copy
+  of this software and associated documentation files (the "Software"), to
+  deal in the Software without restriction, including without limitation the
+  rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+  sell copies of the Software, and to permit persons to whom the Software is
+  furnished to do so, subject to the following conditions:
+
+  The above copyright notice and this permission notice shall be included in
+  all copies or substantial portions of the Software.
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
+  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+  IN THE SOFTWARE.
+-->
+
+<!-- Social links in footer -->
+<div class="md-footer-social">
+    
+    
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+
+
+
+
+
+  
+
+<h4>Cookie Consent</h4>
+<p>We use cookies to recognize your repeated visits and preferences, as well as to measure the effectiveness of our documentation and whether users find what they're searching for. With your consent, you're helping us to make our documentation better.</p>
+<input class="md-toggle" type="checkbox" id="__settings" checked>
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Aceptar</button>
+    
+    
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout(function(){document.querySelector("[data-md-component=consent]").hidden=!1},250);var action,form=document.forms.consent;for(action of["submit","reset"])form.addEventListener(action,function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map(function(e){return[e,!0]}))),location.hash="",location.reload()})</script>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -10,21 +10,20 @@ on:
 
 jobs:
   build_and_deploy:
-    environment: 'github-pages'
     name: Build site and deploy
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v4
         with:
-          path: Discovery-MkDocs-Test
+          path: Discovery-MkDocs
       - uses: actions/setup-python@v4
         with:
-          path: Discovery-MkDocs-Test
+          path: Discovery-MkDocs
       - name: Setup Python
         env:
           PHRASE_DISCOVERY_ACCESS_TOKEN: ${{ secrets.PHRASE_DISCOVERY_ACCESS_TOKEN }}
         run: |
-          cd Discovery-MkDocs-Test
+          cd Discovery-MkDocs
           echo $PWD
           ls -l
           python -m venv ./venv
@@ -37,11 +36,11 @@ jobs:
           deactivate
 
       - name: deploy to github.io
-        if: github.ref == 'refs/heads/test'
+        if: github.ref == 'refs/heads/prod'
         shell: bash -l {0}
         run: |
           echo $PWD
-          cd Discovery-MkDocs-Test
+          cd Discovery-MkDocs
           echo "mkdocs gh-deploy"
           python -m venv ./venv
           source ./venv/bin/activate
